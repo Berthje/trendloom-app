@@ -1,12 +1,61 @@
 <script setup>
-import { HiOutlineShoppingBag } from "vue3-icons/hi2";
-import { RxHamburgerMenu } from "vue3-icons/rx";
+import { ref } from 'vue';
+import { AiOutlineShopping, AiOutlineClose } from "vue3-icons/ai";
+import { HiOutlineMenu } from "vue3-icons/hi";
+
+const cartOpen = ref(false);
+
+const toggleCart = () => {
+    cartOpen.value = !cartOpen.value;
+};
 </script>
 
 <template>
-    <header>
-        <nav>
+    <header class="bg-white w-full py-4 px-4">
+        <nav class="flex items-center justify-between">
+            <HiOutlineMenu size="28" class="cursor-pointer" @click="toggleCart" />
+            <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
+            <div class="relative inline-flex mr-2">
+                <AiOutlineShopping size="28" />
+                <span
+                    class="bg-black text-white text-[0.70rem] w-4 h-4 leading-6 rounded-full inline-flex items-center justify-center font-bold absolute left-[20px]">0</span>
+            </div>
         </nav>
     </header>
+    <transition name="fade">
+        <div v-show="cartOpen" class="fixed inset-0 bg-black opacity-70 z-40" @click="toggleCart"></div>
+    </transition>
+    <transition name="slide">
+        <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50">
+            <nav class="fixed top-0 h-full w-80 bg-white overflow-auto">
+            </nav>
+            <AiOutlineClose class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="toggleCart"/>
+        </div>
+    </transition>
 </template>
-<style scoped></style>
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  @apply transition-opacity duration-300 ease-in-out;
+}
+.fade-enter, .fade-leave-to {
+  @apply opacity-0;
+}
+.slide-enter-from {
+  @apply -translate-x-full;
+}
+.slide-enter-active {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.slide-enter-to {
+  @apply translate-x-0;
+}
+.slide-leave-from {
+  @apply translate-x-0;
+}
+.slide-leave-active {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.slide-leave-to {
+  @apply -translate-x-full;
+}
+</style>
