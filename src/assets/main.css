@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html {
+        @apply font-sans;
+    }
+
+    .active-route {
+        @apply underline underline-offset-8 decoration-2 decoration-[#888888] text-[#888888];
+    }
+}

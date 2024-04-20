@@ -13,8 +13,20 @@ const toggleCart = () => {
 <template>
     <header class="bg-white w-full py-4 px-4">
         <nav class="flex items-center justify-between">
-            <HiOutlineMenu size="28" class="cursor-pointer" @click="toggleCart" />
-            <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
+            <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="toggleCart" />
+            <div class="lg:flex space-x-6">
+              <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
+              <nav>
+                <ul class="hidden lg:flex space-x-4 uppercase text-sm">
+                  <li class="active-route"><RouterLink to="/">Home</RouterLink></li>
+                  <li><RouterLink to="#">Men</RouterLink></li>
+                  <li><RouterLink to="#">Women</RouterLink></li>
+                  <li><RouterLink to="#">Children</RouterLink></li>
+                  <li><RouterLink to="#">About us</RouterLink></li>
+                  <li><RouterLink to="#">Contacts</RouterLink></li>
+                </ul>
+              </nav>
+            </div>
             <div class="relative inline-flex mr-2">
                 <AiOutlineShopping size="28" />
                 <span
