@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { AiOutlineShopping, AiOutlineClose } from "vue3-icons/ai";
+import { AiOutlineShopping, AiOutlineClose, AiOutlineSearch } from "vue3-icons/ai";
 import { HiOutlineMenu } from "vue3-icons/hi";
 
 const cartOpen = ref(false);
@@ -17,7 +17,7 @@ const toggleCart = () => {
             <div class="lg:flex space-x-6">
               <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
               <nav>
-                <ul class="hidden lg:flex space-x-4 uppercase text-sm">
+                <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
                   <li class="active-route"><RouterLink to="/">Home</RouterLink></li>
                   <li><RouterLink to="#">Men</RouterLink></li>
                   <li><RouterLink to="#">Women</RouterLink></li>
@@ -26,6 +26,7 @@ const toggleCart = () => {
                   <li><RouterLink to="#">Contacts</RouterLink></li>
                 </ul>
               </nav>
+              <AiOutlineSearch class="hidden lg:block" size="22" />
             </div>
             <div class="relative inline-flex mr-2">
                 <AiOutlineShopping size="28" />
