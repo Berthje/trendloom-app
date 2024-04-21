@@ -4,6 +4,7 @@ import { AiOutlineShopping, AiOutlineClose, AiOutlineSearch } from "vue3-icons/a
 import { HiOutlineMenu } from "vue3-icons/hi";
 import { GoPerson } from "vue3-icons/go";
 import { FaRegHeart } from "vue3-icons/fa";
+import { IoLanguage  } from "vue3-icons/io5";
 
 const cartOpen = ref(false);
 
@@ -13,7 +14,7 @@ const toggleCart = () => {
 </script>
 
 <template>
-    <header class="bg-white w-full py-4 px-4">
+    <header class="bg-white w-full max-w-[1280px] py-4 px-4 mx-auto">
         <nav class="flex items-center justify-between">
             <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="toggleCart" />
             <div class="lg:flex space-x-6">
@@ -31,9 +32,10 @@ const toggleCart = () => {
               <AiOutlineSearch class="hidden lg:block" size="22" />
             </div>
             <div class="flex items-center">
-              <div class="hidden lg:flex space-x-2 text-xl">
-                <GoPerson />
-                <FaRegHeart />
+              <div class="hidden lg:flex space-x-3">
+                <GoPerson size="1.25rem"/>
+                <FaRegHeart size="1.25rem"/>
+                <IoLanguage  size="1.25rem"/>
               </div>
               <div class="flex items-center lg:border-l-[1px] border-gray-400 border-solid pl-4 ml-4">
                 <div class="relative inline-flex mr-2">
@@ -47,10 +49,10 @@ const toggleCart = () => {
         </nav>
     </header>
     <transition name="fade">
-        <div v-show="cartOpen" class="fixed inset-0 bg-black opacity-70 z-40" @click="toggleCart"></div>
+        <div v-show="cartOpen" class="fixed inset-0 bg-black opacity-70 z-40 lg:hidden" @click="toggleCart"></div>
     </transition>
     <transition name="slide">
-        <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50">
+        <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
             <nav class="fixed top-0 h-full w-80 bg-white overflow-auto">
             </nav>
             <AiOutlineClose class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="toggleCart"/>
