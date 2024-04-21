@@ -15,6 +15,16 @@ const toggleCart = () => {
 const closeCart = () => {
   cartOpen.value = false;
 };
+
+const links = [
+  { name: 'Home', path: '/' },
+  { name: 'Men', path: '/men' },
+  { name: 'Women', path: '/women' },
+  { name: 'Children', path: '/children' },
+  { name: 'About us', path: '/about-us' },
+  { name: 'Contacts', path: '/contact' },
+];
+
 </script>
 
 <template>
@@ -25,23 +35,8 @@ const closeCart = () => {
         <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
         <nav>
           <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
-            <li>
-              <RouterLink to="/" active-class="active-route">Home</RouterLink>
-            </li>
-            <li>
-              <RouterLink to="/men" active-class="active-route">Men</RouterLink>
-            </li>
-            <li>
-              <RouterLink to="/women" active-class="active-route">Women</RouterLink>
-            </li>
-            <li>
-              <RouterLink to="/children" active-class="active-route">Children</RouterLink>
-            </li>
-            <li>
-              <RouterLink to="/about-us" active-class="active-route">About us</RouterLink>
-            </li>
-            <li>
-              <RouterLink to="/contact" active-class="active-route">Contacts</RouterLink>
+            <li v-for="link in links" :key="link.path">
+              <RouterLink :to="link.path" active-class="active-route">{{ link.name }}</RouterLink>
             </li>
           </ul>
         </nav>
@@ -88,14 +83,14 @@ const closeCart = () => {
         <div>
           <h2>Menu</h2>
           <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
+            <li v-for="link in links" :key="link.path">
+              <RouterLink :to="link.path" active-class="active-route">{{ link.name }}</RouterLink>
+            </li>
           </ul>
         </div>
       </nav>
-      <AiOutlineClose v-show="cartOpen" class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="toggleCart"/>
+      <AiOutlineClose v-show="cartOpen"
+        class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="closeCart" />
     </div>
   </transition>
 </template>
