@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import { AiOutlineShopping, AiOutlineClose, AiOutlineSearch } from "vue3-icons/ai";
 import { HiOutlineMenu } from "vue3-icons/hi";
+import { GoPerson } from "vue3-icons/go";
+import { FaRegHeart } from "vue3-icons/fa";
 
 const cartOpen = ref(false);
 
@@ -28,10 +30,19 @@ const toggleCart = () => {
               </nav>
               <AiOutlineSearch class="hidden lg:block" size="22" />
             </div>
-            <div class="relative inline-flex mr-2">
-                <AiOutlineShopping size="28" />
-                <span
-                    class="bg-black text-white text-[0.70rem] w-4 h-4 leading-6 rounded-full inline-flex items-center justify-center font-bold absolute left-[20px]">0</span>
+            <div class="flex items-center">
+              <div class="hidden lg:flex space-x-2 text-xl">
+                <GoPerson />
+                <FaRegHeart />
+              </div>
+              <div class="flex items-center lg:border-l-[1px] border-gray-400 border-solid pl-4 ml-4">
+                <div class="relative inline-flex mr-2">
+                  <AiOutlineShopping size="28" />
+                  <span
+                      class="bg-black text-white text-[0.70rem] w-4 h-4 leading-6 rounded-full inline-flex items-center justify-center font-bold absolute left-[20px]">0</span>
+                </div>
+                <p class="hidden lg:block ml-2 text-[0.875rem] font-bold">CART €0.00</p>
+              </div>
             </div>
         </nav>
     </header>
