@@ -73,8 +73,7 @@ const links = [
                 placeholder="Search for products..." autocomplete="off">
             </div>
             <div class="flex items-center">
-              <button class="inline-flex items-center justify-center whitespace-nowrap h-10 p-0 min-w-10" type="submit"
-                title="Search">
+              <button class="inline-flex items-center justify-center whitespace-nowrap h-10 p-0 min-w-10" type="submit" title="Search">
                 <AiOutlineSearch size="22" />
               </button>
             </div>
