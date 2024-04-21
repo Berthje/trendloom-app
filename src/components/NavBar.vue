@@ -37,7 +37,7 @@ const toggleCart = () => {
                 <FaRegHeart size="1.25rem"/>
                 <IoLanguage  size="1.25rem"/>
               </div>
-              <div class="flex items-center lg:border-l-[1px] border-gray-400 border-solid pl-4 ml-4">
+              <div class="flex items-center lg:border-l-[1px] lg:border-gray-400 lg:border-solid lg:pl-4 lg:ml-4">
                 <div class="relative inline-flex mr-2">
                   <AiOutlineShopping size="28" />
                   <span
