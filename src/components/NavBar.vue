@@ -25,23 +25,23 @@ const closeCart = () => {
         <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
         <nav>
           <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
-            <li class="active-route">
-              <RouterLink to="/">Home</RouterLink>
+            <li>
+              <RouterLink to="/" active-class="active-route">Home</RouterLink>
             </li>
             <li>
-              <RouterLink to="#">Men</RouterLink>
+              <RouterLink to="/men" active-class="active-route">Men</RouterLink>
             </li>
             <li>
-              <RouterLink to="#">Women</RouterLink>
+              <RouterLink to="/women" active-class="active-route">Women</RouterLink>
             </li>
             <li>
-              <RouterLink to="#">Children</RouterLink>
+              <RouterLink to="/children" active-class="active-route">Children</RouterLink>
             </li>
             <li>
-              <RouterLink to="#">About us</RouterLink>
+              <RouterLink to="/about-us" active-class="active-route">About us</RouterLink>
             </li>
             <li>
-              <RouterLink to="#">Contacts</RouterLink>
+              <RouterLink to="/contact" active-class="active-route">Contacts</RouterLink>
             </li>
           </ul>
         </nav>
