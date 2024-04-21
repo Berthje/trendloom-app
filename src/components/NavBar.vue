@@ -65,7 +65,7 @@ const closeCart = () => {
     </nav>
   </header>
   <transition name="fade">
-    <div v-show="cartOpen" class="fixed inset-0 bg-black opacity-70 z-40 lg:hidden" @click="toggleCart"></div>
+    <div v-show="cartOpen" class="fixed inset-0 bg-black opacity-70 z-40 lg:hidden"></div>
   </transition>
   <transition name="slide">
     <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
@@ -76,10 +76,6 @@ const closeCart = () => {
             <div class="w-full relative flex items-center">
               <input type="text" class="w-full h-auto min-h-10 pl-4 pr-6 leading-8 outline-none text-start"
                 placeholder="Search for products..." autocomplete="off">
-              <span class=" translate-x-1 absolute right-2 text-black cursor-pointer">
-                <AiOutlineClose class="h-8 w-8 bg-white rounded-full p-1 cursor-pointer z-50 absolute right-3 top-3"
-                  @click="closeCart" />
-              </span>
             </div>
             <div class="flex items-center">
               <button class="inline-flex items-center justify-center whitespace-nowrap h-10 p-0 min-w-10" type="submit"
@@ -99,6 +95,7 @@ const closeCart = () => {
           </ul>
         </div>
       </nav>
+      <AiOutlineClose v-show="cartOpen" class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="toggleCart"/>
     </div>
   </transition>
 </template>
