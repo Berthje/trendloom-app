@@ -8,6 +8,7 @@ import { IoLanguage } from "vue3-icons/io5";
 import DarkOverlay from "@/components/DarkOverlay.vue";
 import MobileMenu from "@/components/MobileMenu.vue";
 import SearchModal from "@/components/SearchModal.vue";
+import CartSummary from "@/components/CartSummary.vue";
 
 const LINKS = [
   { name: 'Home', path: '/' },
@@ -21,6 +22,8 @@ const LINKS = [
 const cartOpen = ref(false);
 const searchOpen = ref(false);
 let searchQuery = ref('');
+let cartItemCount = ref(0);
+let cartTotal = ref(0.00);
 
 const openCart = () => cartOpen.value = true;
 const closeCart = () => cartOpen.value = false;

@@ -17,6 +17,6 @@ const props = defineProps({
                 {{ cartItemCount }}
             </span>
         </div>
-        <p class="hidden lg:block ml-2 text-[0.875rem] font-bold">CART €{{ cartTotal }}</p>
+        <p class="hidden lg:block ml-2 text-[0.875rem] font-bold">CART €{{ cartTotal.toFixed(2) }}</p>
     </div>
 </template>
