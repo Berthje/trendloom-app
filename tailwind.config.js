@@ -11,5 +11,7 @@ export default {
             sans: ["Inconsolata", "sans-serif"],
         },
     },
-    plugins: [],
+    plugins: [
+        require('tailwind-scrollbar'),
+    ],
 };
