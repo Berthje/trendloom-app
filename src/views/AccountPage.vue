@@ -26,7 +26,7 @@ import InputField from '../components/InputField.vue';
       <h3 class="w-full text-center border-b-2 border-black border-solid leading-[0.12em] my-8">
         <span class="bg-white px-3">or</span>
       </h3>
-      <div class="flex flex-col space-y-4">
+      <div class="flex flex-col space-y-4 mb-8">
         <button
           class="w-full block border-2 border-black border-solid bg-white text-black py-2 hover:bg-black hover:text-white">Log
           In with Google</button>
@@ -34,7 +34,7 @@ import InputField from '../components/InputField.vue';
           class="w-full block border-2 border-black border-solid bg-white text-black py-2 hover:bg-black hover:text-white">Log
           In with Facebook</button>
       </div>
-      <p>Don't have an account? <RouterLink to="/register" class="text-md underline">Sign Up</RouterLink>
+      <p>Don't have an account? <RouterLink to="/register" class="text-md font-extrabold underline">Sign Up</RouterLink>
       </p>
     </div>
   </main>
