@@ -12,7 +12,7 @@ const searchOpen = ref(false);
 //Specifically didn't use toggle since you could spam the button and
 //it would open and close the cart multiple times (don't want that)
 const openCart = () => {
-  cartOpen.value = !cartOpen.value;
+  cartOpen.value = true;
 };
 
 const closeCart = () => {
@@ -126,7 +126,7 @@ const links = [
     </div>
   </transition>
   <transition name="slide-search">
-    <div v-show="searchOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
+    <div v-show="searchOpen" class="fixed top-0 h-8 w-full overflow-auto z-50 lg:hidden">
       <AiOutlineClose v-show="searchOpen" class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="closeSearch" />
     </div>
   </transition>
