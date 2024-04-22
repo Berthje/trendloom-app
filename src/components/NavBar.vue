@@ -5,7 +5,7 @@ import { HiOutlineMenu } from "vue3-icons/hi";
 import { GoPerson } from "vue3-icons/go";
 import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
-import Overlay from "@/components/Overlay.vue";
+import DarkOverlay from "@/components/DarkOverlay.vue";
 
 const LINKS = [
   { name: 'Home', path: '/' },
@@ -71,7 +71,7 @@ watchEffect(() => {
     </div>
   </header>
   <transition name="fade">
-    <Overlay :show="cartOpen || searchOpen" @close="closeCart; closeSearch" />
+    <DarkOverlay :show="cartOpen || searchOpen" @close="closeCart; closeSearch" />
   </transition>
   <transition name="slide">
     <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
