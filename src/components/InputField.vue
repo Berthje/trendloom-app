@@ -1,0 +1,39 @@
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+    id: String,
+    label: String,
+    placeholder: String,
+    errorMessage: String,
+    status: {
+        type: String,
+        default: 'default',
+        validator: (value) => ['default', 'error'].includes(value),
+    },
+});
+
+const labelColor = computed(() => {
+    if (props.status === 'error') {
+        return 'text-red-700';
+    }
+    return 'text-black';
+});
+
+const inputClasses = computed(() => {
+    if (props.status === 'error') {
+        return 'bg-red-100 border-b-2 border-red-300 text-red-900 placeholder-red-400 focus:ring-red-300 focus:border-red-300';
+    }
+    return 'bg-gray-100 border-b-2 border-gray-300 text-black placeholder-gray-400 focus:ring-gray-300 focus:border-gray-300';
+});
+</script>
+
+<template>
+    <div>
+        <label :for="id" class="block mb-1 text-sm font-bold" :class="labelColor">{{ label }}</label>
+        <input type="text" :id="id" class="text-sm block w-full p-2.5" :class="inputClasses" :placeholder="placeholder">
+        <p v-if="status === 'error'" class="mt-2 text-xs text-red-600 dark:text-red-500">
+            <span class="font-medium">{{ errorMessage }}</span>
+        </p>
+    </div>
+</template>
