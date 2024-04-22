@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import InputField from '../components/InputField.vue';
+import { FaGoogle, FaFacebookF  } from "vue3-icons/fa";
 </script>
 
 <template>
@@ -28,11 +29,13 @@ import InputField from '../components/InputField.vue';
       </h3>
       <div class="flex flex-col space-y-4 mb-8">
         <button
-          class="w-full block border-2 border-black border-solid bg-white text-black py-2 hover:bg-black hover:text-white">Log
-          In with Google</button>
+          class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-red-500 hover:text-white">
+          <FaGoogle size="18" class="mr-4"/> Log In with Google
+        </button>
         <button
-          class="w-full block border-2 border-black border-solid bg-white text-black py-2 hover:bg-black hover:text-white">Log
-          In with Facebook</button>
+          class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-blue-700 hover:text-white">
+          <FaFacebookF size="18" class="mr-4"/>Log In with Facebook
+        </button>
       </div>
       <p>Don't have an account? <RouterLink to="/register" class="text-md font-extrabold underline">Sign Up</RouterLink>
       </p>
