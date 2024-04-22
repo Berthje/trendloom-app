@@ -6,29 +6,7 @@ import { GoPerson } from "vue3-icons/go";
 import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
 
-const cartOpen = ref(false);
-const searchOpen = ref(false);
-let searchQuery = ref('');
-
-//Specifically didn't use toggle since you could spam the button and
-//it would open and close the cart multiple times (don't want that)
-const openCart = () => {
-  cartOpen.value = true;
-};
-
-const closeCart = () => {
-  cartOpen.value = false;
-};
-
-const openSearch = () => {
-  searchOpen.value = true;
-};
-
-const closeSearch = () => {
-  searchOpen.value = false;
-};
-
-const links = [
+const LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Men', path: '/men' },
   { name: 'Women', path: '/women' },
@@ -36,6 +14,15 @@ const links = [
   { name: 'About us', path: '/about-us' },
   { name: 'Contacts', path: '/contact' },
 ];
+
+const cartOpen = ref(false);
+const searchOpen = ref(false);
+let searchQuery = ref('');
+
+const openCart = () => cartOpen.value = true;
+const closeCart = () => cartOpen.value = false;
+const openSearch = () => searchOpen.value = true;
+const closeSearch = () => searchOpen.value = false;
 
 watchEffect(() => {
   if (cartOpen.value || searchOpen.value) {
@@ -56,7 +43,7 @@ watchEffect(() => {
           <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
           <nav>
             <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
-              <li v-for="link in links" :key="link.path">
+              <li v-for="link in LINKS" :key="link.path">
                 <RouterLink :to="link.path" class="hover:active-route transition-all duration-150"
                   active-class="active-route">{{ link.name }}</RouterLink>
               </li>
@@ -83,7 +70,8 @@ watchEffect(() => {
     </div>
   </header>
   <transition name="fade">
-    <div v-show="cartOpen || searchOpen" class="fixed inset-0 bg-black opacity-70 z-40" @click="closeCart; closeSearch;"></div>
+    <div v-show="cartOpen || searchOpen" class="fixed inset-0 bg-black opacity-70 z-40"
+      @click="closeCart; closeSearch;"></div>
   </transition>
   <transition name="slide">
     <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
@@ -107,7 +95,7 @@ watchEffect(() => {
         <div class="flex flex-col space-y-8">
           <h2 class="text-center py-2 border-b-2 border-solid border-black">Menu</h2>
           <ul class="flex flex-col space-y-4">
-            <li v-for="link in links" :key="link.path">
+            <li v-for="link in LINKS" :key="link.path">
               <RouterLink :to="link.path" active-class="active-route">{{ link.name }}</RouterLink>
             </li>
           </ul>
@@ -143,7 +131,8 @@ watchEffect(() => {
       <form action="#" class="inline-block w-[40rem] relative mb-4">
         <div class="w-full overflow-hidden text-black flex items-center border border-solid border-gray-300">
           <div class="w-full relative flex items-center">
-            <input v-model="searchQuery" type="text" class="w-full h-auto min-h-10 pl-4 pr-6 leading-8 outline-none text-start"
+            <input v-model="searchQuery" type="text"
+              class="w-full h-auto min-h-10 pl-4 pr-6 leading-8 outline-none text-start"
               placeholder="Search for products..." autocomplete="off">
           </div>
           <div class="flex items-center">
@@ -157,9 +146,12 @@ watchEffect(() => {
       <div class="flex justify-center items-center space-x-4">
         <h4 class="text-lg uppercase text-gray-500 text-[0.875rem]">Popular Searches: </h4>
         <ul class="flex justify-center space-x-2 text-[0.925rem]">
-          <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all" @click="searchQuery = 'Jeans'">Jeans</li>
-          <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all" @click="searchQuery = 'T-shirts'">T-shirts</li>
-          <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all" @click="searchQuery = 'Shoes'">Shoes</li>
+          <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all"
+            @click="searchQuery = 'Jeans'">Jeans</li>
+          <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all"
+            @click="searchQuery = 'T-shirts'">T-shirts</li>
+          <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all"
+            @click="searchQuery = 'Shoes'">Shoes</li>
         </ul>
       </div>
       <AiOutlineClose v-show="searchOpen" class="h-6 w-6 cursor-pointer z-50 absolute right-3 top-3"
