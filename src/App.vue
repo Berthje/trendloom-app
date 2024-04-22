@@ -9,6 +9,3 @@ import AnnouncementBar from './components/AnnouncementBar.vue'
   <NavBar />
   <RouterView />
 </template>
-
-<style scoped>
-</style>
