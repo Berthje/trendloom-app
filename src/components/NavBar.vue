@@ -6,7 +6,7 @@ import { GoPerson } from "vue3-icons/go";
 import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
 
-const cartOpen = ref(true);
+const cartOpen = ref(false);
 
 const toggleCart = () => {
   cartOpen.value = !cartOpen.value;
