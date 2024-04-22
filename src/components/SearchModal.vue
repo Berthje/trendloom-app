@@ -53,3 +53,29 @@ watchEffect(() => {
         </div>
     </transition>
 </template>
+
+<style scoped>
+.slide-down-enter-from {
+    @apply -translate-y-full;
+}
+
+.slide-down-enter-active {
+    @apply transition-transform duration-300 ease-in-out;
+}
+
+.slide-down-enter-to {
+    @apply translate-y-0;
+}
+
+.slide-down-leave-from {
+    @apply translate-y-0;
+}
+
+.slide-down-leave-active {
+    @apply transition-transform duration-300 ease-in-out;
+}
+
+.slide-down-leave-to {
+    @apply -translate-y-full;
+}
+</style>
