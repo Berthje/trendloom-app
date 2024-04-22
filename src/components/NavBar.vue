@@ -137,7 +137,7 @@ watchEffect(() => {
     </div>
   </transition>
   <transition name="slide-down">
-    <div v-show="searchOpen" class="hidden fixed top-0 bg-white h-44 w-full py-6 overflow-auto z-50 text-center lg:block">
+    <div v-show="searchOpen" class="hidden fixed top-0 bg-white w-full py-6 overflow-auto z-50 text-center lg:block">
       <h3 class="mb-4 font-bold text-2xl capitalize">What Are You Looking For?</h3>
       <form action="#" class="inline-block w-[40rem] relative mb-4">
         <div class="w-full overflow-hidden text-black flex items-center border border-solid border-gray-300">
