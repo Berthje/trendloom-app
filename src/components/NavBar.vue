@@ -64,7 +64,7 @@ const links = [
   <transition name="slide">
     <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
       <nav class="fixed top-0 h-full w-80 bg-white overflow-auto p-8 font-bold uppercase">
-        <img src="../assets/logo.svg" class="w-36 mx-auto" alt="Trendloom Logo">
+        <RouterLink to="/" class="block mb-6"><img src="../assets/logo.svg" class="w-36 mx-auto" alt="Trendloom Logo"></RouterLink>
         <form action="#" class="relative mb-4">
           <div class="w-full overflow-hidden text-black flex items-center border border-solid border-gray-300">
             <div class="w-full relative flex items-center">
