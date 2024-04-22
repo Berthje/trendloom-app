@@ -7,13 +7,24 @@ import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
 
 const cartOpen = ref(false);
+const searchOpen = ref(false);
 
-const toggleCart = () => {
+//Specifically didn't use toggle since you could spam the button and
+//it would open and close the cart multiple times (don't want that)
+const openCart = () => {
   cartOpen.value = !cartOpen.value;
 };
 
 const closeCart = () => {
   cartOpen.value = false;
+};
+
+const openSearch = () => {
+  searchOpen.value = true;
+};
+
+const closeSearch = () => {
+  searchOpen.value = false;
 };
 
 const links = [
@@ -30,17 +41,17 @@ const links = [
   <header class="bg-white sticky top-0 z-10">
     <div class="w-full max-w-screen-xl py-4 px-4 mx-auto">
       <nav class="flex items-center justify-between">
-        <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="toggleCart" />
+        <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="openCart" />
         <div class="lg:flex space-x-6">
           <img src="../assets/logo.svg" class="w-36" alt="Trendloom Logo">
           <nav>
             <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
               <li v-for="link in links" :key="link.path">
-                <RouterLink :to="link.path" active-class="active-route">{{ link.name }}</RouterLink>
+                <RouterLink :to="link.path" class="hover:active-route transition-all duration-150" active-class="active-route">{{ link.name }}</RouterLink>
               </li>
             </ul>
           </nav>
-          <AiOutlineSearch class="hidden lg:block" size="22" />
+          <AiOutlineSearch class="hidden cursor-pointer lg:block" size="22" @click="openSearch"/>
         </div>
         <div class="flex items-center">
           <div class="hidden lg:flex space-x-3">
@@ -61,7 +72,7 @@ const links = [
     </div>
   </header>
   <transition name="fade">
-    <div v-show="cartOpen" class="fixed inset-0 bg-black opacity-70 z-40 lg:hidden"></div>
+    <div v-show="cartOpen || searchOpen" class="fixed inset-0 bg-black opacity-70 z-40"></div>
   </transition>
   <transition name="slide">
     <div v-show="cartOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
@@ -111,8 +122,12 @@ const links = [
           </ul>
         </div>
       </nav>
-      <AiOutlineClose v-show="cartOpen"
-        class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="closeCart" />
+      <AiOutlineClose v-show="cartOpen" class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="closeCart" />
+    </div>
+  </transition>
+  <transition name="slide-search">
+    <div v-show="searchOpen" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
+      <AiOutlineClose v-show="searchOpen" class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-3 top-3" @click="closeSearch" />
     </div>
   </transition>
 </template>
