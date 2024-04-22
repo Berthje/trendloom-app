@@ -11,7 +11,7 @@ import InputField from '../components/InputField.vue';
     <div class="p-8">
       <img src="../assets/logo.svg" class="mb-8" alt="Trendloom logo">
       <h2 class="text-3xl font-extrabold mb-4">Log In</h2>
-      <div class="flex flex-col space-y-4 mb-10">
+      <div class="flex flex-col space-y-4">
         <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
           errorMessage="The email must be a valid email address." status="default" type="text" />
         <InputField id="password" label="Password" placeholder="your password"
@@ -20,9 +20,12 @@ import InputField from '../components/InputField.vue';
         <RouterLink to="/forgot-password" class="text-md underline ml-auto">Forgot Password?</RouterLink>
         <button
           class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">Log
-          In</button>
-          <h3 class="w-full text-center border-b-2 border-black border-solid leading-[0.12em]"><span class="bg-white px-3">or</span></h3>
+          In
+        </button>
       </div>
+      <h3 class="w-full text-center border-b-2 border-black border-solid leading-[0.12em] my-8">
+        <span class="bg-white px-3">or</span>
+      </h3>
       <div class="flex flex-col space-y-4">
         <button
           class="w-full block border-2 border-black border-solid bg-white text-black py-2 hover:bg-black hover:text-white">Log
