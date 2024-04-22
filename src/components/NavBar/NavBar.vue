@@ -5,10 +5,10 @@ import { HiOutlineMenu } from "vue3-icons/hi";
 import { GoPerson } from "vue3-icons/go";
 import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
-import DarkOverlay from "@/components/DarkOverlay.vue";
-import MobileMenu from "@/components/MobileMenu.vue";
-import SearchModal from "@/components/SearchModal.vue";
-import CartSummary from "@/components/CartSummary.vue";
+import DarkOverlay from "@/components/NavBar/DarkOverlay.vue";
+import MobileMenu from "@/components/NavBar/MobileMenu.vue";
+import SearchModal from "@/components/NavBar/SearchModal.vue";
+import CartSummary from "@/components/NavBar/CartSummary.vue";
 
 const LINKS = [
   { name: 'Home', path: '/' },
