@@ -6,6 +6,3 @@
         <p>FREE SHIPPING fON ALL T-SHIRTS - MAY. 19–24. </p>
     </header>
 </template>
-
-<style scoped>
-</style>
