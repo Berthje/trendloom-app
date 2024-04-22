@@ -40,6 +40,7 @@ const inputClasses = computed(() => {
     }
     return 'bg-gray-100 border-b-2 border-gray-300 text-black placeholder-gray-400 focus:ring-gray-300 focus:border-gray-300';
 });
+
 </script>
 
 <template>
@@ -47,7 +48,7 @@ const inputClasses = computed(() => {
         <label :for="id" class="block mb-1 text-sm font-bold" :class="labelColor">{{ label }}</label>
         <div class="relative">
             <input :type="inputType" :id="id" class="text-sm block w-full p-2.5" :class="inputClasses"
-                :placeholder="placeholder">
+                :placeholder="placeholder" v-model="inputValue">
             <button v-if="props.type === 'password'" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
                 @click="showPassword = !showPassword">
                 <GoEye v-if="showPassword" />
