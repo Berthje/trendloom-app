@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits, ref, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { AiOutlineSearch, AiOutlineClose } from "vue3-icons/ai";
 
 const props = defineProps({

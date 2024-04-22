@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
 import { AiOutlineSearch, AiOutlineClose } from "vue3-icons/ai";
 import { GoPerson } from "vue3-icons/go";
 import { FaRegHeart } from "vue3-icons/fa";

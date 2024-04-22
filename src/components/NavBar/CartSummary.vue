@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from 'vue';
 import { AiOutlineShopping } from "vue3-icons/ai";
 
 const props = defineProps({
