@@ -27,7 +27,7 @@ const links = [
 </script>
 
 <template>
-  <header class="bg-white w-full max-w-[1280px] py-4 px-4 mx-auto">
+  <header class="bg-white w-full max-w-screen-xl py-4 px-4 mx-auto">
     <nav class="flex items-center justify-between">
       <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="toggleCart" />
       <div class="lg:flex space-x-6">
