@@ -29,7 +29,7 @@ import { FaGoogle, FaFacebookF  } from "vue3-icons/fa";
       </h3>
       <div class="flex flex-col space-y-4 mb-8">
         <button
-          class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-red-500 hover:text-white">
+          class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-yellow-600 hover:text-white">
           <FaGoogle size="18" class="mr-4"/> Log In with Google
         </button>
         <button
