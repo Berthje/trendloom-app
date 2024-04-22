@@ -11,10 +11,10 @@ import InputField from '../components/InputField.vue';
       <h2>Log In</h2>
       <div>
         <InputField id="email" label="Email address" placeholder="firstname.lastname@gmail.com"
-          errorMessage="The email must be a valid email address." status="default" />
+          errorMessage="The email must be a valid email address." status="error" type="text"/>
         <InputField id="password" label="Password" placeholder="your password"
-          errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default" />
-        
+          errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default" type="password"/>
+
       </div>
     </div>
   </main>

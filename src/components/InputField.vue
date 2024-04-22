@@ -1,5 +1,8 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
+import { GoEye, GoEyeClosed } from "vue3-icons/go";
+
+const showPassword = ref(false);
 
 const props = defineProps({
     id: String,
@@ -11,6 +14,10 @@ const props = defineProps({
         default: 'default',
         validator: (value) => ['default', 'error'].includes(value),
     },
+    type: {
+        type: String,
+        default: 'text',
+    }
 });
 
 const labelColor = computed(() => {
@@ -18,6 +25,13 @@ const labelColor = computed(() => {
         return 'text-red-700';
     }
     return 'text-black';
+});
+
+const inputType = computed(() => {
+    if (props.type === 'password' && showPassword.value) {
+        return 'text';
+    }
+    return props.type;
 });
 
 const inputClasses = computed(() => {
@@ -31,7 +45,15 @@ const inputClasses = computed(() => {
 <template>
     <div>
         <label :for="id" class="block mb-1 text-sm font-bold" :class="labelColor">{{ label }}</label>
-        <input type="text" :id="id" class="text-sm block w-full p-2.5" :class="inputClasses" :placeholder="placeholder">
+        <div class="relative">
+            <input :type="inputType" :id="id" class="text-sm block w-full p-2.5" :class="inputClasses"
+                :placeholder="placeholder">
+            <button v-if="props.type === 'password'" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
+                @click="showPassword = !showPassword">
+                <GoEye v-if="showPassword" />
+                <GoEyeClosed v-else />
+            </button>
+        </div>
         <p v-if="status === 'error'" class="mt-2 text-xs text-red-600 dark:text-red-500">
             <span class="font-medium">{{ errorMessage }}</span>
         </p>
