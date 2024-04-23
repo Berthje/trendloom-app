@@ -5,12 +5,12 @@ import { FaGoogle, FaFacebookF  } from "vue3-icons/fa";
 </script>
 
 <template>
-  <main class="h-screen">
+  <main class="h-screen flex items-center">
     <div class="hidden md:block md:w-1/2">
-      <img src="../assets/category-men.jpg" alt="Description of image" class="w-full h-screen object-cover">
+      <img src="../assets/account-image.jpg" alt="Man posing in clothing" class="w-full h-screen object-cover">
     </div>
-    <div class="p-8">
-      <img src="../assets/logo.svg" class="mb-8" alt="Trendloom logo">
+    <div class="p-8 w-full md:w-1/2 lg:p-16">
+      <img src="../assets/logo.svg" class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]" alt="Trendloom logo">
       <h2 class="text-3xl font-extrabold mb-4">Log In</h2>
       <div class="flex flex-col space-y-4">
         <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
@@ -25,7 +25,7 @@ import { FaGoogle, FaFacebookF  } from "vue3-icons/fa";
         </button>
       </div>
       <h3 class="w-full text-center border-b-2 border-black border-solid leading-[0.12em] my-8">
-        <span class="bg-white px-3">or</span>
+        <span class="bg-white px-3">or social media</span>
       </h3>
       <div class="flex flex-col space-y-4 mb-8">
         <button
