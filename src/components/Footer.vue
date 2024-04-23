@@ -3,18 +3,18 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
 </script>
 
 <template>
-    <footer>
+    <footer class="font-sans">
         <div class="rotate-180">
             <svg class="h-10 w-full" fill="#1e1e1e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"
                 preserveAspectRatio="none">
                 <path d="M500,98.9L0,6.1V0h1000v6.1L500,98.9z"></path>
             </svg>
         </div>
-        <section class="bg-[#1e1e1e]">
+        <section class="bg-[#1e1e1e] text-white">
             <section>
                 <div>
-                    <img src="../assets/logo-white.svg" alt="logo" />
-                    <p>A best collection made entirely recycled and sustainable.</p>
+                    <img src="../assets/logo-white.svg" class="w-40" alt="logo" />
+                    <p class="text-[#CDCDCD]">A best collection made entirely recycled and sustainable.</p>
                     <div>
                         <a href="#">
                             <FaFacebookF />

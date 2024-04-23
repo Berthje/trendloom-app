@@ -8,7 +8,8 @@ export default {
             },
         },
         fontFamily: {
-            sans: ["Inconsolata", "sans-serif"],
+            home: ["Inconsolata", "Inter", "sans-serif"],
+            sans: ["Inter", "sans-serif"],
         },
     },
     plugins: [require("tailwind-scrollbar")],
