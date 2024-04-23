@@ -11,8 +11,9 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
             </svg>
         </div>
         <section class="bg-[#1e1e1e] text-white px-4 pt-16">
-            <section class="flex flex-wrap">
-                <div class="w-full mb-8">
+            <div class="max-w-screen-xl w-full mx-auto">
+                <section class="flex flex-wrap">
+                <div class="w-full mb-8 lg:w-1/5">
                     <img src="../assets/logo-white.svg" class="w-40 mb-4" alt="logo" />
                     <p class="text-[#CDCDCD] text-[0.95rem] mb-4">A best collection made entirely recycled and sustainable.</p>
                     <div class="flex space-x-6">
@@ -30,7 +31,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </a>
                     </div>
                 </div>
-                <div class="w-1/2 pb-12">
+                <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Support</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -47,7 +48,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </li>
                     </ul>
                 </div>
-                <div class="w-1/2 pb-12">
+                <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Shop</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -64,7 +65,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </li>
                     </ul>
                 </div>
-                <div class="w-1/2 pb-12">
+                <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Company</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -81,7 +82,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </li>
                     </ul>
                 </div>
-                <div class="w-1/2 pb-12">
+                <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Contact</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -103,6 +104,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                 <p class="mb-4">Copyright © 2024 Trendloom. Created by <a href="https://www.laytonberth.com" target="blank">Layton Berth</a></p>
                 <img class="inline-block" src="../assets/payment-methods.png" alt="payment methods">
             </section>
+            </div>
         </section>
     </footer>
 </template>
