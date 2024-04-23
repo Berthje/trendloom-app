@@ -1,6 +1,35 @@
 <script setup>
 import LogoDescription from './LogoDescription.vue'
 import CopyrightSection from './CopyrightSection.vue'
+import FooterLinks from './FooterLinks.vue'
+
+const supportLinks = [
+    { text: 'Contact us', href: '#' },
+    { text: 'FAQs', href: '#' },
+    { text: 'Size Guide', href: '#' },
+    { text: 'Shipping & Return', href: '#' },
+]
+
+const shopLinks = [
+    { text: 'Men\'s Shopping', to: '/men' },
+    { text: 'Women\'s Shopping', to: '/women' },
+    { text: 'Kids\' Shopping', to: '/children' },
+    { text: 'Contact', to: '/contact' },
+]
+
+const companyLinks = [
+    { text: 'Our Story', href: '#' },
+    { text: 'Careers', href: '#' },
+    { text: 'Terms & Conditions', href: '#' },
+    { text: 'Privacy & Cookie Policy', href: '#' },
+]
+
+const contactLinks = [
+    { text: 'BE (+32) 478 91 47', href: 'tel:04789147' },
+    { text: 'US (+22) 156 7345', href: 'tel:01567345' },
+    { text: 'support@trendloom.com', href: 'mailto:support@trendloom.com' },
+    { text: 'sales@trendloom.com', href: 'mailto:sales@trendloom.com' },
+]
 </script>
 
 <template>
@@ -15,74 +44,10 @@ import CopyrightSection from './CopyrightSection.vue'
             <div class="max-w-screen-xl w-full mx-auto">
                 <section class="flex flex-wrap">
                     <LogoDescription />
-                    <div class="w-1/2 pb-12 lg:w-1/5">
-                        <h3 class="uppercase font-home font-extrabold pb-4">Support</h3>
-                        <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                            <li class="hover:text-gray-400">
-                                <a href="#">Contact us</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="#">FAQs</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="#">Size Guide</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="#">Shipping & Return</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="w-1/2 pb-12 lg:w-1/5">
-                        <h3 class="uppercase font-home font-extrabold pb-4">Shop</h3>
-                        <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                            <li class="hover:text-gray-400">
-                                <RouterLink to="/men">Men's Shopping</RouterLink>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <RouterLink to="/women">Women's Shopping</RouterLink>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <RouterLink to="/children">Kids' Shopping</RouterLink>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <RouterLink to="/contact">Contact</RouterLink>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="w-1/2 pb-12 lg:w-1/5">
-                        <h3 class="uppercase font-home font-extrabold pb-4">Company</h3>
-                        <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                            <li class="hover:text-gray-400">
-                                <a href="#">Our Story</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="#">Careers</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="#">Terms & Conditions</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="#">Privacy & Cookie Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="w-1/2 pb-12 lg:w-1/5">
-                        <h3 class="uppercase font-home font-extrabold pb-4">Contact</h3>
-                        <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                            <li class="hover:text-gray-400">
-                                <a href="tel:04789147">BE (+32) 478 91 47</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="tel:01567345">US (+22) 156 7345</a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="mailto:support@trendloom.com">support@trendloom.com </a>
-                            </li>
-                            <li class="hover:text-gray-400">
-                                <a href="mailto:sales@trendloom.com">sales@trendloom.com</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <FooterLinks title="Support" :links="supportLinks" />
+                    <FooterLinks title="Shop" :links="shopLinks" />
+                    <FooterLinks title="Company" :links="companyLinks" />
+                    <FooterLinks title="Contact" :links="contactLinks" />
                 </section>
                 <CopyrightSection />
             </div>
