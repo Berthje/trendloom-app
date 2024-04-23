@@ -13,8 +13,8 @@ import DividerWithText from '../components/DividerWithText.vue';
                 class="w-full h-screen object-cover">
         </div>
         <div class="p-8 w-full md:w-1/2 lg:p-16">
-            <RouterLink to="/"><img src="../assets/logo.svg" class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]"
-                    alt="Trendloom logo"></RouterLink>
+            <RouterLink to="/"><img src="../assets/logo-black.svg"
+                    class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]" alt="Trendloom logo"></RouterLink>
             <h2 class="text-3xl font-extrabold mb-4">Sign up</h2>
             <div class="flex flex-col space-y-4">
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">

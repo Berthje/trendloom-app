@@ -15,13 +15,13 @@ const router = createRouter({
             path: "/login",
             name: "login",
             component: LoginPage,
-            meta: { showTopBars: false },
+            meta: { showTopAndBottombars: false },
         },
         {
             path: "/register",
             name: "register",
             component: RegisterPage,
-            meta: { showTopBars: false },
+            meta: { showTopAndBottombars: false },
         },
     ],
 });

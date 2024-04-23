@@ -46,7 +46,7 @@ watchEffect(() => {
       <nav class="flex items-center justify-between">
         <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="openCart" />
         <div class="lg:flex space-x-6">
-          <RouterLink to="/"><img src="../../assets/logo.svg" class="w-36" alt="Trendloom Logo"></RouterLink>
+          <RouterLink to="/"><img src="../../assets/logo-black.svg" class="w-36" alt="Trendloom Logo"></RouterLink>
           <nav>
             <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
               <li v-for="link in LINKS" :key="link.path">
