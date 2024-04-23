@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { GoEye, GoEyeClosed } from "vue3-icons/go";
+import { GoEye, GoEyeClosed } from 'vue3-icons/go';
 
 const showPassword = ref(false);
 
