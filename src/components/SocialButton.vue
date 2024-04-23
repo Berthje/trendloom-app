@@ -1,0 +1,26 @@
+<script setup>
+import { computed } from 'vue';
+import { FaFacebookF, FaGoogle } from 'vue3-icons';
+
+const props = defineProps({
+    platform: String,
+    buttonText: String,
+});
+
+const iconComponent = computed(() => {
+    if (props.platform === 'Facebook') {
+        return FaFacebookF;
+    } else if (props.platform === 'Google') {
+        return FaGoogle;
+    }
+});
+</script>
+
+<template>
+    <button
+        class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-yellow-600 hover:text-white"
+        :class="{ 'hover:bg-blue-700': props.platform === 'Facebook', 'hover:bg-yellow-600': props.platform === 'Google' }">
+        <component :is="iconComponent" size="18" class="mr-4" />
+        {{ props.buttonText }} with {{ props.platform }}
+    </button>
+</template>

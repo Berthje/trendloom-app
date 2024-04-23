@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import InputField from '../components/InputField.vue';
-import { FaGoogle, FaFacebookF  } from "vue3-icons/fa";
+import SocialButton from '../components/SocialButton.vue';
 
 import DividerWithText from '../components/DividerWithText.vue';
 </script>
@@ -28,14 +28,8 @@ import DividerWithText from '../components/DividerWithText.vue';
       </div>
       <DividerWithText text="or social media" />
       <div class="flex flex-col space-y-4 mb-8">
-        <button
-          class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-yellow-600 hover:text-white">
-          <FaGoogle size="18" class="mr-4"/> Log In with Google
-        </button>
-        <button
-          class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-blue-700 hover:text-white">
-          <FaFacebookF size="18" class="mr-4"/>Log In with Facebook
-        </button>
+        <SocialButton platform="Google" buttonText="Log In" />
+        <SocialButton platform="Facebook" buttonText="Register" />
       </div>
       <p>Don't have an account? <RouterLink to="/register" class="text-md font-extrabold underline">Sign Up</RouterLink>
       </p>
