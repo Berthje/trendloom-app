@@ -17,16 +17,16 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                     <img src="../assets/logo-white.svg" class="w-40 mb-4" alt="logo" />
                     <p class="text-[#CDCDCD] text-[0.95rem] mb-4">A best collection made entirely recycled and sustainable.</p>
                     <div class="flex space-x-6">
-                        <a href="#">
+                        <a href="#" class="hover:text-gray-400">
                             <FaFacebookF size="20"/>
                         </a>
-                        <a href="#">
+                        <a href="#" class="hover:text-gray-400">
                             <FaInstagram size="20"/>
                         </a>
-                        <a href="#">
+                        <a href="#" class="hover:text-gray-400">
                             <FaYoutube size="20"/>
                         </a>
-                        <a href="#">
+                        <a href="#" class="hover:text-gray-400">
                             <FaTelegramPlane size="20"/>
                         </a>
                     </div>
@@ -34,16 +34,16 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                 <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Support</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">Contact us</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">FAQs</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">Size Guide</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">Shipping & Return</a>
                         </li>
                     </ul>
@@ -51,16 +51,16 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                 <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Shop</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                        <li>
+                        <li class="hover:text-gray-400">
                             <RouterLink to="/men">Men's Shopping</RouterLink>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <RouterLink to="/women">Women's Shopping</RouterLink>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <RouterLink to="/children">Kids' Shopping</RouterLink>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <RouterLink to="/contact">Contact</RouterLink>
                         </li>
                     </ul>
@@ -68,16 +68,16 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                 <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Company</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">Our Story</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">Careers</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">Terms & Conditions</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="#">Privacy & Cookie Policy</a>
                         </li>
                     </ul>
@@ -85,16 +85,16 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                 <div class="w-1/2 pb-12 lg:w-1/5">
                     <h3 class="uppercase font-home font-extrabold pb-4">Contact</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="tel:04789147">BE (+32) 478 91 47</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="tel:01567345">US (+22) 156 7345</a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="mailto:support@trendloom.com">support@trendloom.com </a>
                         </li>
-                        <li>
+                        <li class="hover:text-gray-400">
                             <a href="mailto:sales@trendloom.com">sales@trendloom.com</a>
                         </li>
                     </ul>
