@@ -9,7 +9,7 @@ import DividerWithText from '../components/DividerWithText.vue';
 <template>
   <main class="h-screen flex items-center">
     <div class="hidden md:block md:w-1/2">
-      <img src="../assets/account-login-image.jpg" alt="Girl in clothing with birds"
+      <img src="../assets/account-login-image.avif" alt="Girl in clothing with birds"
         class="w-full h-screen object-cover">
     </div>
     <div class="p-8 w-full md:w-1/2 lg:p-16">

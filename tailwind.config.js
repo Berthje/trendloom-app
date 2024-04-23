@@ -4,14 +4,12 @@ export default {
     theme: {
         extend: {
             backgroundImage: {
-                'hero-image': "url('./src/assets/model-hero.jpg')",
-            }
+                "hero-image": "url('./src/assets/model-hero.avif')",
+            },
         },
         fontFamily: {
             sans: ["Inconsolata", "sans-serif"],
         },
     },
-    plugins: [
-        require('tailwind-scrollbar'),
-    ],
+    plugins: [require("tailwind-scrollbar")],
 };
