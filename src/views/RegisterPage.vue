@@ -9,20 +9,26 @@ import DividerWithText from '../components/DividerWithText.vue';
 <template>
     <main class="h-screen flex items-center">
         <div class="hidden md:block md:w-1/2">
-            <img src="../assets/account-image.jpg" alt="Girl in clothing with birds" class="w-full h-screen object-cover">
+            <img src="../assets/account-image.jpg" alt="Girl in clothing with birds"
+                class="w-full h-screen object-cover">
         </div>
         <div class="p-8 w-full md:w-1/2 lg:p-16">
             <RouterLink to="/"><img src="../assets/logo.svg" class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]"
                     alt="Trendloom logo"></RouterLink>
             <h2 class="text-3xl font-extrabold mb-4">Sign up</h2>
             <div class="flex flex-col space-y-4">
+                <InputField id="firstname" label="First Name" placeholder="John"
+                    errorMessage="The first name field is required." status="default" type="text" />
+                <InputField id="lastname" label="Last Name" placeholder="Doe"
+                    errorMessage="The last name field is required." status="default" type="text" />
                 <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
                     errorMessage="The email must be a valid email address." status="default" type="text" />
                 <InputField id="password" label="Password" placeholder="your password"
                     errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
                     type="password" />
                 <button
-                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">Register my account
+                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">Register
+                    my account
                 </button>
             </div>
             <DividerWithText text="or social media" />
