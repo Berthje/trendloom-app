@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router';
 import InputField from '../components/InputField.vue';
 import { FaGoogle, FaFacebookF  } from "vue3-icons/fa";
+
+import DividerWithText from '../components/DividerWithText.vue';
 </script>
 
 <template>
@@ -24,9 +26,7 @@ import { FaGoogle, FaFacebookF  } from "vue3-icons/fa";
           In
         </button>
       </div>
-      <h3 class="w-full text-center border-b-2 border-black border-solid leading-[0.12em] my-8">
-        <span class="bg-white px-3">or social media</span>
-      </h3>
+      <DividerWithText text="or social media" />
       <div class="flex flex-col space-y-4 mb-8">
         <button
           class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-yellow-600 hover:text-white">
