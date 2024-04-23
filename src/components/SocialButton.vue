@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { FaFacebookF, FaGoogle } from 'vue3-icons';
+import { FaFacebookF, FaGoogle } from 'vue3-icons/fa';
 
 const props = defineProps({
     platform: String,
