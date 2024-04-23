@@ -1,5 +1,5 @@
 <script setup>
-import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons/fa';
+import LogoDescription from './LogoDescription.vue'
 </script>
 
 <template>
@@ -13,25 +13,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
         <section class="bg-[#1e1e1e] text-white px-4 pt-16">
             <div class="max-w-screen-xl w-full mx-auto">
                 <section class="flex flex-wrap">
-                    <div class="w-full mb-8 lg:w-1/5">
-                        <img src="../../assets/logo-white.svg" class="w-40 mb-4" alt="logo" />
-                        <p class="text-[#CDCDCD] text-[0.95rem] mb-4">A best collection made entirely recycled and
-                            sustainable.</p>
-                        <div class="flex space-x-6">
-                            <a href="#" class="hover:text-gray-400">
-                                <FaFacebookF size="20" />
-                            </a>
-                            <a href="#" class="hover:text-gray-400">
-                                <FaInstagram size="20" />
-                            </a>
-                            <a href="#" class="hover:text-gray-400">
-                                <FaYoutube size="20" />
-                            </a>
-                            <a href="#" class="hover:text-gray-400">
-                                <FaTelegramPlane size="20" />
-                            </a>
-                        </div>
-                    </div>
+                    <LogoDescription />
                     <div class="w-1/2 pb-12 lg:w-1/5">
                         <h3 class="uppercase font-home font-extrabold pb-4">Support</h3>
                         <ul class="flex flex-col space-y-2 text-[0.925rem]">
