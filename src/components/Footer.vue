@@ -11,8 +11,8 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
             </svg>
         </div>
         <section class="bg-[#1e1e1e] text-white p-4">
-            <section>
-                <div>
+            <section class="flex flex-wrap">
+                <div class="w-full mb-8">
                     <img src="../assets/logo-white.svg" class="w-40 mb-4" alt="logo" />
                     <p class="text-[#CDCDCD] text-[0.95rem] mb-4">A best collection made entirely recycled and sustainable.</p>
                     <div class="flex space-x-6">
@@ -30,71 +30,71 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </a>
                     </div>
                 </div>
-                <div>
-                    <h3>Quick Links</h3>
-                    <ul>
+                <div class="w-1/2 pb-10">
+                    <h3 class="uppercase font-home font-extrabold pb-4">Support</h3>
+                    <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="#">Contact us</a>
                         </li>
                         <li>
-                            <a href="#">Shop</a>
+                            <a href="#">FAQs</a>
                         </li>
                         <li>
-                            <a href="#">About</a>
+                            <a href="#">Size Guide</a>
+                        </li>
+                        <li>
+                            <a href="#">Shipping & Return</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-1/2 pb-10">
+                    <h3 class="uppercase font-home font-extrabold pb-4">Shop</h3>
+                    <ul class="flex flex-col space-y-2 text-[0.925rem]">
+                        <li>
+                            <a href="#">Men's Shopping</a>
+                        </li>
+                        <li>
+                            <a href="#">Women's Shopping</a>
+                        </li>
+                        <li>
+                            <a href="#">Kids' Shopping</a>
                         </li>
                         <li>
                             <a href="#">Contact</a>
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h3>Quick Links</h3>
-                    <ul>
+                <div class="w-1/2 pb-10">
+                    <h3 class="uppercase font-home font-extrabold pb-4">Company</h3>
+                    <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="#">Our Story</a>
                         </li>
                         <li>
-                            <a href="#">Shop</a>
+                            <a href="#">Careers</a>
                         </li>
                         <li>
-                            <a href="#">About</a>
+                            <a href="#">Terms & Conditions</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Shop</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
+                            <a href="#">Privacy & Cookie Policy</a>
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h3>Quick Links</h3>
-                    <ul>
+                <div class="w-1/2 pb-10">
+                    <h3 class="uppercase font-home font-extrabold pb-4">Contact</h3>
+                    <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="tel:04789147">BE (+32) 478 91 47</a>
                         </li>
                         <li>
-                            <a href="#">Shop</a>
+                            <a href="tel:01567345">US (+22) 156 7345</a>
                         </li>
                         <li>
-                            <a href="#">About</a>
+                            <a href="mailto:support@trendloom.com">support@trendloom.com </a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="mailto:sales@trendloom.com">sales@trendloom.com</a>
                         </li>
                     </ul>
                 </div>
