@@ -5,7 +5,7 @@ import AnnouncementBar from './components/AnnouncementBar.vue'
 </script>
 
 <template>
-  <AnnouncementBar v-if="$route.meta.showNavbar"/>
-  <NavBar v-if="$route.meta.showNavbar"/>
+  <AnnouncementBar v-if="$route.meta.showTopBars !== false" />
+  <NavBar v-if="$route.meta.showTopBars !== false" />
   <RouterView />
 </template>
