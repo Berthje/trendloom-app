@@ -51,16 +51,16 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                     <h3 class="uppercase font-home font-extrabold pb-4">Shop</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
-                            <a href="#">Men's Shopping</a>
+                            <RouterLink to="/men">Men's Shopping</RouterLink>
                         </li>
                         <li>
-                            <a href="#">Women's Shopping</a>
+                            <RouterLink to="/women">Women's Shopping</RouterLink>
                         </li>
                         <li>
-                            <a href="#">Kids' Shopping</a>
+                            <RouterLink to="/children">Kids' Shopping</RouterLink>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <RouterLink to="/contact">Contact</RouterLink>
                         </li>
                     </ul>
                 </div>
