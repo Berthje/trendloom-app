@@ -10,23 +10,23 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                 <path d="M500,98.9L0,6.1V0h1000v6.1L500,98.9z"></path>
             </svg>
         </div>
-        <section class="bg-[#1e1e1e] text-white">
+        <section class="bg-[#1e1e1e] text-white p-4">
             <section>
                 <div>
-                    <img src="../assets/logo-white.svg" class="w-40" alt="logo" />
-                    <p class="text-[#CDCDCD]">A best collection made entirely recycled and sustainable.</p>
-                    <div>
+                    <img src="../assets/logo-white.svg" class="w-40 mb-4" alt="logo" />
+                    <p class="text-[#CDCDCD] text-[0.95rem] mb-4">A best collection made entirely recycled and sustainable.</p>
+                    <div class="flex space-x-6">
                         <a href="#">
-                            <FaFacebookF />
+                            <FaFacebookF size="20"/>
                         </a>
                         <a href="#">
-                            <FaInstagram />
+                            <FaInstagram size="20"/>
                         </a>
                         <a href="#">
-                            <FaYoutube />
+                            <FaYoutube size="20"/>
                         </a>
                         <a href="#">
-                            <FaTelegramPlane />
+                            <FaTelegramPlane size="20"/>
                         </a>
                     </div>
                 </div>
