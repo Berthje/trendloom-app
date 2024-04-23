@@ -10,19 +10,19 @@ const router = createRouter({
             path: "/",
             name: "home",
             component: LandingPage,
-            meta: { hideNavbar: false },
+            meta: { showNavbar: true },
         },
         {
             path: "/login",
             name: "login",
             component: LoginPage,
-            meta: { hideNavbar: true },
+            meta: { showNavbar: false },
         },
         {
             path: "/register",
             name: "register",
             component: RegisterPage,
-            meta: { hideNavbar: true },
+            meta: { showNavbar: false },
         },
     ],
 });
