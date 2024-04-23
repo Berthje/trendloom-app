@@ -18,7 +18,7 @@ const iconComponent = computed(() => {
 
 <template>
     <button
-        class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:bg-yellow-600 hover:text-white"
+        class="w-full border-2 border-black border-solid bg-white text-black py-2 flex items-center justify-center hover:text-white"
         :class="{ 'hover:bg-blue-700': props.platform === 'Facebook', 'hover:bg-yellow-600': props.platform === 'Google' }">
         <component :is="iconComponent" size="18" class="mr-4" />
         {{ props.buttonText }} with {{ props.platform }}
