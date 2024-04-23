@@ -9,7 +9,8 @@ import DividerWithText from '../components/DividerWithText.vue';
 <template>
   <main class="h-screen flex items-center">
     <div class="hidden md:block md:w-1/2">
-      <img src="../assets/account-image.jpg" alt="Girl in clothing with birds" class="w-full h-screen object-cover">
+      <img src="../assets/account-login-image.jpg" alt="Girl in clothing with birds"
+        class="w-full h-screen object-cover">
     </div>
     <div class="p-8 w-full md:w-1/2 lg:p-16">
       <RouterLink to="/"><img src="../assets/logo.svg" class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]"
