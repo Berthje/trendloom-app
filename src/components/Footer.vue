@@ -10,7 +10,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                 <path d="M500,98.9L0,6.1V0h1000v6.1L500,98.9z"></path>
             </svg>
         </div>
-        <section class="bg-[#1e1e1e] text-white p-4">
+        <section class="bg-[#1e1e1e] text-white px-4 pt-16">
             <section class="flex flex-wrap">
                 <div class="w-full mb-8">
                     <img src="../assets/logo-white.svg" class="w-40 mb-4" alt="logo" />
@@ -99,7 +99,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                     </ul>
                 </div>
             </section>
-            <section class="pt-6 pb-2 border-t border-solid border-[#383838] text-center text-[#CDCDCD]">
+            <section class="py-6 border-t border-solid border-[#383838] text-center text-[#CDCDCD]">
                 <p class="mb-4">Copyright © 2024 Trendloom. Created by <a href="https://www.laytonberth.com" target="blank">Layton Berth</a></p>
                 <img class="inline-block" src="../assets/payment-methods.png" alt="payment methods">
             </section>
