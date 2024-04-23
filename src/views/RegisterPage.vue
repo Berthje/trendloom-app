@@ -21,10 +21,8 @@ import DividerWithText from '../components/DividerWithText.vue';
                 <InputField id="password" label="Password" placeholder="your password"
                     errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
                     type="password" />
-                <RouterLink to="/forgot-password" class="text-md underline ml-auto">Forgot Password?</RouterLink>
                 <button
-                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">Log
-                    In
+                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">Register my account
                 </button>
             </div>
             <DividerWithText text="or social media" />
@@ -32,7 +30,7 @@ import DividerWithText from '../components/DividerWithText.vue';
                 <SocialButton platform="Google" buttonText="Log In" />
                 <SocialButton platform="Facebook" buttonText="Register" />
             </div>
-            <p>Don't have an account? <RouterLink to="/register" class="text-md font-extrabold underline">Sign Up
+            <p>Already have an account? <RouterLink to="/register" class="text-md font-extrabold underline">Log in
                 </RouterLink>
             </p>
             <p class="mt-4">or go back to the <RouterLink to="/" class="text-md font-extrabold underline">homepage
