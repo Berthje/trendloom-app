@@ -30,7 +30,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </a>
                     </div>
                 </div>
-                <div class="w-1/2 pb-10">
+                <div class="w-1/2 pb-12">
                     <h3 class="uppercase font-home font-extrabold pb-4">Support</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -47,7 +47,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </li>
                     </ul>
                 </div>
-                <div class="w-1/2 pb-10">
+                <div class="w-1/2 pb-12">
                     <h3 class="uppercase font-home font-extrabold pb-4">Shop</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -64,7 +64,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </li>
                     </ul>
                 </div>
-                <div class="w-1/2 pb-10">
+                <div class="w-1/2 pb-12">
                     <h3 class="uppercase font-home font-extrabold pb-4">Company</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -81,7 +81,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                         </li>
                     </ul>
                 </div>
-                <div class="w-1/2 pb-10">
+                <div class="w-1/2 pb-12">
                     <h3 class="uppercase font-home font-extrabold pb-4">Contact</h3>
                     <ul class="flex flex-col space-y-2 text-[0.925rem]">
                         <li>
@@ -99,9 +99,9 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons
                     </ul>
                 </div>
             </section>
-            <section>
-                <p>Copyright © 2024 Trendloom. Created by <a href="https://www.laytonberth.com" target="blank">Layton Berth</a></p>
-                <img src="../assets/payment-methods.png" alt="payment methods">
+            <section class="pt-6 pb-2 border-t border-solid border-[#383838] text-center text-[#CDCDCD]">
+                <p class="mb-4">Copyright © 2024 Trendloom. Created by <a href="https://www.laytonberth.com" target="blank">Layton Berth</a></p>
+                <img class="inline-block" src="../assets/payment-methods.png" alt="payment methods">
             </section>
         </section>
     </footer>
