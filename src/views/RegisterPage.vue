@@ -17,10 +17,13 @@ import DividerWithText from '../components/DividerWithText.vue';
                     alt="Trendloom logo"></RouterLink>
             <h2 class="text-3xl font-extrabold mb-4">Sign up</h2>
             <div class="flex flex-col space-y-4">
-                <InputField id="firstname" label="First Name" placeholder="John"
-                    errorMessage="The first name field is required." status="default" type="text" />
-                <InputField id="lastname" label="Last Name" placeholder="Doe"
-                    errorMessage="The last name field is required." status="default" type="text" />
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <InputField id="firstname" label="First Name" placeholder="John"
+                        errorMessage="The first name field is required." status="default" type="text"
+                        class="sm:w-1/2" />
+                    <InputField id="lastname" label="Last Name" placeholder="Doe"
+                        errorMessage="The last name field is required." status="default" type="text" class="sm:w-1/2" />
+                </div>
                 <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
                     errorMessage="The email must be a valid email address." status="default" type="email" />
                 <InputField id="password" label="Password" placeholder="your password"
