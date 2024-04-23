@@ -22,7 +22,7 @@ import DividerWithText from '../components/DividerWithText.vue';
                 <InputField id="lastname" label="Last Name" placeholder="Doe"
                     errorMessage="The last name field is required." status="default" type="text" />
                 <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
-                    errorMessage="The email must be a valid email address." status="default" type="text" />
+                    errorMessage="The email must be a valid email address." status="default" type="email" />
                 <InputField id="password" label="Password" placeholder="your password"
                     errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
                     type="password" />
@@ -33,10 +33,10 @@ import DividerWithText from '../components/DividerWithText.vue';
             </div>
             <DividerWithText text="or social media" />
             <div class="flex flex-col space-y-4 mb-8">
-                <SocialButton platform="Google" buttonText="Log In" />
+                <SocialButton platform="Google" buttonText="Register" />
                 <SocialButton platform="Facebook" buttonText="Register" />
             </div>
-            <p>Already have an account? <RouterLink to="/register" class="text-md font-extrabold underline">Log in
+            <p>Already have an account? <RouterLink to="/login" class="text-md font-extrabold underline">Log in
                 </RouterLink>
             </p>
             <p class="mt-4">or go back to the <RouterLink to="/" class="text-md font-extrabold underline">homepage

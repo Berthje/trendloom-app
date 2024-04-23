@@ -30,7 +30,7 @@ import DividerWithText from '../components/DividerWithText.vue';
       <DividerWithText text="or social media" />
       <div class="flex flex-col space-y-4 mb-8">
         <SocialButton platform="Google" buttonText="Log In" />
-        <SocialButton platform="Facebook" buttonText="Register" />
+        <SocialButton platform="Facebook" buttonText="Log In" />
       </div>
       <p>Don't have an account? <RouterLink to="/register" class="text-md font-extrabold underline">Sign Up</RouterLink>
       </p>
