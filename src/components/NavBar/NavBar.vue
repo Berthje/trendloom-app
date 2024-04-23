@@ -59,7 +59,7 @@ watchEffect(() => {
         </div>
         <div class="flex items-center">
           <div class="hidden lg:flex space-x-3">
-            <RouterLink to="/account">
+            <RouterLink to="/login">
               <GoPerson size="1.25rem" />
             </RouterLink>
             <FaRegHeart size="1.25rem" />

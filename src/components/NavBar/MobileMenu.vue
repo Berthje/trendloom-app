@@ -48,7 +48,7 @@ const close = () => {
                     </ul>
                     <ul class="uppercase flex flex-col space-y-4">
                         <li>
-                            <RouterLink to="/account" class="flex items-center">
+                            <RouterLink to="/login" class="flex items-center">
                                 <GoPerson size="1.125rem" class="mr-2" />
                                 Account
                             </RouterLink>
