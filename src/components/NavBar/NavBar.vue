@@ -7,7 +7,7 @@ import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
 import DarkOverlay from "./DarkOverlay.vue";
 import MobileMenu from "./MobileMenu.vue";
-import CartMenu from "./CartMenu.vue";
+import CartMenu from "../CartMenu/CartMenu.vue";
 import SearchModal from "./SearchModal.vue";
 import CartSummary from "./CartSummary.vue";
 

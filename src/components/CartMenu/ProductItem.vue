@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'vue3-icons';
 import { RouterLink } from 'vue-router';
 
 const props = defineProps({
-    product: Object
+    product: Object,
 });
 </script>
 
