@@ -32,27 +32,33 @@ const close = () => {
                 </div>
                 <div v-else>
                     <ul>
-                        <li class="relative group w-full flex">
-                            <AiOutlineClose size="16" class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <RouterLink to="PRODUCT-DETAILS-PAGE">
-                                <img src="https://via.placeholder.com/100" alt="Product" />
+                        <li class="relative group w-full flex text-left p-4 hover:bg-gray-100">
+                            <AiOutlineClose size="16"
+                                class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:text-gray-500" />
+                            <RouterLink to="PRODUCT-DETAILS-PAGE" class="mr-5 w-20">
+                                <img src="https://via.placeholder.com/250" alt="Product" />
                             </RouterLink>
                             <div>
-                                <h4>
+                                <h4 class="leading-none mb-1">
                                     <RouterLink to="PRODUCT-DETAILS-PAGE">Neck Sweater</RouterLink>
                                 </h4>
-                                <div>
-                                    <dl class="grid grid-cols-2">
-                                        <dt>Color:</dt>
-                                        <dd>
-                                            <p>Black</p>
-                                        </dd>
-                                        <dt>Size:</dt>
-                                        <dd>
-                                            <p>M</p>
-                                        </dd>
+
+                                <div class="text-[0.925rem]">
+                                    <dl class="text-[#858585]">
+                                        <div class="flex space-x-1">
+                                            <dt>Color:</dt>
+                                            <dd>
+                                                <p>Black</p>
+                                            </dd>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <dt>Size:</dt>
+                                            <dd>
+                                                <p>M</p>
+                                            </dd>
+                                        </div>
                                     </dl>
-                                    <span>
+                                    <span class="block mt-2 font-medium text-[0.95rem]">
                                         3 ×
                                         <span>
                                             <bdi>€</bdi>
