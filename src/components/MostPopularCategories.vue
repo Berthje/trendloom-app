@@ -8,10 +8,10 @@ import CategoryCard from './CategoryCard.vue';
         <p class="text-sm text-gray-600 mb-6">Explore our most popular categories filled with top-rated products chosen
             by our customers.</p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-12">
-            <CategoryCard imageSrc="/images/fashion.jpeg" altText="Category related" title="Fashion" productCount="8" />
-            <CategoryCard imageSrc="/images/accessories.jpeg" altText="Category related" title="Accessories" productCount="8" />
-            <CategoryCard imageSrc="/images/featured.jpeg" altText="Category related" title="Featured" productCount="8" />
-            <CategoryCard imageSrc="/images/men.jpeg" altText="Category related" title="Men" productCount="8" />
+            <CategoryCard imageSrc="/images/fashion.jpeg" altText="Category related" title="Fashion" productCount="281" />
+            <CategoryCard imageSrc="/images/accessories.jpeg" altText="Category related" title="Accessories" productCount="124" />
+            <CategoryCard imageSrc="/images/featured.jpeg" altText="Category related" title="Featured" productCount="327" />
+            <CategoryCard imageSrc="/images/men.jpeg" altText="Category related" title="Men" productCount="102" />
         </div>
     </section>
 </template>
