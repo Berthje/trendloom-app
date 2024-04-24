@@ -19,10 +19,10 @@ const close = () => {
     <transition name="slide">
         <div v-show="show" class="fixed top-0 h-full w-full overflow-auto z-50">
             <nav class="fixed top-0 right-0 h-full w-[22rem] bg-white overflow-auto p-8 text-center flex flex-col">
-                <RouterLink to="/shopping-cart" class="block mb-6">
+                <RouterLink to="/shopping-cart" class="block mb-6 relative overflow-hidden">
                     <AiOutlineShopping size="36" class="inline-block mb-2" />
                     <h2 class="uppercase text-lg">Cart</h2>
-                </RouterLink>
+                    </RouterLink>
                 <div v-if="products.length === 0">
                     <p class="text-sm mb-4">No products in the cart.</p>
                     <RouterLink to="/shop"
