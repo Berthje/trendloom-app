@@ -43,11 +43,11 @@ watchEffect(() => {
 <template>
   <header class="bg-white sticky top-0 z-10">
     <div class="w-full max-w-screen-xl py-4 px-4 mx-auto">
-      <nav class="flex items-center justify-between" aria-label="Main navigation"></nav>>
+      <nav class="flex items-center justify-between" aria-label="Main navigation">
         <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="openCart" />
         <div class="lg:flex space-x-6">
           <RouterLink to="/"><img src="../../assets/logo-black.svg" class="w-36" alt="Trendloom Logo"></RouterLink>
-          <nav aria-label="User navigation"></nav>>
+          <nav aria-label="User navigation">
             <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
               <li v-for="link in LINKS" :key="link.path">
                 <RouterLink :to="link.path" class="hover:active-route transition-all duration-150"
