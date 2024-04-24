@@ -3,7 +3,7 @@
 
 <template>
     <section
-        class="max-w-screen-sm mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 md:max-w-screen-md xl:gap-x-8 xl:max-w-screen-lg">
+        class="py-6 max-w-screen-sm mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 md:max-w-screen-md xl:gap-x-8 xl:max-w-screen-lg">
         <article class="relative text-center">
             <div class="aspect-[570/470] overflow-hidden group mb-4">
                 <img class="group-hover:scale-95 object-cover transition-all duration-300"
