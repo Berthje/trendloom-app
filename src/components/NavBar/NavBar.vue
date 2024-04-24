@@ -22,7 +22,7 @@ const LINKS = [
 
 const menuOpen = ref(false);
 const searchOpen = ref(false);
-const cartOpen = ref(true);
+const cartOpen = ref(false);
 let searchQuery = ref('');
 let cartItemCount = ref(0);
 let cartTotal = ref(0.00);
