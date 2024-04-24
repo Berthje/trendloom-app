@@ -7,6 +7,7 @@ import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
 import DarkOverlay from "./DarkOverlay.vue";
 import MobileMenu from "./MobileMenu.vue";
+import CartMenu from "./CartMenu.vue";
 import SearchModal from "./SearchModal.vue";
 import CartSummary from "./CartSummary.vue";
 
@@ -21,6 +22,7 @@ const LINKS = [
 
 const menuOpen = ref(false);
 const searchOpen = ref(false);
+const cartOpen = ref(true);
 let searchQuery = ref('');
 let cartItemCount = ref(0);
 let cartTotal = ref(0.00);
@@ -29,6 +31,8 @@ const openMenu = () => menuOpen.value = true;
 const closeMenu = () => menuOpen.value = false;
 const openSearch = () => searchOpen.value = true;
 const closeSearch = () => searchOpen.value = false;
+const openCart = () => cartOpen.value = true;
+const closeCart = () => cartOpen.value = false;
 
 watchEffect(() => {
   if (menuOpen.value || searchOpen.value) {
@@ -70,7 +74,8 @@ watchEffect(() => {
       </nav>
     </div>
   </header>
-  <DarkOverlay :show="menuOpen || searchOpen" @close="closeMenu; closeSearch" />
+  <DarkOverlay :show="menuOpen || searchOpen || cartOpen" @close="closeMenu; closeSearch; closeCart" />
   <MobileMenu :show="menuOpen" :links="LINKS" @close="closeMenu" />
   <SearchModal v-model="searchQuery" :show="searchOpen" @close="closeSearch" />
+  <CartMenu :show="cartOpen" @close="closeCart" />
 </template>

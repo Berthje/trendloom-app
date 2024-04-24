@@ -3,7 +3,7 @@ const props = defineProps({
     imageSrc: String,
     altText: String,
     title: String,
-    productCount: Number,
+    productCount: String,
 });
 </script>
 <template>

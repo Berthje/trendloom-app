@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="flex items-center lg:border-l-[1px] lg:border-gray-400 lg:border-solid lg:pl-4 lg:ml-4">
+    <div class="flex items-center cursor-pointer lg:border-l-[1px] lg:border-gray-400 lg:border-solid lg:pl-4 lg:ml-4">
         <div class="relative inline-flex mr-2">
             <AiOutlineShopping size="28" />
             <span
