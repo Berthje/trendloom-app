@@ -32,9 +32,47 @@ const close = () => {
                 </div>
                 <div v-else>
                     <ul>
-                        <li class="relative group w-full flex text-left p-4 hover:bg-gray-100">
+                        <li
+                            class="relative group w-full flex text-left p-4 hover:bg-gray-100 transition-all duration-300 rounded-sm">
                             <AiOutlineClose size="16"
-                                class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer hover:text-gray-500" />
+                                class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 cursor-pointer text-gray-500 hover:text-black" />
+                            <RouterLink to="PRODUCT-DETAILS-PAGE" class="mr-5 w-20">
+                                <img src="https://via.placeholder.com/250" alt="Product" />
+                            </RouterLink>
+                            <div>
+                                <h4 class="leading-none mb-1">
+                                    <RouterLink to="PRODUCT-DETAILS-PAGE">Neck Sweater</RouterLink>
+                                </h4>
+
+                                <div class="text-[0.925rem]">
+                                    <dl class="text-[#858585]">
+                                        <div class="flex space-x-1">
+                                            <dt>Color:</dt>
+                                            <dd>
+                                                <p>Black</p>
+                                            </dd>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <dt>Size:</dt>
+                                            <dd>
+                                                <p>M</p>
+                                            </dd>
+                                        </div>
+                                    </dl>
+                                    <span class="block mt-2 font-medium text-[0.95rem]">
+                                        3 ×
+                                        <span>
+                                            <bdi>€</bdi>
+                                            <span>410.00</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <li
+                            class="relative group w-full flex text-left p-4 hover:bg-gray-100 transition-all duration-300 rounded-sm">
+                            <AiOutlineClose size="16"
+                                class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 cursor-pointer text-gray-500 hover:text-black" />
                             <RouterLink to="PRODUCT-DETAILS-PAGE" class="mr-5 w-20">
                                 <img src="https://via.placeholder.com/250" alt="Product" />
                             </RouterLink>
