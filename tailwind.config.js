@@ -5,8 +5,9 @@ export default {
         extend: {
             backgroundImage: {
                 "hero-image": "url('./src/assets/model-hero.avif')",
-                "category-men-header-image": "url('./src/assets/category-header-men.avif')"
-            },
+                "category-men-header-image":
+                    "url('./src/assets/category-header-men.avif')",
+            }
         },
         fontFamily: {
             home: ["Inconsolata", "Inter", "sans-serif"],
