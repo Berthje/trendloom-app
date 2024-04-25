@@ -23,7 +23,7 @@ import { AiOutlineShopping } from "vue3-icons/ai";
                             class="bg-black top-[2px] bottom-[2px] left-[2px] right-[2px] absolute rounded-full"></span>
                     </li>
                 </ul>
-                <ul class="flex space-x-1 mt-2">
+                <ul class="flex space-x-1 my-2">
                     <li
                         class="w-5 h-5 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
                         XS
@@ -42,9 +42,11 @@ import { AiOutlineShopping } from "vue3-icons/ai";
                     </li>
                 </ul>
                 <h2>Belted Jackets</h2>
-                <RouterLink to="/brands/$BrandName"></RouterLink>
-                <h3>$155.50</h3>
-                <RouterLink class="border border-solid border-black inline-block p-1 group hover:bg-black"><AiOutlineShopping size="24" class="group-hover:text-white"/></RouterLink>
+                <RouterLink to="/brands/$BrandName"><h3>G-Star</h3></RouterLink>
+                <h4>$155.50</h4>
+                <RouterLink class="border border-solid border-black inline-block p-1 flex-grow-0 group hover:bg-black">
+                    <AiOutlineShopping size="24" class="group-hover:text-white" />
+                </RouterLink>
             </div>
         </div>
     </section>
