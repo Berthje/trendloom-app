@@ -6,7 +6,7 @@ import FilterBar from '@/components/FilterBar.vue';
 <template>
     <main>
         <ShopHeader shop="Men's Shop" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
-        <div class="px-4 py-3">
+        <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
             <FilterBar />
         </div>
     </main>
