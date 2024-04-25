@@ -1,4 +1,5 @@
 <script setup>
+import { AiOutlineShopping } from "vue3-icons/ai";
 </script>
 
 <template>
@@ -43,9 +44,7 @@
                 <h2>Belted Jackets</h2>
                 <RouterLink to="/brands/$BrandName"></RouterLink>
                 <h3>$155.50</h3>
-                <div>
-                    
-                </div>
+                <RouterLink class="border border-solid border-black inline-block p-1 group hover:bg-black"><AiOutlineShopping size="24" class="group-hover:text-white"/></RouterLink>
             </div>
         </div>
     </section>
