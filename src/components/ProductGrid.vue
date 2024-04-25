@@ -41,12 +41,13 @@ import { AiOutlineShopping } from "vue3-icons/ai";
                         L
                     </li>
                 </ul>
-                <h2>Belted Jackets</h2>
-                <RouterLink to="/brands/$BrandName"><h3>G-Star</h3></RouterLink>
-                <h4>$155.50</h4>
-                <RouterLink class="border border-solid border-black inline-block p-1 flex-grow-0 group hover:bg-black">
-                    <AiOutlineShopping size="24" class="group-hover:text-white" />
-                </RouterLink>
+                <h2 class="font-bold text-lg">Belted Jackets</h2>
+                <div class="text-gray-500 mb-2">
+                    <RouterLink to="/brands/$BrandName" class="hover:underline hover:text-gray-800 hover:font-medium">
+                        <h3>G-Star</h3>
+                    </RouterLink>
+                    <h4>€79.99</h4>
+                </div>
             </div>
         </div>
     </section>
