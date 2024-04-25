@@ -1,5 +1,4 @@
 <script setup>
-import { AiOutlineShopping } from "vue3-icons/ai";
 </script>
 
 <template>
