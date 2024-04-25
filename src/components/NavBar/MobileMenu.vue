@@ -20,7 +20,7 @@ const close = () => {
     <transition name="slide">
         <div v-show="show" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
             <nav class="fixed top-0 h-full w-80 bg-white overflow-auto p-8 font-bold uppercase">
-                <RouterLink to="/" class="block mb-6">
+                <RouterLink to="/" class="block mb-6" @click="close">
                     <img src="../../assets/logo-black.svg" class="w-36 mx-auto" alt="Trendloom Logo">
                 </RouterLink>
                 <form action="#" class="relative mb-4">
@@ -43,24 +43,24 @@ const close = () => {
                     <h2 class="text-center py-2 border-b-2 border-solid border-black">Menu</h2>
                     <ul class="flex flex-col space-y-4">
                         <li v-for="link in links" :key="link.path">
-                            <RouterLink :to="link.path" active-class="active-route">{{ link.name }}</RouterLink>
+                            <RouterLink :to="link.path" active-class="active-route" @click="close">{{ link.name }}</RouterLink>
                         </li>
                     </ul>
                     <ul class="uppercase flex flex-col space-y-4">
                         <li>
-                            <RouterLink to="/login" class="flex items-center">
+                            <RouterLink to="/login" class="flex items-center" @click="close">
                                 <GoPerson size="1.125rem" class="mr-2" />
                                 Account
                             </RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/wishlist" class="flex items-center">
+                            <RouterLink to="/wishlist" class="flex items-center" @click="close">
                                 <FaRegHeart size="1.125rem" class="mr-2" />
                                 Wishlist
                             </RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/language" class="flex items-center">
+                            <RouterLink to="/language" class="flex items-center" @click="close">
                                 <IoLanguage size="1.125rem" class="mr-2" />
                                 English
                             </RouterLink>
