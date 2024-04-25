@@ -7,11 +7,11 @@ const props = defineProps({
 });
 </script>
 <template>
-    <RouterLink to="/women">
+    <RouterLink to="/women" class="group">
         <div class="text-center">
             <img :src="imageSrc" class="inline-block w-full aspect-square object-cover mb-2" :alt="altText">
             <div>
-                <h4 class="uppercase font-bold text-lg">{{ title }}</h4>
+                <h4 class="uppercase font-bold text-lg group-hover:underline">{{ title }}</h4>
                 <p class="text-sm">{{ productCount }} products</p>
             </div>
         </div>
