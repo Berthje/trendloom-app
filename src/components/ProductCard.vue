@@ -30,7 +30,7 @@ const colorMap = {
 
 </script>
 <template>
-    <div class="flex flex-col space-y-2">
+    <RouterLink to="/products/productIdOrName" class="flex flex-col space-y-2">
         <div>
             <img :src="product.image" :alt="product.title" class="w-full">
         </div>
@@ -56,5 +56,5 @@ const colorMap = {
                 <h4>{{ product.price }}</h4>
             </div>
         </div>
-    </div>
+    </RouterLink>
 </template>
