@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LandingPage from "../views/LandingPage.vue";
+import MenPage from "../views/MenPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import RegisterPage from "../views/RegisterPage.vue";
+
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,6 +12,11 @@ const router = createRouter({
             path: "/",
             name: "home",
             component: LandingPage,
+        },
+        {
+            path: "/men",
+            name: "men",
+            component: MenPage,
         },
         {
             path: "/login",
@@ -22,7 +29,7 @@ const router = createRouter({
             name: "register",
             component: RegisterPage,
             meta: { showTopAndBottombars: false },
-        },
+        }
     ],
 });
 
