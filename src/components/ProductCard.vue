@@ -6,7 +6,7 @@ const props = defineProps({
 <template>
     <div class="flex flex-col space-y-2">
         <div>
-            <img :src="product.image" :alt="product.title">
+            <img :src="product.image" :alt="product.title" class="w-full">
         </div>
         <div>
             <ul class="flex space-x-1">
@@ -16,7 +16,7 @@ const props = defineProps({
                         :class="`bg-${color} top-[2px] bottom-[2px] left-[2px] right-[2px] absolute rounded-full`"></span>
                 </li>
             </ul>
-            <ul class="flex space-x-1 my-2">
+            <ul v-if="product.sizes && product.sizes.length > 0" class="flex space-x-1 my-2">
                 <li v-for="(size, index) in product.sizes" :key="index"
                     class="w-5 h-5 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
                     {{ size }}
