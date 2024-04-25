@@ -1,16 +1,15 @@
 <script setup>
 const props = defineProps({
-  title: String
+    shop: String,
+    links: Array
 });
 </script>
-
 <template>
     <div>
         <nav class="text-lg flex justify-center space-x-2">
-            <RouterLink to="home" class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400">Home
-            </RouterLink>
-            <RouterLink to="home" class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400">Home</RouterLink>
+            <RouterLink v-for="(link, index) in links" :key="index" :to="link.path"
+                class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400">{{ link.name }}</RouterLink>
         </nav>
-        <h3 class="font-extrabold text-7xl uppercase">{{ title }}</h3>
+        <h3 class="font-extrabold text-7xl uppercase">{{ shop }}</h3>
     </div>
 </template>

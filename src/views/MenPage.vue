@@ -12,7 +12,7 @@ import ShopHeader from '@/components/ShopHeader.vue';
                     <path d="M500,98.9L0,6.1V0h1000v6.1L500,98.9z"></path>
                 </svg>
             </div>
-            <ShopHeader title="Shop for men"/>
+            <ShopHeader shop="Men's Shop" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
         </section>
     </main>
 </template>
