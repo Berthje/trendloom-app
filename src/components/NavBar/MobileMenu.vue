@@ -1,19 +1,27 @@
-<script setup>
+<script>
 import { AiOutlineSearch, AiOutlineClose } from "vue3-icons/ai";
 import { GoPerson } from "vue3-icons/go";
 import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
 
-const props = defineProps({
-    show: Boolean,
-    links: Array,
-});
-
-const emits = defineEmits(['close']);
-
-const close = () => {
-    emits('close');
-};
+export default {
+    components: {
+        AiOutlineSearch,
+        AiOutlineClose,
+        GoPerson,
+        FaRegHeart,
+        IoLanguage
+    },
+    props: {
+        show: Boolean,
+        links: Array
+    },
+    methods: {
+        close() {
+            this.$emit('close');
+        }
+    }
+}
 </script>
 
 <template>
@@ -43,7 +51,8 @@ const close = () => {
                     <h2 class="text-center py-2 border-b-2 border-solid border-black">Menu</h2>
                     <ul class="flex flex-col space-y-4">
                         <li v-for="link in links" :key="link.path">
-                            <RouterLink :to="link.path" active-class="active-route" @click="close">{{ link.name }}</RouterLink>
+                            <RouterLink :to="link.path" active-class="active-route" @click="close">{{ link.name }}
+                            </RouterLink>
                         </li>
                     </ul>
                     <ul class="uppercase flex flex-col space-y-4">
