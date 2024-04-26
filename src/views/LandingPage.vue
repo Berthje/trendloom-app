@@ -1,7 +1,15 @@
-<script setup>
+<script>
 import Hero from '@/components/Hero.vue';
 import CategoriesOverview from '@/components/CategoriesOverview.vue';
 import MostPopularCategories from '@/components/MostPopularCategories.vue';
+
+export default {
+  components: {
+    Hero,
+    CategoriesOverview,
+    MostPopularCategories
+  }
+}
 </script>
 
 <template>

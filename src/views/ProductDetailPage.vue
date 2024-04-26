@@ -1,5 +1,5 @@
-<script setup>
-import { ref, onMounted } from 'vue';
+<script>
+import { ref, onCreated } from 'vue';
 import { useRoute } from 'vue-router';
 import ShopHeader from '@/components/ShopHeader.vue';
 import { RiArrowRightSLine, RiArrowLeftSLine } from "vue3-icons/ri";
@@ -7,37 +7,57 @@ import { AiOutlineShopping } from "vue3-icons/ai";
 import { FaRegHeart } from "vue3-icons/fa";
 import QuantitySelector from '@/components/QuantitySelector.vue';
 
-const tempImages = [
-    '/images/accessories.jpeg',
-    '/images/fashion.jpeg',
-    '/images/featured.jpeg',
-    '/images/men.jpeg',
-];
+export default {
+    components: {
+        ShopHeader,
+        RiArrowRightSLine,
+        RiArrowLeftSLine,
+        AiOutlineShopping,
+        FaRegHeart,
+        QuantitySelector
+    },
+    setup() {
+        const tempImages = [
+            '/images/accessories.jpeg',
+            '/images/fashion.jpeg',
+            '/images/featured.jpeg',
+            '/images/men.jpeg',
+        ];
 
-const imageRefs = ref([]);
+        const imageRefs = ref([]);
+        const route = useRoute();
+        const product = ref(null);
+        const mainImage = ref(tempImages[0]);
+        let currentIndex = ref(0);
 
-const route = useRoute();
-const product = ref(null);
-const mainImage = ref(tempImages[0]);
-let currentIndex = ref(0);
+        const nextImage = () => {
+            currentIndex.value = (currentIndex.value + 1) % tempImages.length;
+            mainImage.value = tempImages[currentIndex.value];
+            imageRefs.value[currentIndex.value]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        };
 
-const nextImage = () => {
-    currentIndex.value = (currentIndex.value + 1) % tempImages.length;
-    mainImage.value = tempImages[currentIndex.value];
-    imageRefs.value[currentIndex.value]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-};
+        const prevImage = () => {
+            currentIndex.value = (currentIndex.value - 1 + tempImages.length) % tempImages.length;
+            mainImage.value = tempImages[currentIndex.value];
+            imageRefs.value[currentIndex.value]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        };
 
-const prevImage = () => {
-    currentIndex.value = (currentIndex.value - 1 + tempImages.length) % tempImages.length;
-    mainImage.value = tempImages[currentIndex.value];
-    imageRefs.value[currentIndex.value]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-};
+        onCreated(async () => {
+            const productId = route.params.id;
+            //later fetch product
+        });
 
-onMounted(async () => {
-    const productId = route.params.id;
-    //later fetch product
-});
-
+        return {
+            tempImages,
+            imageRefs,
+            product,
+            mainImage,
+            currentIndex,
+            nextImage,
+            prevImage
+        }
+    }
+}
 </script>
 
 <template>
