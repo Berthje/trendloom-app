@@ -1,5 +1,4 @@
 <script>
-import { ref, onCreated } from 'vue';
 import { useRoute } from 'vue-router';
 import ShopHeader from '@/components/ShopHeader.vue';
 import { RiArrowRightSLine, RiArrowLeftSLine } from "vue3-icons/ri";
@@ -16,46 +15,36 @@ export default {
         FaRegHeart,
         QuantitySelector
     },
-    setup() {
-        const tempImages = [
-            '/images/accessories.jpeg',
-            '/images/fashion.jpeg',
-            '/images/featured.jpeg',
-            '/images/men.jpeg',
-        ];
-
-        const imageRefs = ref([]);
-        const route = useRoute();
-        const product = ref(null);
-        const mainImage = ref(tempImages[0]);
-        let currentIndex = ref(0);
-
-        const nextImage = () => {
-            currentIndex.value = (currentIndex.value + 1) % tempImages.length;
-            mainImage.value = tempImages[currentIndex.value];
-            imageRefs.value[currentIndex.value]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-        };
-
-        const prevImage = () => {
-            currentIndex.value = (currentIndex.value - 1 + tempImages.length) % tempImages.length;
-            mainImage.value = tempImages[currentIndex.value];
-            imageRefs.value[currentIndex.value]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-        };
-
-        onCreated(async () => {
-            const productId = route.params.id;
-            //later fetch product
-        });
-
+    data() {
         return {
-            tempImages,
-            imageRefs,
-            product,
-            mainImage,
-            currentIndex,
-            nextImage,
-            prevImage
+            tempImages: [
+                '/images/accessories.jpeg',
+                '/images/fashion.jpeg',
+                '/images/featured.jpeg',
+                '/images/men.jpeg',
+            ],
+            imageRefs: [],
+            product: null,
+            mainImage: '/images/accessories.jpeg',
+            currentIndex: 0
         }
+    },
+    methods: {
+        nextImage() {
+            this.currentIndex = (this.currentIndex + 1) % this.tempImages.length;
+            this.mainImage = this.tempImages[this.currentIndex];
+            this.imageRefs[this.currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        },
+        prevImage() {
+            this.currentIndex = (this.currentIndex - 1 + this.tempImages.length) % this.tempImages.length;
+            this.mainImage = this.tempImages[this.currentIndex];
+            this.imageRefs[this.currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        }
+    },
+    created() {
+        const route = useRoute();
+        const productId = route.params.id;
+        //later fetch product
     }
 }
 </script>

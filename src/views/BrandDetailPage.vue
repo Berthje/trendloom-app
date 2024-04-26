@@ -1,5 +1,5 @@
 <script>
-import { ref, onCreated } from 'vue';
+import { ref } from 'vue';
 import ShopHeader from '@/components/ShopHeader.vue';
 import ProductGrid from '@/components/ProductGrid.vue';
 import FilterBar from '@/components/FilterBar.vue';
@@ -87,7 +87,7 @@ export default {
             }
         ];
 
-        onCreated(async () => {
+        created(async () => {
             const brandId = route.params.id;
             //later fetch brand
         });
