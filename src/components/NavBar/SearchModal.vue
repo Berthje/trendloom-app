@@ -1,22 +1,33 @@
-<script setup>
-import { ref, watchEffect } from 'vue';
+<script>
 import { AiOutlineSearch, AiOutlineClose } from "vue3-icons/ai";
 
-const props = defineProps({
-    show: Boolean,
-});
-
-const emits = defineEmits(['update:modelValue', 'close']);
-
-let searchQuery = ref('');
-
-const close = () => {
-    emits('close');
-};
-
-watchEffect(() => {
-    emits('update:modelValue', searchQuery.value);
-});
+export default {
+    components: {
+        AiOutlineSearch,
+        AiOutlineClose
+    },
+    props: {
+        show: Boolean,
+    },
+    data() {
+        return {
+            searchQuery: ''
+        }
+    },
+    methods: {
+        close() {
+            this.$emit('close');
+        },
+        updateModelValue() {
+            this.$emit('update:modelValue', this.searchQuery);
+        }
+    },
+    watch: {
+        searchQuery() {
+            this.updateModelValue();
+        }
+    }
+}
 </script>
 
 <template>
