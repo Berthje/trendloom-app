@@ -45,7 +45,7 @@ onMounted(async () => {
 <template>
     <main>
         <ShopHeader title="Belted Jackets" :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: '/shop' }]" />
-        <section class="px-4 py-4">
+        <section class="px-4 pt-4 pb-16">
             <div>
                 <div class="relative">
                     <button @click="prevImage" class="absolute left-1 top-1/2 transform -translate-y-1/2">
@@ -88,7 +88,7 @@ onMounted(async () => {
                         <AiOutlineShopping size="20" class="mr-2" /> Add to cart
                     </button>
                 </div>
-                <div>
+                <div class="flex items-center space-x-3 mt-6 mb-3">
                     <FaRegHeart />
                     <p>Add to wishlist</p>
                 </div>
