@@ -1,9 +1,17 @@
-<script setup>
+<script>
 import { RouterLink } from 'vue-router';
 import InputField from '../components/InputField.vue';
 import SocialButton from '../components/SocialButton.vue';
-
 import DividerWithText from '../components/DividerWithText.vue';
+
+export default {
+    components: {
+        RouterLink,
+        InputField,
+        SocialButton,
+        DividerWithText
+    }
+}
 </script>
 
 <template>
