@@ -1,13 +1,14 @@
-<script setup>
-const props = defineProps({
-  show: Boolean,
-});
-
-const emits = defineEmits(['close']);
-
-const close = () => {
-  emits('close');
-};
+<script>
+export default {
+  props: {
+    show: Boolean
+  },
+  methods: {
+    close() {
+      this.$emit('close');
+    }
+  }
+}
 </script>
 
 <template>
