@@ -21,7 +21,7 @@ const close = () => {
         <div v-show="show" class="fixed top-0 h-full w-full overflow-auto z-50 lg:hidden">
             <nav class="fixed top-0 h-full w-80 bg-white overflow-auto p-8 font-bold uppercase">
                 <RouterLink to="/" class="block mb-6" @click="close">
-                    <img src="../../assets/logo-black.svg" class="w-36 mx-auto" alt="Trendloom Logo">
+                    <img src="../../assets/logo-black.svg" class="w-36 mx-auto" alt="Trendloom Logo" v-once>
                 </RouterLink>
                 <form action="#" class="relative mb-4">
                     <div

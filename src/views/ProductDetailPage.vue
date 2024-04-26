@@ -12,8 +12,6 @@ const tempImages = [
     '/images/fashion.jpeg',
     '/images/featured.jpeg',
     '/images/men.jpeg',
-    '/images/men.jpeg',
-    '/images/men.jpeg',
 ];
 
 const imageRefs = ref([]);
@@ -45,25 +43,26 @@ onMounted(async () => {
 <template>
     <main>
         <ShopHeader title="Belted Jackets" :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: '/shop' }]" />
-        <section class="px-4 pt-4 pb-16">
-            <div>
-                <div class="relative">
+        <section class="px-4 pt-4 pb-16 lg:flex lg:max-w-screen-xl lg:mx-auto lg:space-x-8">
+            <div class="sm:flex sm:flex-row-reverse lg:w-1/2">
+                <div class="relative flex-grow sm:ml-4">
                     <button @click="prevImage" class="absolute left-1 top-1/2 transform -translate-y-1/2">
                         <RiArrowLeftSLine size="30" />
                     </button>
                     <button @click="nextImage" class="absolute right-1 top-1/2 transform -translate-y-1/2">
                         <RiArrowRightSLine size="30" />
                     </button>
-                    <img :src="mainImage" alt="Main product" class="w-full">
+                    <img :src="mainImage" alt="Main product" class="w-full h-full object-cover">
                 </div>
-                <div class="flex overflow-x-auto scrollbar-thin mt-4 space-x-4">
+                <div
+                    class="flex overflow-x-auto scrollbar-thin mt-4 space-x-4 sm:mt-0 sm:overflow-y-auto sm:overflow-x-hidden sm:flex-col sm:space-x-0 sm:space-y-4">
                     <img v-for="(imageURL, index) in tempImages" :key="index" :src="imageURL"
-                        class="w-24 aspect-square cursor-pointer opacity-50 transition-all duration-300 ease-in-out hover:-translate-y-1"
+                        class="w-24 min:w-24 sm:w-full h-24 object-cover cursor-pointer opacity-50 transition-all duration-300 ease-in-out hover:-translate-y-1"
                         :class="{ 'opacity-100': mainImage === imageURL }" @click="mainImage = imageURL" alt="Product"
                         :ref="el => (imageRefs[index] = el)">
                 </div>
             </div>
-            <div class="mt-8">
+            <div class="mt-8 lg:mt-0 lg:w-1/2">
                 <h1 class="font-bold text-3xl">Belted Jackets</h1>
                 <h2 class="text-2xl my-1">€155.50</h2>
                 <ul class="flex flex-col space-y-2 my-2">
@@ -88,7 +87,7 @@ onMounted(async () => {
                         <AiOutlineShopping size="20" class="mr-2" /> Add to cart
                     </button>
                 </div>
-                <div class="flex items-center space-x-3 mt-6 mb-3">
+                <div class="flex items-center space-x-3 mt-6 mb-3 cursor-pointer hover:opacity-60">
                     <FaRegHeart />
                     <p>Add to wishlist</p>
                 </div>

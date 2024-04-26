@@ -6,6 +6,6 @@
             Copyright © 2024 Trendloom. Created by
             <a href="https://www.laytonberth.com" class="font-bold" target="_blank">Layton Berth</a>
         </p>
-        <img class="inline-block" src="../../assets/payment-methods.png" alt="payment methods">
+        <img class="inline-block" src="../../assets/payment-methods.png" alt="payment methods" v-once>
     </section>
 </template>

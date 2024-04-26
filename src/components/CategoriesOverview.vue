@@ -7,7 +7,7 @@
         <article class="relative text-center">
             <div class="aspect-[570/470] overflow-hidden group mb-4">
                 <img class="group-hover:scale-95 object-cover transition-all duration-300"
-                    src="../assets/category-women.avif" alt="women model" />
+                    src="../assets/category-women.avif" alt="women model" v-once/>
             </div>
             <h3 class="uppercase font-extrabold text-[1.375rem] mb-2">The jeans you need</h3>
             <p class="text-gray-600 text-[0.975rem] mb-4">True Skinny in denim keeps it shape all day.</p>
@@ -18,7 +18,7 @@
         <article class="relative text-center">
             <div class="aspect-[570/470] overflow-hidden group mb-4">
                 <img class="group-hover:scale-95 object-cover transition-all duration-300"
-                    src="../assets/category-men.avif" alt="men model" />
+                    src="../assets/category-men.avif" alt="men model" v-once/>
             </div>
             <h3 class="uppercase font-extrabold text-[1.375rem] mb-2">Find perfect looks</h3>
             <p class="text-gray-600 text-[0.975rem] mb-4">The Nostalgia-inducing classic is BACK.</p>
