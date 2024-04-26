@@ -1,5 +1,4 @@
-<script setup>
-import { ref, watchEffect } from 'vue';
+<script>
 import { AiOutlineSearch } from "vue3-icons/ai";
 import { HiOutlineMenu } from "vue3-icons/hi";
 import { GoPerson } from "vue3-icons/go";
@@ -11,38 +10,63 @@ import CartMenu from "../CartMenu/CartMenu.vue";
 import SearchModal from "./SearchModal.vue";
 import CartSummary from "./CartSummary.vue";
 
-const LINKS = [
-  { name: 'Home', path: '/' },
-  { name: 'Men', path: '/men' },
-  { name: 'Women', path: '/women' },
-  { name: 'Children', path: '/children' },
-  { name: 'Brands', path: '/brands' },
-  { name: 'About us', path: '/about-us' },
-  { name: 'Contacts', path: '/contact' },
-];
-
-const menuOpen = ref(false);
-const searchOpen = ref(false);
-const cartOpen = ref(false);
-let searchQuery = ref('');
-let cartItemCount = ref(0);
-let cartTotal = ref(0.00);
-
-const openMenu = () => menuOpen.value = true;
-const closeMenu = () => menuOpen.value = false;
-const openSearch = () => searchOpen.value = true;
-const closeSearch = () => searchOpen.value = false;
-const openCart = () => cartOpen.value = true;
-const closeCart = () => cartOpen.value = false;
-
-watchEffect(() => {
-  if (menuOpen.value || searchOpen.value) {
-    document.body.classList.add('overflow-hidden');
-  } else {
-    document.body.classList.remove('overflow-hidden');
+export default {
+  components: {
+    AiOutlineSearch,
+    HiOutlineMenu,
+    GoPerson,
+    FaRegHeart,
+    IoLanguage,
+    DarkOverlay,
+    MobileMenu,
+    CartMenu,
+    SearchModal,
+    CartSummary
+  },
+  data() {
+    return {
+      LINKS: [
+        { name: 'Home', path: '/' },
+        { name: 'Men', path: '/men' },
+        { name: 'Women', path: '/women' },
+        { name: 'Children', path: '/children' },
+        { name: 'Brands', path: '/brands' },
+        { name: 'About us', path: '/about-us' },
+        { name: 'Contacts', path: '/contact' },
+      ],
+      menuOpen: false,
+      searchOpen: false,
+      cartOpen: false,
+      searchQuery: '',
+      cartItemCount: 0,
+      cartTotal: 0.00
+    }
+  },
+  methods: {
+    openMenu() { this.menuOpen = true; },
+    closeMenu() { this.menuOpen = false; },
+    openSearch() { this.searchOpen = true; },
+    closeSearch() { this.searchOpen = false; },
+    openCart() { this.cartOpen = true; },
+    closeCart() { this.cartOpen = false; },
+  },
+  watch: {
+    menuOpen(newVal) {
+      if (newVal) {
+        document.body.classList.add('overflow-hidden');
+      } else {
+        document.body.classList.remove('overflow-hidden');
+      }
+    },
+    searchOpen(newVal) {
+      if (newVal) {
+        document.body.classList.add('overflow-hidden');
+      } else {
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
   }
-});
-
+}
 </script>
 
 <template>
@@ -51,7 +75,8 @@ watchEffect(() => {
       <nav class="flex items-center justify-between" aria-label="Main navigation">
         <HiOutlineMenu size="28" class="cursor-pointer lg:hidden" @click="openMenu" />
         <div class="lg:flex space-x-6">
-          <RouterLink to="/"><img src="../../assets/logo-black.svg" class="w-36" alt="Trendloom Logo" v-once></RouterLink>
+          <RouterLink to="/"><img src="../../assets/logo-black.svg" class="w-36" alt="Trendloom Logo" v-once>
+          </RouterLink>
           <nav aria-label="User navigation">
             <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
               <li v-for="link in LINKS" :key="link.path">
@@ -70,7 +95,7 @@ watchEffect(() => {
             <FaRegHeart size="1.25rem" />
             <IoLanguage size="1.25rem" />
           </div>
-          <CartSummary :cartItemCount="cartItemCount" :cartTotal="cartTotal" @click="openCart"/>
+          <CartSummary :cartItemCount="cartItemCount" :cartTotal="cartTotal" @click="openCart" />
         </div>
       </nav>
     </div>
