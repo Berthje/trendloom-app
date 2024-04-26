@@ -5,6 +5,7 @@ import ProductGrid from '@/components/ProductGrid.vue';
 
 const products = [
   {
+    id: 1,
     title: 'Classic Leather Jacket',
     image: 'https://via.placeholder.com/150',
     colors: ['black', 'brown'],
@@ -13,6 +14,7 @@ const products = [
     price: '$250'
   },
   {
+    id: 2,
     title: 'Slim Fit Jeans',
     image: 'https://via.placeholder.com/150',
     colors: ['blue', 'black', 'grey'],
@@ -21,6 +23,7 @@ const products = [
     price: '$80'
   },
   {
+    id: 3,
     title: 'Casual T-Shirt',
     image: 'https://via.placeholder.com/150',
     colors: ['white', 'black', 'red', 'blue', 'green'],
@@ -29,6 +32,7 @@ const products = [
     price: '$20'
   },
   {
+    id: 4,
     title: 'Running Shoes',
     image: 'https://via.placeholder.com/150',
     colors: ['black', 'white', 'blue', 'red'],
@@ -37,6 +41,7 @@ const products = [
     price: '$120'
   },
   {
+    id: 5,
     title: 'Baseball Cap',
     image: 'https://via.placeholder.com/150',
     colors: ['black', 'white', 'blue', 'red', 'green'],
@@ -44,6 +49,7 @@ const products = [
     price: '$15'
   },
   {
+    id: 6,
     title: 'Leather Belt',
     image: 'https://via.placeholder.com/150',
     colors: ['black', 'brown'],
@@ -52,6 +58,7 @@ const products = [
     price: '$35'
   },
   {
+    id: 7,
     title: 'Silk Tie',
     image: 'https://via.placeholder.com/150',
     colors: ['blue', 'red', 'green', 'black', 'grey'],
@@ -59,6 +66,7 @@ const products = [
     price: '$40'
   },
   {
+    id: 8,
     title: 'Wrist Watch',
     image: 'https://via.placeholder.com/150',
     colors: ['silver', 'gold'],

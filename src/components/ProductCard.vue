@@ -30,7 +30,7 @@ const colorMap = {
 
 </script>
 <template>
-    <RouterLink to="/products/productIdOrName" class="flex flex-col space-y-2 hover:scale-[1.01]">
+    <RouterLink :to="/shop/product/${product.id}" class="flex flex-col space-y-2 hover:scale-[1.01]">
         <div>
             <img :src="product.image" :alt="product.title" class="w-full">
         </div>
