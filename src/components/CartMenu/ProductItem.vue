@@ -1,10 +1,19 @@
-<script setup>
+<script>
 import { AiOutlineClose } from 'vue3-icons';
 import { RouterLink } from 'vue-router';
 
-const props = defineProps({
-    product: Object,
-});
+export default {
+    components: {
+        AiOutlineClose,
+        RouterLink
+    },
+    props: {
+        product: {
+            type: Object,
+            required: true
+        }
+    }
+}
 </script>
 
 <template>
