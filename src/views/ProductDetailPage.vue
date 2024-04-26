@@ -67,19 +67,25 @@ onMounted(async () => {
                 <h1 class="font-bold text-3xl">Belted Jackets</h1>
                 <h2 class="text-2xl my-1">€155.50</h2>
                 <ul class="flex flex-col space-y-2 my-2">
-                    <li>Brand: <RouterLink to="/brands/brandNameHere" class="text-gray-400 underline hover:text-black">Booja Booja</RouterLink></li>
+                    <li>Brand: <RouterLink to="/brands/brandNameHere" class="text-gray-400 underline hover:text-black">
+                            Booja Booja</RouterLink>
+                    </li>
                     <li>SKU: <span class="text-gray-400">N/A</span></li>
                 </ul>
-                <ul v-if="['S', 'M', 'L', 'XL'].length > 0" class="flex space-x-2">
-                    <li v-for="(size, index) in ['S', 'M', 'L', 'XL']" :key="index"
-                        class="w-7 h-7 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
-                        {{ size }}
-                    </li>
-                </ul>
-                <div>
+                <div class="mb-6">
+                    <p class="text-gray-400 text-sm mb-1">Size:</p>
+                    <ul v-if="['S', 'M', 'L', 'XL'].length > 0" class="flex space-x-2">
+                        <li v-for="(size, index) in ['S', 'M', 'L', 'XL']" :key="index"
+                            class="w-8 h-8 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
+                            {{ size }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex space-x-6 h-10">
                     <QuantitySelector />
-                    <button>
-                        <AiOutlineShopping /> Add to cart
+                    <button
+                        class="w-full flex items-center justify-center bg-black text-white uppercase text-[0.925rem] hover:text-black hover:bg-white border border-black border-solid transition-all duration-300 ease-in-out">
+                        <AiOutlineShopping size="20" class="mr-2" /> Add to cart
                     </button>
                 </div>
                 <div>
