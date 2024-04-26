@@ -67,7 +67,7 @@ export default {
                     class="flex overflow-x-auto scrollbar-thin mt-4 space-x-4 sm:mt-0 sm:overflow-y-auto sm:overflow-x-hidden sm:flex-col sm:space-x-0 sm:space-y-4">
                     <img v-for="(imageURL, index) in tempImages" :key="index" :src="imageURL"
                         class="w-24 min:w-24 sm:w-full h-24 object-cover cursor-pointer opacity-50 transition-all duration-300 ease-in-out hover:-translate-y-1"
-                        :class="{ 'opacity-100': mainImage === imageURL }" @click="mainImage = imageURL" alt="Product"
+                        :class="{ '!opacity-100': mainImage === imageURL }" @click="mainImage = imageURL" alt="Product"
                         :ref="el => (imageRefs[index] = el)">
                 </div>
             </div>
