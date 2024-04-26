@@ -1,5 +1,14 @@
-<script setup>
+<script>
 import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons/fa';
+
+export default {
+    components: {
+        FaFacebookF,
+        FaInstagram,
+        FaYoutube,
+        FaTelegramPlane
+    }
+}
 </script>
 <template>
     <div class="flex space-x-6">
