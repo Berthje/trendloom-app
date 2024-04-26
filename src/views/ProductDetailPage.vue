@@ -63,12 +63,12 @@ onMounted(async () => {
                         :ref="el => (imageRefs[index] = el)">
                 </div>
             </div>
-            <div>
-                <h1>Belted Jackets</h1>
-                <h2>€155.50</h2>
-                <ul>
-                    <li>Brand: Booja Booja</li>
-                    <li>SKU: N/A</li>
+            <div class="mt-8">
+                <h1 class="font-bold text-3xl">Belted Jackets</h1>
+                <h2 class="text-2xl my-1">€155.50</h2>
+                <ul class="flex flex-col space-y-2 my-2">
+                    <li>Brand: <RouterLink to="/brands/brandNameHere" class="text-gray-400 underline hover:text-black">Booja Booja</RouterLink></li>
+                    <li>SKU: <span class="text-gray-400">N/A</span></li>
                 </ul>
                 <ul v-if="['S', 'M', 'L', 'XL'].length > 0" class="flex space-x-2">
                     <li v-for="(size, index) in ['S', 'M', 'L', 'XL']" :key="index"
