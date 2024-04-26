@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-    shop: String,
+    title: String,
     links: Array
 });
 </script>
@@ -19,7 +19,7 @@ const props = defineProps({
                     class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400">{{ link.name }}&nbsp;
                 </RouterLink>
             </nav>
-            <h3 class="font-extrabold text-7xl uppercase">{{ shop }}</h3>
+            <h3 class="font-extrabold text-7xl uppercase">{{ title }}</h3>
         </div>
     </section>
 </template>

@@ -8,6 +8,7 @@ import CartMenuFooter from './CartMenuFooter.vue';
 const products = ref(
     [
         {
+            id: 1,
             imageUrl: "https://via.placeholder.com/150",
             title: "Product 1",
             color: "Black",
@@ -16,6 +17,7 @@ const products = ref(
             price: 410.00
         },
         {
+            id: 2,
             imageUrl: "https://via.placeholder.com/150",
             title: "Product 1",
             color: "Black",
@@ -24,6 +26,7 @@ const products = ref(
             price: 410.00
         },
         {
+            id: 3,
             imageUrl: "https://via.placeholder.com/150",
             title: "Product 1",
             color: "Black",
@@ -32,6 +35,7 @@ const products = ref(
             price: 410.00
         },
         {
+            id: 4,
             imageUrl: "https://via.placeholder.com/150",
             title: "Product 1",
             color: "Black",
@@ -71,7 +75,7 @@ const close = () => {
                 <div v-else class="flex flex-grow">
                     <ul class="overflow-y-auto flex-grow">
                         <ProductItem v-for="(product, index) in products.slice(0, MAX_PRODUCTS_SHOWN)" :key="index"
-                            :product="product" />
+                            :product="product" @close="close" />
                     </ul>
                     <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
                         ..there {{ additionalProducts === 1 ? 'is' : 'are' }} {{ additionalProducts }} more {{
