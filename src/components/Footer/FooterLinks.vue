@@ -1,10 +1,21 @@
-<script setup>
+<script>
 import { RouterLink } from 'vue-router';
 
-const props = defineProps({
-    title: String,
-    links: Array,
-});
+export default {
+    components: {
+        RouterLink
+    },
+    props: {
+        title: {
+            type: String,
+            required: true
+        },
+        links: {
+            type: Array,
+            required: true
+        }
+    }
+}
 </script>
 
 <template>
