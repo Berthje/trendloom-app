@@ -4,6 +4,7 @@ import MenPage from "../views/MenPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import RegisterPage from "../views/RegisterPage.vue";
 import ProductDetailPage from "../views/ProductDetailPage.vue";
+import BrandsOverviewPage from "../views/BrandsOverviewPage.vue";
 
 
 const router = createRouter({
@@ -23,6 +24,11 @@ const router = createRouter({
             path: "/shop/product/:id",
             name: "product",
             component: ProductDetailPage,
+        },
+        {
+            path: "/brands",
+            name: "brands",
+            component: BrandsOverviewPage,
         },
         {
             path: "/login",
