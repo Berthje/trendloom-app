@@ -1,35 +1,43 @@
-<script setup>
+<script>
 import LogoDescription from './LogoDescription.vue'
 import CopyrightSection from './CopyrightSection.vue'
 import FooterLinks from './FooterLinks.vue'
 
-const supportLinks = [
-    { text: 'Contact us', href: '#' },
-    { text: 'FAQs', href: '#' },
-    { text: 'Size Guide', href: '#' },
-    { text: 'Shipping & Return', href: '#' },
-]
-
-const shopLinks = [
-    { text: 'Men\'s Shopping', to: '/men' },
-    { text: 'Women\'s Shopping', to: '/women' },
-    { text: 'Kids\' Shopping', to: '/children' },
-    { text: 'Contact', to: '/contact' },
-]
-
-const companyLinks = [
-    { text: 'Our Story', href: '#' },
-    { text: 'Careers', href: '#' },
-    { text: 'Terms & Conditions', href: '#' },
-    { text: 'Privacy & Cookie Policy', href: '#' },
-]
-
-const contactLinks = [
-    { text: 'BE (+32) 478 91 47', href: 'tel:04789147' },
-    { text: 'US (+22) 156 7345', href: 'tel:01567345' },
-    { text: 'support@trendloom.com', href: 'mailto:support@trendloom.com' },
-    { text: 'sales@trendloom.com', href: 'mailto:sales@trendloom.com' },
-]
+export default {
+    components: {
+        LogoDescription,
+        CopyrightSection,
+        FooterLinks
+    },
+    data() {
+        return {
+            supportLinks: [
+                { text: 'Contact us', href: '#' },
+                { text: 'FAQs', href: '#' },
+                { text: 'Size Guide', href: '#' },
+                { text: 'Shipping & Return', href: '#' },
+            ],
+            shopLinks: [
+                { text: 'Men\'s Shopping', to: '/men' },
+                { text: 'Women\'s Shopping', to: '/women' },
+                { text: 'Kids\' Shopping', to: '/children' },
+                { text: 'Contact', to: '/contact' },
+            ],
+            companyLinks: [
+                { text: 'Our Story', href: '#' },
+                { text: 'Careers', href: '#' },
+                { text: 'Terms & Conditions', href: '#' },
+                { text: 'Privacy & Cookie Policy', href: '#' },
+            ],
+            contactLinks: [
+                { text: 'BE (+32) 478 91 47', href: 'tel:04789147' },
+                { text: 'US (+22) 156 7345', href: 'tel:01567345' },
+                { text: 'support@trendloom.com', href: 'mailto:support@trendloom.com' },
+                { text: 'sales@trendloom.com', href: 'mailto:sales@trendloom.com' },
+            ]
+        }
+    }
+}
 </script>
 
 <template>
