@@ -1,10 +1,21 @@
-<script setup>
+<script>
 import { AiOutlineShopping } from "vue3-icons/ai";
 
-const props = defineProps({
-    cartItemCount: Number,
-    cartTotal: Number,
-});
+export default {
+    components: {
+        AiOutlineShopping
+    },
+    props: {
+        cartItemCount: {
+            type: Number,
+            required: true
+        },
+        cartTotal: {
+            type: Number,
+            required: true
+        }
+    }
+}
 </script>
 
 <template>
