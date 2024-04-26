@@ -1,63 +1,73 @@
-<script setup>
+<script>
 import { AiOutlineClose } from "vue3-icons/ai";
-import { ref } from "vue";
 import ProductItem from "./ProductItem.vue"
 import CartMenuHeader from "./CartMenuHeader.vue"
 import CartMenuFooter from './CartMenuFooter.vue';
 
-const products = ref(
-    [
-        {
-            id: 1,
-            imageUrl: "https://via.placeholder.com/150",
-            title: "Product 1",
-            color: "Black",
-            size: "M",
-            quantity: 3,
-            price: 410.00
-        },
-        {
-            id: 2,
-            imageUrl: "https://via.placeholder.com/150",
-            title: "Product 1",
-            color: "Black",
-            size: "M",
-            quantity: 3,
-            price: 410.00
-        },
-        {
-            id: 3,
-            imageUrl: "https://via.placeholder.com/150",
-            title: "Product 1",
-            color: "Black",
-            size: "M",
-            quantity: 3,
-            price: 410.00
-        },
-        {
-            id: 4,
-            imageUrl: "https://via.placeholder.com/150",
-            title: "Product 1",
-            color: "Black",
-            size: "M",
-            quantity: 3,
-            price: 410.00
-        },
-    ]
-);
-
-const MAX_PRODUCTS_SHOWN = 4;
-const additionalProducts = products.value.length - MAX_PRODUCTS_SHOWN;
-
-const props = defineProps({
-    show: Boolean,
-});
-
-const emits = defineEmits(['close']);
-
-const close = () => {
-    emits('close');
-};
+export default {
+    components: {
+        ProductItem,
+        CartMenuHeader,
+        CartMenuFooter,
+        AiOutlineClose
+    },
+    props: {
+        show: Boolean
+    },
+    data() {
+        return {
+            products: [
+                {
+                    id: 1,
+                    imageUrl: "https://via.placeholder.com/150",
+                    title: "Product 1",
+                    color: "Black",
+                    size: "M",
+                    quantity: 3,
+                    price: 410.00
+                },
+                {
+                    id: 2,
+                    imageUrl: "https://via.placeholder.com/150",
+                    title: "Product 1",
+                    color: "Black",
+                    size: "M",
+                    quantity: 3,
+                    price: 410.00
+                },
+                {
+                    id: 3,
+                    imageUrl: "https://via.placeholder.com/150",
+                    title: "Product 1",
+                    color: "Black",
+                    size: "M",
+                    quantity: 3,
+                    price: 410.00
+                },
+                {
+                    id: 4,
+                    imageUrl: "https://via.placeholder.com/150",
+                    title: "Product 1",
+                    color: "Black",
+                    size: "M",
+                    quantity: 3,
+                    price: 410.00
+                },
+            ],
+            MAX_PRODUCTS_SHOWN: 4
+        }
+    },
+    computed: {
+        additionalProducts() {
+            return this.products.length - this.MAX_PRODUCTS_SHOWN;
+        }
+    },
+    methods: {
+        close() {
+            this.$emit('close');
+        }
+    }
+}
 </script>
 
 <template>
