@@ -1,5 +1,4 @@
 <script>
-import { ref, computed } from 'vue';
 import { GoEye, GoEyeClosed } from 'vue3-icons/go';
 
 export default {
@@ -56,7 +55,7 @@ export default {
         <div class="relative">
             <input :type="inputType" :id="id" class="text-sm block w-full p-2.5" :class="inputClasses"
                 :placeholder="placeholder">
-            <button v-if="props.type === 'password'" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
+            <button v-if="type === 'password'" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
                 @click="showPassword = !showPassword">
                 <GoEye v-if="showPassword" />
                 <GoEyeClosed v-else />
