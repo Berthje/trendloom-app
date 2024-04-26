@@ -16,6 +16,7 @@ const LINKS = [
   { name: 'Men', path: '/men' },
   { name: 'Women', path: '/women' },
   { name: 'Children', path: '/children' },
+  { name: 'Brands', path: '/brands' },
   { name: 'About us', path: '/about-us' },
   { name: 'Contacts', path: '/contact' },
 ];
