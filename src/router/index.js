@@ -31,6 +31,11 @@ const router = createRouter({
             component: BrandsOverviewPage,
         },
         {
+            path: "/brands/:id",
+            name: "brandDetail",
+            component: BrandsOverviewPage,
+        },
+        {
             path: "/login",
             name: "login",
             component: LoginPage,
