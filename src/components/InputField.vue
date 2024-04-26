@@ -1,46 +1,53 @@
-<script setup>
+<script>
 import { ref, computed } from 'vue';
 import { GoEye, GoEyeClosed } from 'vue3-icons/go';
 
-const showPassword = ref(false);
-
-const props = defineProps({
-    id: String,
-    label: String,
-    placeholder: String,
-    errorMessage: String,
-    status: {
-        type: String,
-        default: 'default',
-        validator: (value) => ['default', 'error'].includes(value),
+export default {
+    components: {
+        GoEye,
+        GoEyeClosed
     },
-    type: {
-        type: String,
-        default: 'text',
+    props: {
+        id: String,
+        label: String,
+        placeholder: String,
+        errorMessage: String,
+        status: {
+            type: String,
+            default: 'default',
+            validator: (value) => ['default', 'error'].includes(value),
+        },
+        type: {
+            type: String,
+            default: 'text',
+        }
+    },
+    data() {
+        return {
+            showPassword: false
+        }
+    },
+    computed: {
+        labelColor() {
+            if (this.status === 'error') {
+                return 'text-red-700';
+            }
+            return 'text-black';
+        },
+        inputType() {
+            if (this.type === 'password' && this.showPassword) {
+                return 'text';
+            }
+            return this.type;
+        },
+        inputClasses() {
+            if (this.status === 'error') {
+                return 'bg-red-100 border-b-2 border-red-300 text-red-900 placeholder-red-400 focus:ring-red-300 focus:border-red-300';
+            }
+            return 'bg-gray-100 border-b-2 border-gray-300 text-black placeholder-gray-400 focus:ring-gray-300 focus:border-gray-300';
+        }
     }
-});
-
-const labelColor = computed(() => {
-    if (props.status === 'error') {
-        return 'text-red-700';
-    }
-    return 'text-black';
-});
-
-const inputType = computed(() => {
-    if (props.type === 'password' && showPassword.value) {
-        return 'text';
-    }
-    return props.type;
-});
-
-const inputClasses = computed(() => {
-    if (props.status === 'error') {
-        return 'bg-red-100 border-b-2 border-red-300 text-red-900 placeholder-red-400 focus:ring-red-300 focus:border-red-300';
-    }
-    return 'bg-gray-100 border-b-2 border-gray-300 text-black placeholder-gray-400 focus:ring-gray-300 focus:border-gray-300';
-});
-
+}
 </script>
 
 <template>

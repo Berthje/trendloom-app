@@ -12,7 +12,8 @@ export default {
             type: Object,
             required: true
         }
-    }
+    },
+    emits: ['close']
 }
 </script>
 

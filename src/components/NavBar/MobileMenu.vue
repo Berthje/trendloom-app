@@ -16,6 +16,7 @@ export default {
         show: Boolean,
         links: Array
     },
+    emits: ['close'],
     methods: {
         close() {
             this.$emit('close');

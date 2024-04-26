@@ -23,6 +23,7 @@ export default {
     SearchModal,
     CartSummary
   },
+  emits: ['openMenu', 'closeMenu', 'openSearch', 'closeSearch', 'openCart', 'closeCart'],
   data() {
     return {
       LINKS: [

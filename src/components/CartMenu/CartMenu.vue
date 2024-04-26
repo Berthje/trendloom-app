@@ -14,6 +14,7 @@ export default {
     props: {
         show: Boolean
     },
+    emits: ['close'],
     data() {
         return {
             products: [
@@ -84,7 +85,8 @@ export default {
                 </div>
                 <div v-else class="flex flex-grow">
                     <ul class="overflow-y-auto flex-grow">
-                        <ProductItem v-for="(product, index) in products.slice(0, MAX_PRODUCTS_SHOWN)" :key="product.id" :product="product" @close="close" />
+                        <ProductItem v-for="(product, index) in products.slice(0, MAX_PRODUCTS_SHOWN)" :key="product.id"
+                            :product="product" @close="close" />
                     </ul>
                     <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
                         ..there {{ additionalProducts === 1 ? 'is' : 'are' }} {{ additionalProducts }} more {{

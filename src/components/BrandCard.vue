@@ -1,9 +1,16 @@
-<script setup>
-const props = defineProps({
-    brandId: Number,
-    brandName: String,
-    brandImage: String,
-});
+<script>
+import { RouterLink } from 'vue-router';
+
+export default {
+    components: {
+        RouterLink
+    },
+    props: {
+        brandId: Number,
+        brandName: String,
+        brandImage: String,
+    }
+}
 </script>
 
 <template>

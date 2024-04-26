@@ -3,6 +3,7 @@ export default {
   props: {
     show: Boolean
   },
+  emits: ['close'],
   methods: {
     close() {
       this.$emit('close');

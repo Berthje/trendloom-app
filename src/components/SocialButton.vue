@@ -1,19 +1,21 @@
-<script setup>
-import { computed } from 'vue';
+<script>
 import { FaFacebookF, FaGoogle } from 'vue3-icons/fa';
 
-const props = defineProps({
-    platform: String,
-    buttonText: String,
-});
-
-const iconComponent = computed(() => {
-    if (props.platform === 'Facebook') {
-        return FaFacebookF;
-    } else if (props.platform === 'Google') {
-        return FaGoogle;
+export default {
+    props: {
+        platform: String,
+        buttonText: String,
+    },
+    computed: {
+        iconComponent() {
+            if (this.platform === 'Facebook') {
+                return FaFacebookF;
+            } else if (this.platform === 'Google') {
+                return FaGoogle;
+            }
+        }
     }
-});
+}
 </script>
 
 <template>

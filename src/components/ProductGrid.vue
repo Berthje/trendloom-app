@@ -1,8 +1,14 @@
-<script setup>
+<script>
 import ProductCard from './ProductCard.vue';
-const props = defineProps({
-    products: Array
-});
+
+export default {
+    components: {
+        ProductCard
+    },
+    props: {
+        products: Array
+    }
+}
 </script>
 
 <template>

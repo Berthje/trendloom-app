@@ -1,10 +1,17 @@
-<script setup>
-const props = defineProps({
-    imageSrc: String,
-    altText: String,
-    title: String,
-    productCount: String,
-});
+<script>
+import { RouterLink } from 'vue-router';
+
+export default {
+    components: {
+        RouterLink
+    },
+    props: {
+        imageSrc: String,
+        altText: String,
+        title: String,
+        productCount: String,
+    }
+}
 </script>
 <template>
     <RouterLink to="/women" class="group">
