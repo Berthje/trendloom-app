@@ -21,6 +21,7 @@ export default {
             service: new ProductDetailPage(),
             imageRefs: [],
             product: null,
+            selectedSize: null,
             mainImage: '',
             currentIndex: 0
         }
@@ -41,6 +42,9 @@ export default {
             if (this.product.media && this.product.media.length > 0) {
                 this.mainImage = this.product.media[0].image_url;
             }
+        },
+        selectSize(sizeObj) {
+            this.selectedSize = sizeObj;
         }
     },
     created() {
@@ -70,7 +74,8 @@ export default {
                     <img v-for="(mediaObj, index) in product.media" :key="index" :src="mediaObj.image_url"
                         class="w-24 min:w-24 sm:w-full h-24 object-cover cursor-pointer opacity-50 transition-all duration-300 ease-in-out hover:-translate-y-1"
                         :class="{ '!opacity-100': mainImage === mediaObj.image_url }"
-                        @click="mainImage = mediaObj.image_url" :alt="product.name" :ref="el => (imageRefs[index] = el)">
+                        @click="mainImage = mediaObj.image_url" :alt="product.name"
+                        :ref="el => (imageRefs[index] = el)">
                 </div>
             </div>
             <div class="mt-8 lg:mt-0 lg:w-1/2">
@@ -88,8 +93,9 @@ export default {
                 <div class="mb-6" v-if="product">
                     <p class="text-gray-400 text-sm mb-1">Size:</p>
                     <ul v-if="product.sizes.length > 0" class="flex space-x-2">
-                        <li v-for="(sizeObj, index) in product.sizes" :key="index"
-                            class="w-8 h-8 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
+                        <li v-for="(sizeObj, index) in product.sizes" :key="index" @click="selectSize(sizeObj.size)"
+                            class="w-8 h-8 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs cursor-pointer"
+                            :class="{ 'bg-black text-white border-black': selectedSize === sizeObj.size }">
                             {{ sizeObj.size }}
                         </li>
                     </ul>
