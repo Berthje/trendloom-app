@@ -26,7 +26,7 @@ export default {
         <div>
             <ul v-if="product.sizes && product.sizes.length > 0" class="flex space-x-1 my-2">
                 <li v-for="(sizeObj, index) in product.sizes" :key="index"
-                    class="w-5 h-5 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
+                    class="min-w-min px-2 h-5 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
                     {{ sizeObj.size }}
                 </li>
             </ul>
