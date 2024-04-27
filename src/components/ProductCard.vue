@@ -37,7 +37,7 @@ export default {
         }
     },
     mounted() {
-        console.log(this.product);
+        console.log(this.product.media[0].image_url);
     }
 }
 
@@ -45,7 +45,7 @@ export default {
 <template>
     <RouterLink :to="`/shop/product/${product.id}`" class="flex flex-col space-y-2 hover:scale-[1.01]">
         <div>
-            <img :src="product.image" :alt="product.name" class="w-full">
+            <img :src="product.media[0].image_url" :alt="product.name" class="w-full aspect-square object-cover">
         </div>
         <div>
             <ul class="flex space-x-1">
@@ -61,7 +61,7 @@ export default {
                     {{ sizeObj.size }}
                 </li>
             </ul>
-            <h2 class="font-bold text-lg">{{ product.title }}</h2>
+            <h2 class="font-bold text-lg">{{ product.name }}</h2>
             <div class="text-gray-500 mb-2">
                 <RouterLink :to="`/brands/${product.brand.id}`"
                     class="hover:underline hover:text-gray-800 hover:font-medium">
