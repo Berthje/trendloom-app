@@ -12,8 +12,7 @@ export default {
 </script>
 
 <template>
-    <RouterLink :to="`/brands/${brand.id}`" class="block mx-auto">
-        <img :src="brand.logo_url" :alt="brand.name" />
-        <h2 class="text-center mt-1">{{ brand.name }}</h2>
+    <RouterLink :to="`/brands/${brand.id}`" class="flex justify-center items-center hover:opacity-50">
+        <img :src="brand.logo_url" :alt="brand.name" class="w-24"/>
     </RouterLink>
 </template>
