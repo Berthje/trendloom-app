@@ -4,10 +4,12 @@ export default class MenPageService {
     async allProducts(filterOptions) {
         const url = new URL(`${BASE_URL}/products`);
         url.searchParams.append("sort", filterOptions.sorting);
-        url.searchParams.append("itemCount", filterOptions.productCount);
+        url.searchParams.append("itemCount", filterOptions.itemCount);
+
+        console.log(url)
 
         const response = await fetch(url);
-        
+
         return response.json();
     }
 }
