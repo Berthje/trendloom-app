@@ -35,13 +35,17 @@ export default {
                 khaki: '#F0E68C'
             }
         }
+    },
+    mounted() {
+        console.log(this.product);
     }
 }
+
 </script>
 <template>
     <RouterLink :to="`/shop/product/${product.id}`" class="flex flex-col space-y-2 hover:scale-[1.01]">
         <div>
-            <img :src="product.image" :alt="product.title" class="w-full">
+            <img :src="product.image" :alt="product.name" class="w-full">
         </div>
         <div>
             <ul class="flex space-x-1">
@@ -52,18 +56,18 @@ export default {
                 </li>
             </ul>
             <ul v-if="product.sizes && product.sizes.length > 0" class="flex space-x-1 my-2">
-                <li v-for="(size, index) in product.sizes" :key="index"
+                <li v-for="(sizeObj, index) in product.sizes" :key="index"
                     class="w-5 h-5 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
-                    {{ size }}
+                    {{ sizeObj.size }}
                 </li>
             </ul>
             <h2 class="font-bold text-lg">{{ product.title }}</h2>
             <div class="text-gray-500 mb-2">
-                <RouterLink :to="`/brands/${product.brand}`"
+                <RouterLink :to="`/brands/${product.brand.id}`"
                     class="hover:underline hover:text-gray-800 hover:font-medium">
-                    <h3>{{ product.brand }}</h3>
+                    <h3>{{ product.brand.name }}</h3>
                 </RouterLink>
-                <h4>{{ product.price }}</h4>
+                <h4>€{{ product.price }}</h4>
             </div>
         </div>
     </RouterLink>
