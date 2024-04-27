@@ -19,32 +19,28 @@ export default {
     data() {
         return {
             service: new ProductDetailPage(),
-            tempImages: [
-                '/images/accessories.jpeg',
-                '/images/fashion.jpeg',
-                '/images/featured.jpeg',
-                '/images/men.jpeg',
-            ],
-
             imageRefs: [],
             product: null,
-            mainImage: '/images/accessories.jpeg',
+            mainImage: '',
             currentIndex: 0
         }
     },
     methods: {
         nextImage() {
-            this.currentIndex = (this.currentIndex + 1) % this.tempImages.length;
-            this.mainImage = this.tempImages[this.currentIndex];
+            this.currentIndex = (this.currentIndex + 1) % this.product.media.length;
+            this.mainImage = this.product.media[this.currentIndex].image_url;
             this.imageRefs[this.currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         },
         prevImage() {
-            this.currentIndex = (this.currentIndex - 1 + this.tempImages.length) % this.tempImages.length;
-            this.mainImage = this.tempImages[this.currentIndex];
+            this.currentIndex = (this.currentIndex - 1 + this.product.media.length) % this.product.media.length;
+            this.mainImage = this.product.media[this.currentIndex].image_url;
             this.imageRefs[this.currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         },
         async fetchProduct(productId) {
             this.product = await this.service.getProduct(productId);
+            if (this.product.media && this.product.media.length > 0) {
+                this.mainImage = this.product.media[0].image_url;
+            }
         }
     },
     created() {
@@ -71,10 +67,10 @@ export default {
                 </div>
                 <div v-if="product"
                     class="flex overflow-x-auto scrollbar-thin mt-4 space-x-4 sm:mt-0 sm:overflow-y-auto sm:overflow-x-hidden sm:flex-col sm:space-x-0 sm:space-y-4">
-                    <img v-for="(imageURL, index) in tempImages" :key="index" :src="imageURL"
+                    <img v-for="(mediaObj, index) in product.media" :key="index" :src="mediaObj.image_url"
                         class="w-24 min:w-24 sm:w-full h-24 object-cover cursor-pointer opacity-50 transition-all duration-300 ease-in-out hover:-translate-y-1"
-                        :class="{ '!opacity-100': mainImage === imageURL }" @click="mainImage = imageURL" alt="Product"
-                        :ref="el => (imageRefs[index] = el)">
+                        :class="{ '!opacity-100': mainImage === mediaObj.image_url }"
+                        @click="mainImage = mediaObj.image_url" :alt="product.name" :ref="el => (imageRefs[index] = el)">
                 </div>
             </div>
             <div class="mt-8 lg:mt-0 lg:w-1/2">

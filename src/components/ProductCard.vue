@@ -12,9 +12,6 @@ export default {
         return {
         }
     },
-    mounted() {
-        console.log(this.product.media[0].image_url);
-    }
 }
 
 </script>
