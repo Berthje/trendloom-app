@@ -19,7 +19,8 @@ export default {
   },
   methods: {
     async fetchBrands() {
-      this.brands = await this.service.allBrands();
+      const response = await this.service.allBrands();
+      this.brands = response.data;
     }
   }
 }
