@@ -30,8 +30,7 @@ export default {
     <ShopHeader title="Our Brands" :links="[{ name: 'Home', path: '/' }, { name: 'Brands', path: '/brands' }]" />
     <div
       class="px-3 py-8 grid grid-cols-2 max-w-screen-xl mx-auto sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-4 justify-center">
-      <BrandCard v-for="brand in brands" :key="brand.id" :brandName="brand.name" :brandImage="brand.logo_url"
-        :brandId="brand.id" />
+      <BrandCard v-for="brand in brands" :key="brand.id" :brand="brand" />
     </div>
   </main>
 </template>

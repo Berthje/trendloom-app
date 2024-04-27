@@ -6,16 +6,14 @@ export default {
         RouterLink
     },
     props: {
-        brandId: Number,
-        brandName: String,
-        brandImage: String,
+        brand: Object
     }
 }
 </script>
 
 <template>
-    <RouterLink :to="`/brands/${brandId}`" class="block mx-auto">
-        <img :src="brandImage" :alt="brandName" />
-        <h2 class="text-center mt-1">{{ brandName }}</h2>
+    <RouterLink :to="`/brands/${brand.id}`" class="block mx-auto">
+        <img :src="brand.image_url" :alt="brand.name" />
+        <h2 class="text-center mt-1">{{ brand.name }}</h2>
     </RouterLink>
 </template>
