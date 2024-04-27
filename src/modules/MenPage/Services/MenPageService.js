@@ -1,8 +1,11 @@
-import { BASE_URL } from '../../Core/config';
+import { BASE_URL } from "../../Core/config";
 
 export default class MenPageService {
-    async allProducts() {
-        const url = `${BASE_URL}/categories/2/products`;
+    async allProducts(filterOptions) {
+        const url = new URL(`${BASE_URL}/categories/2/products`);
+        url.searchParams.append("sort", filterOptions.sorting);
+        url.searchParams.append("itemCount", filterOptions.productCount);
+
         const response = await fetch(url);
         return response.json();
     }

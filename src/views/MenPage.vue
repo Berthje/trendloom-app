@@ -13,7 +13,16 @@ export default {
   data() {
     return {
       service: new MenPageService(),
-      products: []
+      products: [],
+      filterOptions: {
+        sorting: 'default',
+        productCount: '12'
+      }
+    }
+  },
+  watch: {
+    filterOptions(newValue, oldValue){
+      this.fetchProducts();
     }
   },
   created() {
@@ -21,7 +30,7 @@ export default {
   },
   methods: {
     async fetchProducts() {
-      this.products = await this.service.allProducts();
+      this.products = await this.service.allProducts(this.filterOptions);
     }
   }
 }
@@ -31,7 +40,7 @@ export default {
   <main>
     <ShopHeader title="Men's Shop" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
-      <FilterBar />
+      <FilterBar v-model="filterOptions"/>
       <ProductGrid :products="products" />
     </div>
   </main>
