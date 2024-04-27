@@ -5,6 +5,7 @@ import { RiArrowRightSLine, RiArrowLeftSLine } from "vue3-icons/ri";
 import { AiOutlineShopping } from "vue3-icons/ai";
 import { FaRegHeart } from "vue3-icons/fa";
 import QuantitySelector from '@/components/QuantitySelector.vue';
+import ProductDetailPage from '@/modules/ProductDetailPage/Services/ProductDetailService';
 
 export default {
     components: {
@@ -17,12 +18,14 @@ export default {
     },
     data() {
         return {
+            service: new ProductDetailPage(),
             tempImages: [
                 '/images/accessories.jpeg',
                 '/images/fashion.jpeg',
                 '/images/featured.jpeg',
                 '/images/men.jpeg',
             ],
+
             imageRefs: [],
             product: null,
             mainImage: '/images/accessories.jpeg',
@@ -39,19 +42,22 @@ export default {
             this.currentIndex = (this.currentIndex - 1 + this.tempImages.length) % this.tempImages.length;
             this.mainImage = this.tempImages[this.currentIndex];
             this.imageRefs[this.currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        },
+        async fetchProduct(productId) {
+            this.product = await this.service.getProduct(productId);
         }
     },
     created() {
         const route = useRoute();
         const productId = route.params.id;
-        //later fetch product
+        this.fetchProduct(productId);
     }
 }
 </script>
 
 <template>
     <main>
-        <ShopHeader title="Belted Jackets" :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: '/shop' }]" />
+        <ShopHeader :title="product.name" :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: '/shop' }]" />
         <section class="px-4 pt-4 pb-16 lg:flex lg:max-w-screen-xl lg:mx-auto lg:space-x-8">
             <div class="sm:flex sm:flex-row-reverse lg:w-1/2">
                 <div class="relative flex-grow sm:ml-4">
@@ -63,7 +69,7 @@ export default {
                     </button>
                     <img :src="mainImage" alt="Main product" class="w-full h-full object-cover">
                 </div>
-                <div
+                <div v-if="product"
                     class="flex overflow-x-auto scrollbar-thin mt-4 space-x-4 sm:mt-0 sm:overflow-y-auto sm:overflow-x-hidden sm:flex-col sm:space-x-0 sm:space-y-4">
                     <img v-for="(imageURL, index) in tempImages" :key="index" :src="imageURL"
                         class="w-24 min:w-24 sm:w-full h-24 object-cover cursor-pointer opacity-50 transition-all duration-300 ease-in-out hover:-translate-y-1"
@@ -72,20 +78,23 @@ export default {
                 </div>
             </div>
             <div class="mt-8 lg:mt-0 lg:w-1/2">
-                <h1 class="font-bold text-3xl">Belted Jackets</h1>
-                <h2 class="text-2xl my-1">€155.50</h2>
-                <ul class="flex flex-col space-y-2 my-2">
-                    <li>Brand: <RouterLink to="/brands/brandNameHere" class="text-gray-400 underline hover:text-black">
-                            Booja Booja</RouterLink>
+                <h1 class="font-bold text-3xl" v-if="product">{{ product.name }}</h1>
+                <h2 class="text-2xl my-1" v-if="product">€{{ product.price }}</h2>
+                <ul class="flex flex-col space-y-2 my-2" v-if="product">
+                    <li>Brand:
+                        <RouterLink :to="`/brands/${product.brand.id}`"
+                            class="text-gray-400 underline hover:text-black">
+                            {{ product.brand.name }}
+                        </RouterLink>
                     </li>
-                    <li>SKU: <span class="text-gray-400">N/A</span></li>
+                    <li>SKU: <span class="text-gray-400">{{ product.sku }}</span></li>
                 </ul>
-                <div class="mb-6">
+                <div class="mb-6" v-if="product">
                     <p class="text-gray-400 text-sm mb-1">Size:</p>
-                    <ul v-if="['S', 'M', 'L', 'XL'].length > 0" class="flex space-x-2">
-                        <li v-for="(size, index) in ['S', 'M', 'L', 'XL']" :key="index"
+                    <ul v-if="product.sizes.length > 0" class="flex space-x-2">
+                        <li v-for="(sizeObj, index) in product.sizes" :key="index"
                             class="w-8 h-8 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs">
-                            {{ size }}
+                            {{ sizeObj.size }}
                         </li>
                     </ul>
                 </div>
@@ -100,8 +109,7 @@ export default {
                     <FaRegHeart />
                     <p>Add to wishlist</p>
                 </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse temporibus quam nemo aliquam? Maiores
-                    repudiandae minus expedita obcaecati quam illo aut odit nostrum optio?</p>
+                <p v-if="product">{{ product.description }}</p>
             </div>
         </section>
     </main>
