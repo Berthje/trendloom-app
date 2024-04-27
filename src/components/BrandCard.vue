@@ -13,6 +13,6 @@ export default {
 
 <template>
     <RouterLink :to="`/brands/${brand.id}`" class="flex justify-center items-center hover:opacity-50">
-        <img :src="brand.logo_url" :alt="brand.name" class="w-24"/>
+        <img :src="brand.logo_url" :alt="brand.name" class="w-24" />
     </RouterLink>
 </template>
