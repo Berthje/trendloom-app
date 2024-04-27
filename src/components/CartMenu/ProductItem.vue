@@ -31,12 +31,6 @@ export default {
             <div class="text-[0.925rem]">
                 <dl class="text-[#858585]">
                     <div class="flex space-x-1">
-                        <dt>Color:</dt>
-                        <dd>
-                            <p>{{ product.color }}</p>
-                        </dd>
-                    </div>
-                    <div class="flex space-x-1">
                         <dt>Size:</dt>
                         <dd>
                             <p>{{ product.size }}</p>
