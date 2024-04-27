@@ -16,7 +16,7 @@ export default {
       products: [],
       filterOptions: {
         sorting: 'default',
-        itemCount: '1'
+        itemCount: '12'
       }
     }
   },

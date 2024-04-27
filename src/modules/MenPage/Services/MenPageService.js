@@ -6,8 +6,6 @@ export default class MenPageService {
         url.searchParams.append("sort", filterOptions.sorting);
         url.searchParams.append("itemCount", filterOptions.itemCount);
 
-        console.log(url)
-
         const response = await fetch(url);
 
         return response.json();
