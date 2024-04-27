@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     async fetchProducts() {
-      this.products = await this.service.allProducts(this.filterOptions);
+      const products = await this.service.allProducts(this.filterOptions);
+      this.products = products.data;
     }
   }
 }
@@ -40,7 +41,7 @@ export default {
   <main>
     <ShopHeader title="Men's Shop" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
-      <FilterBar v-model="filterOptions"/>
+      <FilterBar v-model:filterOptions="filterOptions"/>
       <ProductGrid :products="products" />
     </div>
   </main>
