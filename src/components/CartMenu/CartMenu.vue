@@ -14,7 +14,7 @@ export default {
     props: {
         show: Boolean
     },
-    emits: ['close'],
+    emits: ['close', 'updateCart'],
     data() {
         return {
             products: [
@@ -75,6 +75,9 @@ export default {
         close() {
             this.$emit('close');
         }
+    },
+    created() {
+        this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
     }
 }
 </script>
