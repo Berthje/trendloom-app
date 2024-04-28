@@ -20,7 +20,7 @@ export default {
             shopLinks: [
                 { text: 'Men\'s Shopping', to: '/men' },
                 { text: 'Women\'s Shopping', to: '/women' },
-                { text: 'Kids\' Shopping', to: '/children' },
+                { text: 'Kids\' Shopping', to: '/kids' },
                 { text: 'Contact', to: '/contact' },
             ],
             companyLinks: [

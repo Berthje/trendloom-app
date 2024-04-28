@@ -30,7 +30,7 @@ export default {
         { name: 'Home', path: '/' },
         { name: 'Men', path: '/men' },
         { name: 'Women', path: '/women' },
-        { name: 'Children', path: '/children' },
+        { name: 'Kids', path: '/kids' },
         { name: 'Brands', path: '/brands' },
         { name: 'About us', path: '/about-us' },
         { name: 'Contacts', path: '/contact' },

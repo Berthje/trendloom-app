@@ -3,11 +3,12 @@ import LandingPage from "../views/LandingPage.vue";
 import MenPage from "../views/MenPage.vue";
 import WomenPage from "../views/WomenPage.vue";
 import LoginPage from "../views/LoginPage.vue";
+import KidsPage from "../views/KidsPage.vue";
+import ShopPage from "../views/ShopPage.vue";
 import RegisterPage from "../views/RegisterPage.vue";
 import ProductDetailPage from "../views/ProductDetailPage.vue";
 import BrandDetailPage from "../views/BrandDetailPage.vue";
 import BrandsOverviewPage from "../views/BrandsOverviewPage.vue";
-
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,16 @@ const router = createRouter({
             path: "/women",
             name: "women",
             component: WomenPage,
+        },
+        {
+            path: "/kids",
+            name: "kids",
+            component: KidsPage,
+        },
+        {
+            path: "/shop",
+            name: "shop",
+            component: ShopPage,
         },
         {
             path: "/shop/product/:id",
@@ -53,7 +64,7 @@ const router = createRouter({
             name: "register",
             component: RegisterPage,
             meta: { showTopAndBottombars: false },
-        }
+        },
     ],
 });
 
