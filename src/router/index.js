@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LandingPage from "../views/LandingPage.vue";
 import MenPage from "../views/MenPage.vue";
+import WomenPage from "../views/WomenPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import RegisterPage from "../views/RegisterPage.vue";
 import ProductDetailPage from "../views/ProductDetailPage.vue";
@@ -20,6 +21,11 @@ const router = createRouter({
             path: "/men",
             name: "men",
             component: MenPage,
+        },
+        {
+            path: "/women",
+            name: "women",
+            component: WomenPage,
         },
         {
             path: "/shop/product/:id",
