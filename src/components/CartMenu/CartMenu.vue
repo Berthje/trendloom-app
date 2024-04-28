@@ -58,9 +58,17 @@ export default {
             MAX_PRODUCTS_SHOWN: 4
         }
     },
+    watch: {
+        products(newProducts) {
+            this.$emit('updateCart', { itemCount: newProducts.length, totalPrice: this.totalPrice });
+        }
+    },
     computed: {
         additionalProducts() {
             return this.products.length - this.MAX_PRODUCTS_SHOWN;
+        },
+        totalPrice() {
+            return this.products.reduce((total, product) => total + product.price * product.quantity, 0);
         }
     },
     methods: {

@@ -10,7 +10,7 @@ export default {
             type: Number,
             required: true
         },
-        cartTotal: {
+        cartTotalPrice: {
             type: Number,
             required: true
         }
@@ -27,6 +27,6 @@ export default {
                 {{ cartItemCount }}
             </span>
         </div>
-        <p class="hidden lg:block ml-2 text-[0.875rem] font-bold">CART €{{ cartTotal.toFixed(2) }}</p>
+        <p class="hidden lg:block ml-2 text-[0.875rem] font-bold">CART €{{ cartTotalPrice.toFixed(2) }}</p>
     </div>
 </template>

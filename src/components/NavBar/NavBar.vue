@@ -40,7 +40,7 @@ export default {
       cartOpen: false,
       searchQuery: '',
       cartItemCount: 0,
-      cartTotal: 0.00
+      cartTotalPrice: 0.00
     }
   },
   methods: {
@@ -50,6 +50,10 @@ export default {
     closeSearch() { this.searchOpen = false; },
     openCart() { this.cartOpen = true; },
     closeCart() { this.cartOpen = false; },
+    updateCart({ itemCount, totalPrice }) {
+      this.cartItemCount = itemCount;
+      this.cartTotalPrice = totalPrice;
+    }
   },
   watch: {
     menuOpen(newVal) {
@@ -96,7 +100,7 @@ export default {
             <FaRegHeart size="1.25rem" />
             <IoLanguage size="1.25rem" />
           </div>
-          <CartSummary :cartItemCount="cartItemCount" :cartTotal="cartTotal" @click="openCart" />
+          <CartSummary :cartItemCount="cartItemCount" :cartTotalPrice="cartTotalPrice" @click="openCart" />
         </div>
       </nav>
     </div>
@@ -104,5 +108,5 @@ export default {
   <DarkOverlay :show="menuOpen || searchOpen || cartOpen" @close="closeMenu; closeSearch; closeCart" />
   <MobileMenu :show="menuOpen" :links="LINKS" @close="closeMenu" />
   <SearchModal v-model="searchQuery" :show="searchOpen" @close="closeSearch" />
-  <CartMenu :show="cartOpen" @close="closeCart" />
+  <CartMenu :show="cartOpen" @close="closeCart" @updateCart="updateCart" />
 </template>
