@@ -80,7 +80,7 @@ export default {
             </div>
             <div class="mt-8 lg:mt-0 lg:w-1/2">
                 <h1 class="font-bold text-3xl" v-if="product">{{ product.name }}</h1>
-                <h2 class="text-2xl my-1" v-if="product">€{{ product.price }}</h2>
+                <h2 class="text-2xl my-1" v-if="product">€{{ Number(product.price).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}</h2>
                 <ul class="flex flex-col space-y-2 my-2" v-if="product">
                     <li>Brand:
                         <RouterLink :to="`/brands/${product.brand.id}`"

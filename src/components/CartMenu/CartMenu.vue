@@ -5,6 +5,7 @@ import CartMenuHeader from "./CartMenuHeader.vue"
 import CartMenuFooter from './CartMenuFooter.vue';
 
 export default {
+    name: 'CartMenu',
     components: {
         ProductItem,
         CartMenuHeader,
@@ -105,7 +106,7 @@ export default {
                                 'product' }}
                     </p>
                 </div>
-                <CartMenuFooter />
+                <CartMenuFooter :subtotal="totalPrice"/>
             </nav>
             <AiOutlineClose v-show="show"
                 class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-[23rem] top-3"

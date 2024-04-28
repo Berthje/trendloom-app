@@ -41,7 +41,7 @@ export default {
                     {{ product.quantity }} ×
                     <span>
                         <bdi>€</bdi>
-                        <span>{{ product.price.toFixed(2) }}</span>
+                        <span>{{ Number(product.price).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}</span>
                     </span>
                 </span>
             </div>

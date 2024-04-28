@@ -35,7 +35,7 @@ export default {
                     class="hover:underline hover:text-gray-800 hover:font-medium">
                     <h3>{{ product.brand.name }}</h3>
                 </RouterLink>
-                <h4>€{{ product.price }}</h4>
+                <h4>€{{ Number(product.price).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}</h4>
             </div>
         </div>
     </RouterLink>
