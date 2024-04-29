@@ -17,16 +17,60 @@ export default {
             lastName: '',
             email: '',
             password: '',
+            firstNameStatus: 'default',
+            lastNameStatus: 'default',
+            emailStatus: 'default',
+            passwordStatus: 'default',
         }
     },
     methods: {
+        validateFirstName() {
+            if (!this.firstName) {
+                this.firstNameStatus = 'error';
+                return false;
+            }
+            this.firstNameStatus = 'default';
+            return true;
+        },
+        validateLastName() {
+            if (!this.lastName) {
+                this.lastNameStatus = 'error';
+                return false;
+            }
+            this.lastNameStatus = 'default';
+            return true;
+        },
+        validateEmail() {
+            const emailRegex = /^\S+@\S+\.\S+$/;
+            if (!this.email || !emailRegex.test(this.email)) {
+                this.emailStatus = 'error';
+                return false;
+            }
+            this.emailStatus = 'default';
+            return true;
+        },
+        validatePassword() {
+            if (!this.password || this.password.length < 8) {
+                this.passwordStatus = 'error';
+                return false;
+            }
+            this.passwordStatus = 'default';
+            return true;
+        },
         register() {
-            console.log({
-                firstName: this.firstName,
-                lastName: this.lastName,
-                email: this.email,
-                password: this.password,
-            });
+            const isFirstNameValid = this.validateFirstName();
+            const isLastNameValid = this.validateLastName();
+            const isEmailValid = this.validateEmail();
+            const isPasswordValid = this.validatePassword();
+
+            if (isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid) {
+                console.log({
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    email: this.email,
+                    password: this.password,
+                });
+            }
         }
     }
 }
@@ -45,16 +89,16 @@ export default {
             <div class="flex flex-col space-y-4">
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <InputField id="firstname" label="First Name" placeholder="John"
-                        errorMessage="The first name field is required." status="default" type="text"
+                        errorMessage="The first name field is required." :status="firstNameStatus" type="text"
                         class="sm:w-1/2" v-model="firstName"/>
                     <InputField id="lastname" label="Last Name" placeholder="Doe"
-                        errorMessage="The last name field is required." status="default" type="text" class="sm:w-1/2" v-model="lastName"
+                        errorMessage="The last name field is required." :status="lastNameStatus" type="text" class="sm:w-1/2" v-model="lastName"
                     />
                 </div>
                 <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
-                    errorMessage="The email must be a valid email address." status="default" type="email" v-model="email"/>
+                    errorMessage="The email must be a valid email address." :status="emailStatus" type="email" v-model="email"/>
                 <InputField id="password" label="Password" placeholder="your password"
-                    errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
+                    errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." :status="passwordStatus"
                     type="password" v-model="password"/>
                 <button
                     class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black" @click="register">Register
