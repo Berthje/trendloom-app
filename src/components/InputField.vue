@@ -20,13 +20,12 @@ export default {
         type: {
             type: String,
             default: 'text',
-        },
-        value: String
+        }
     },
     emits: ['update:value'],
     data() {
         return {
-            inputValue: this.value,
+            inputValue: '',
             showPassword: false
         }
     },
