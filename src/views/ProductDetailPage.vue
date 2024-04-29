@@ -103,7 +103,9 @@ export default {
                 <div class="flex space-x-6 h-10">
                     <QuantitySelector />
                     <button
-                        class="w-full flex items-center justify-center bg-black text-white uppercase text-[0.925rem] hover:text-black hover:bg-white border border-black border-solid transition-all duration-300 ease-in-out">
+                        class="w-full flex items-center justify-center bg-black text-white uppercase text-[0.925rem] hover:text-black hover:bg-white border border-black border-solid transition-all duration-300 ease-in-out disabled:cursor-not-allowed disabled:opacity-50"
+                        :disabled="!selectedSize"
+                        >
                         <AiOutlineShopping size="20" class="mr-2" /> Add to cart
                     </button>
                 </div>
