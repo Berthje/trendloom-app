@@ -10,6 +10,7 @@ export default class RegisterPageService {
             },
             body: JSON.stringify(accountData)
         });
-        return response.json();
+        const data = await response.json();
+        return data;
     }
 }

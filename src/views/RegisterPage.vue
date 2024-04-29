@@ -73,10 +73,8 @@ export default {
                     password: this.password
                 });
 
-                console.log(response)
-
-                if(response.success) {
-                    this.$router.push({name: 'LoginPage'});
+                if(response.id) {
+                    this.$router.push({name: 'login'});
                 }
             }
         }
