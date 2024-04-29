@@ -5,6 +5,7 @@ import ProductGrid from '@/components/ProductGrid.vue';
 import KidsPageService from '@/modules/KidsPage/Services/KidsPageService';
 
 export default {
+  name: 'KidsPage',
   components: {
     ShopHeader,
     FilterBar,

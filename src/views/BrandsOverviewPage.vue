@@ -4,6 +4,7 @@ import BrandCard from '@/components/BrandCard.vue'
 import BrandsOverviewPageService from '@/modules/BrandsOverviewPage/Services/BrandsOverviewPageService'
 
 export default {
+  name: 'BrandsOverviewPage',
   components: {
     ShopHeader,
     BrandCard

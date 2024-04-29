@@ -5,6 +5,7 @@ import ProductGrid from '@/components/ProductGrid.vue';
 import MenPageService from '@/modules/MenPage/Services/MenPageService';
 
 export default {
+  name: 'MenPage',
   components: {
     ShopHeader,
     FilterBar,

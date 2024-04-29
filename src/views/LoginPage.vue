@@ -5,6 +5,7 @@ import SocialButton from '../components/SocialButton.vue';
 import DividerWithText from '../components/DividerWithText.vue';
 
 export default {
+  name: 'LoginPage',
   components: {
     RouterLink,
     InputField,
@@ -26,7 +27,7 @@ export default {
       <h2 class="text-3xl font-extrabold mb-4">Log In</h2>
       <div class="flex flex-col space-y-4">
         <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
-          errorMessage="The email must be a valid email address." status="default" type="text" />
+          errorMessage="The email must be a valid email address." status="default" type="text"/>
         <InputField id="password" label="Password" placeholder="your password"
           errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
           type="password" />

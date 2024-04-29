@@ -8,6 +8,7 @@ import QuantitySelector from '@/components/QuantitySelector.vue';
 import ProductDetailPage from '@/modules/ProductDetailPage/Services/ProductDetailService';
 
 export default {
+    name: 'ProductDetailPage',
     components: {
         ShopHeader,
         RiArrowRightSLine,

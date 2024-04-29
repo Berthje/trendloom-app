@@ -5,6 +5,7 @@ import ProductGrid from '@/components/ProductGrid.vue';
 import ShopPageService from '@/modules/ShopPage/Services/ShopPageService';
 
 export default {
+  name: 'ShopPage',
   components: {
     ShopHeader,
     FilterBar,

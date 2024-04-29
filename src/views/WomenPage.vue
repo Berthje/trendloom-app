@@ -5,6 +5,7 @@ import ProductGrid from '@/components/ProductGrid.vue';
 import WomenPageService from '@/modules/WomenPage/Services/WomenPageService';
 
 export default {
+  name: 'WomenPage',
   components: {
     ShopHeader,
     FilterBar,

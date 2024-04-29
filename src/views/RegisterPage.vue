@@ -1,8 +1,9 @@
 <script>
 import { RouterLink } from 'vue-router';
-import InputField from '../components/InputField.vue';
-import SocialButton from '../components/SocialButton.vue';
-import DividerWithText from '../components/DividerWithText.vue';
+import InputField from '@/components/InputField.vue';
+import SocialButton from '@/components/SocialButton.vue';
+import DividerWithText from '@/components/DividerWithText.vue';
+import RegisterPageService from '@/modules/RegisterPage/Services/RegisterPageService';
 
 export default {
     components: {
@@ -13,6 +14,7 @@ export default {
     },
     data() {
         return {
+            service: new RegisterPageService(),
             firstName: '',
             lastName: '',
             email: '',
@@ -57,19 +59,25 @@ export default {
             this.passwordStatus = 'default';
             return true;
         },
-        register() {
+        async register() {
             const isFirstNameValid = this.validateFirstName();
             const isLastNameValid = this.validateLastName();
             const isEmailValid = this.validateEmail();
             const isPasswordValid = this.validatePassword();
 
             if (isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid) {
-                console.log({
-                    firstName: this.firstName,
-                    lastName: this.lastName,
+                const response = await this.service.register({
+                    first_name: this.firstName,
+                    last_name: this.lastName,
                     email: this.email,
-                    password: this.password,
+                    password: this.password
                 });
+
+                console.log(response)
+
+                if(response.success) {
+                    this.$router.push({name: 'LoginPage'});
+                }
             }
         }
     }

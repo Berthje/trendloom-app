@@ -4,6 +4,7 @@ import CategoriesOverview from '@/components/CategoriesOverview.vue';
 import MostPopularCategories from '@/components/MostPopularCategories.vue';
 
 export default {
+  name: 'LandingPage',
   components: {
     Hero,
     CategoriesOverview,
