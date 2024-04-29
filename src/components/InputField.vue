@@ -20,20 +20,20 @@ export default {
         type: {
             type: String,
             default: 'text',
-        }
+        },
+        modelValue: String
     },
-    emits: ['update:value'],
+    emits: ['update:modelValue'],
     data() {
         return {
-            inputValue: '',
+            inputValue: this.value,
             showPassword: false
         }
     },
     methods: {
         updateValue(event) {
-            this.inputValue = event.target.value;
-            this.$emit('update:value', event.target.value);
-        }
+            this.$emit('update:modelValue', event.target.value);
+        },
     },
     computed: {
         labelColor() {
@@ -63,7 +63,7 @@ export default {
         <label :for="id" class="block mb-1 text-sm font-bold" :class="labelColor">{{ label }}</label>
         <div class="relative">
             <input :type="inputType" :id="id" class="text-sm block w-full p-2.5" :class="inputClasses"
-                :placeholder="placeholder" v-model="inputValue" @input="updateValue">
+                :placeholder="placeholder" :value="modelValue" @input="updateValue">
             <button v-if="type === 'password'" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
                 @click="showPassword = !showPassword">
                 <GoEye v-if="showPassword" />

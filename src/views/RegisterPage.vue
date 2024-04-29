@@ -10,6 +10,24 @@ export default {
         InputField,
         SocialButton,
         DividerWithText
+    },
+    data() {
+        return {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+        }
+    },
+    methods: {
+        register() {
+            console.log({
+                firstName: this.firstName,
+                lastName: this.lastName,
+                email: this.email,
+                password: this.password,
+            });
+        }
     }
 }
 </script>
@@ -28,17 +46,18 @@ export default {
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <InputField id="firstname" label="First Name" placeholder="John"
                         errorMessage="The first name field is required." status="default" type="text"
-                        class="sm:w-1/2" />
+                        class="sm:w-1/2" v-model="firstName"/>
                     <InputField id="lastname" label="Last Name" placeholder="Doe"
-                        errorMessage="The last name field is required." status="default" type="text" class="sm:w-1/2" />
+                        errorMessage="The last name field is required." status="default" type="text" class="sm:w-1/2" v-model="lastName"
+                    />
                 </div>
                 <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
-                    errorMessage="The email must be a valid email address." status="default" type="email" />
+                    errorMessage="The email must be a valid email address." status="default" type="email" v-model="email"/>
                 <InputField id="password" label="Password" placeholder="your password"
                     errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
-                    type="password" />
+                    type="password" v-model="password"/>
                 <button
-                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">Register
+                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black" @click="register">Register
                     my account
                 </button>
             </div>
