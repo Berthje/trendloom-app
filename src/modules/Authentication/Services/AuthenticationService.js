@@ -1,42 +1,36 @@
 import { BASE_URL } from "../../Core/config";
 
-export function validateEmail(email) {
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    return email && emailRegex.test(email);
-}
-
-export function validatePassword(password) {
-    return password && password.length >= 8;
-}
-
-export async function login(accountData) {
-    const response = await fetch(`${BASE_URL}/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(accountData),
-    });
-
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+export default class AuthenticationService {
+    validateEmail(email) {
+        const emailRegex = /^\S+@\S+\.\S+$/;
+        return email && emailRegex.test(email);
     }
 
-    return response.json();
-}
-
-export async function register(accountData) {
-    const response = await fetch(`${BASE_URL}/register`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(accountData),
-    });
-
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+    validatePassword(password) {
+        return password && password.length >= 8;
     }
 
-    return response.json();
+    async login(accountData) {
+        const response = await fetch(`${BASE_URL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(accountData),
+        });
+
+        return response.json();
+    }
+
+    async register(accountData) {
+        const response = await fetch(`${BASE_URL}/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(accountData),
+        });
+
+        return response.json();
+    }
 }

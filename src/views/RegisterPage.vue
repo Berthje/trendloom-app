@@ -19,33 +19,45 @@ export default {
             lastName: '',
             email: '',
             password: '',
+            firstNameStatus: 'default',
+            lastNameStatus: 'default',
+            emailStatus: 'default',
+            passwordStatus: 'default',
+            errorMessage: ''
         }
     },
-    computed: {
-        firstNameStatus() {
-            return this.firstName ? 'default' : 'error';
-        },
-        lastNameStatus() {
-            return this.lastName ? 'default' : 'error';
-        },
-        emailStatus() {
-            return this.service.validateEmail(this.email) ? 'default' : 'error';
-        },
-        passwordStatus() {
-            return this.service.validatePassword(this.password) ? 'default' : 'error';
-        },
-    },
     methods: {
-        validate() {
-            return {
-                isFirstNameValid: this.firstNameStatus === 'default',
-                isLastNameValid: this.lastNameStatus === 'default',
-                isEmailValid: this.emailStatus === 'default',
-                isPasswordValid: this.passwordStatus === 'default',
-            };
+        validateFirstName() {
+            if (!this.firstName) {
+                this.firstNameStatus = 'error';
+                return false;
+            }
+            this.firstNameStatus = 'default';
+            return true;
+        },
+        validateLastName() {
+            if (!this.lastName) {
+                this.lastNameStatus = 'error';
+                return false;
+            }
+            this.lastNameStatus = 'default';
+            return true;
+        },
+        validateEmail() {
+            const isValid = this.service.validateEmail(this.email);
+            this.emailStatus = isValid ? 'default' : 'error';
+            return isValid;
+        },
+        validatePassword() {
+            const isValid = this.service.validatePassword(this.password);
+            this.passwordStatus = isValid ? 'default' : 'error';
+            return isValid;
         },
         async register() {
-            const { isFirstNameValid, isLastNameValid, isEmailValid, isPasswordValid } = this.validate();
+            const isFirstNameValid = this.validateFirstName();
+            const isLastNameValid = this.validateLastName();
+            const isEmailValid = this.validateEmail();
+            const isPasswordValid = this.validatePassword();
 
             if (isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid) {
                 const response = await this.service.register({
@@ -56,9 +68,23 @@ export default {
                 });
 
                 if(response.id) {
+                    this.resetForm();
                     this.$router.push({name: 'login'});
+                } else if(response.errors.email) {
+                    this.errorMessage = response.errors.email.join(', ');
                 }
             }
+        },
+        resetForm() {
+            this.firstName = '';
+            this.lastName = '';
+            this.email = '';
+            this.password = '';
+            this.firstNameStatus = 'default';
+            this.lastNameStatus = 'default';
+            this.emailStatus = 'default';
+            this.passwordStatus = 'default';
+            this.errorMessage = '';
         }
     }
 }
@@ -75,6 +101,7 @@ export default {
                     class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]" alt="Trendloom logo" v-once></RouterLink>
             <h2 class="text-3xl font-extrabold mb-4">Sign up</h2>
             <div class="flex flex-col space-y-4">
+                <p class="text-red-500" v-if="errorMessage">{{ errorMessage }}</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <InputField id="firstname" label="First Name" placeholder="John"
                         errorMessage="The first name field is required." :status="firstNameStatus" type="text"

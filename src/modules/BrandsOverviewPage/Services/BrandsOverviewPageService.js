@@ -1,4 +1,4 @@
-import { BASE_URL } from '../../Core/config';
+import { BASE_URL } from "../../Core/config";
 
 export default class BrandsOverviewPageService {
     async allBrands() {
