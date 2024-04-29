@@ -1,13 +1,6 @@
-import { BASE_URL } from "../../Core/config";
-
-export default class ShopPageService {
-    async allProducts(filterOptions) {
-        const url = new URL(`${BASE_URL}/products`);
-        url.searchParams.append("sort", filterOptions.sorting);
-        url.searchParams.append("itemCount", filterOptions.itemCount);
-
-        const response = await fetch(url);
-
-        return response.json();
+import BasePageService from "../../Core/BasePageService";
+export default class ShopPageService extends BasePageService {
+    allProducts(filterOptions) {
+        return super.allProducts("products", filterOptions);
     }
 }
