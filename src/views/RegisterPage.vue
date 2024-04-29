@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 import InputField from '@/components/InputField.vue';
 import SocialButton from '@/components/SocialButton.vue';
 import DividerWithText from '@/components/DividerWithText.vue';
-import RegisterPageService from '@/modules/RegisterPage/Services/RegisterPageService';
+import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService';
 
 export default {
     components: {
@@ -14,7 +14,7 @@ export default {
     },
     data() {
         return {
-            service: new RegisterPageService(),
+            service: new AuthenticationService(),
             firstName: '',
             lastName: '',
             email: '',
@@ -29,11 +29,10 @@ export default {
             return this.lastName ? 'default' : 'error';
         },
         emailStatus() {
-            const emailRegex = /^\S+@\S+\.\S+$/;
-            return this.email && emailRegex.test(this.email) ? 'default' : 'error';
+            return this.service.validateEmail(this.email) ? 'default' : 'error';
         },
         passwordStatus() {
-            return this.password && this.password.length >= 8 ? 'default' : 'error';
+            return this.service.validatePassword(this.password) ? 'default' : 'error';
         },
     },
     methods: {
