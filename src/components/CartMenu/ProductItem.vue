@@ -1,5 +1,5 @@
 <script>
-import { AiOutlineClose } from 'vue3-icons';
+import { AiOutlineClose } from 'vue3-icons/ai';
 import { RouterLink } from 'vue-router';
 
 export default {
