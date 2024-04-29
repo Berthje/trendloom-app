@@ -4,6 +4,7 @@ import CopyrightSection from './CopyrightSection.vue'
 import FooterLinks from './FooterLinks.vue'
 
 export default {
+    name: 'Footer',
     components: {
         LogoDescription,
         CopyrightSection,

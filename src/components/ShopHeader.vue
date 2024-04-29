@@ -1,5 +1,6 @@
 <script>
 export default {
+    name: 'ShopHeader',
     props: {
         title: String,
         links: Array

@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router';
 
 export default {
+    name: 'CategoryCard',
     components: {
         RouterLink
     },

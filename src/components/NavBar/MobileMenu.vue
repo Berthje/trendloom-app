@@ -5,6 +5,7 @@ import { FaRegHeart } from "vue3-icons/fa";
 import { IoLanguage } from "vue3-icons/io5";
 
 export default {
+    name: 'MobileMenu',
     components: {
         AiOutlineSearch,
         AiOutlineClose,

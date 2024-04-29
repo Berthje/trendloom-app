@@ -11,6 +11,7 @@ import SearchModal from "./SearchModal.vue";
 import CartSummary from "./CartSummary.vue";
 
 export default {
+  name: 'NavBar',
   components: {
     AiOutlineSearch,
     HiOutlineMenu,

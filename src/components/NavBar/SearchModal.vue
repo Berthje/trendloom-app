@@ -1,8 +1,8 @@
 <script>
-import { ref, watch } from 'vue';
 import { AiOutlineSearch, AiOutlineClose } from "vue3-icons/ai";
 
 export default {
+    name: 'SearchModal',
     components: {
         AiOutlineSearch,
         AiOutlineClose

@@ -2,6 +2,7 @@
 import CategoryCard from './CategoryCard.vue';
 
 export default {
+    name: 'MostPopularCategories',
     components: {
         CategoryCard
     }

@@ -2,6 +2,7 @@
 import { FaFacebookF, FaGoogle } from 'vue3-icons/fa';
 
 export default {
+    name: 'SocialButton',
     props: {
         platform: String,
         buttonText: String,

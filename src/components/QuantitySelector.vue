@@ -1,5 +1,6 @@
 <script>
 export default {
+    name: 'QuantitySelector',
     data() {
         return {
             quantity: 1

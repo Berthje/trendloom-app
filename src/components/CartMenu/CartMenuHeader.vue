@@ -3,6 +3,7 @@ import { AiOutlineShopping } from "vue3-icons/ai";
 import { RouterLink } from 'vue-router';
 
 export default {
+    name: 'CartMenuHeader',
     components: {
         AiOutlineShopping,
         RouterLink

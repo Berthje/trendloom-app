@@ -2,6 +2,7 @@
 import SocialMediaLinks from './SocialMediaLinks.vue';
 
 export default {
+    name: 'LogoDescription',
     components: {
         SocialMediaLinks
     }

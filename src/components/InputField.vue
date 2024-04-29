@@ -2,6 +2,7 @@
 import { GoEye, GoEyeClosed } from 'vue3-icons/go';
 
 export default {
+    name: 'InputField',
     components: {
         GoEye,
         GoEyeClosed

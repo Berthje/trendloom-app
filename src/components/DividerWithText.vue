@@ -1,5 +1,6 @@
 <script>
 export default {
+    name: 'DividerWithText',
     props: {
         text: String,
     }

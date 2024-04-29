@@ -3,6 +3,7 @@ import { AiOutlineClose } from 'vue3-icons';
 import { RouterLink } from 'vue-router';
 
 export default {
+    name: 'ProductItem',
     components: {
         AiOutlineClose,
         RouterLink

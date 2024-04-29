@@ -2,6 +2,7 @@
 import ProductCard from './ProductCard.vue';
 
 export default {
+    name: 'ProductGrid',
     components: {
         ProductCard
     },

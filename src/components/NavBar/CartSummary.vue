@@ -2,6 +2,7 @@
 import { AiOutlineShopping } from "vue3-icons/ai";
 
 export default {
+    name: 'CartSummary',
     components: {
         AiOutlineShopping
     },

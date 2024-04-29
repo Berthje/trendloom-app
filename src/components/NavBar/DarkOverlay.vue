@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'DarkOverlay',
   props: {
     show: Boolean
   },

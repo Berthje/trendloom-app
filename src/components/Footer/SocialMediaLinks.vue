@@ -2,6 +2,7 @@
 import { FaFacebookF, FaInstagram, FaYoutube, FaTelegramPlane } from 'vue3-icons/fa';
 
 export default {
+    name: 'SocialMediaLinks',
     components: {
         FaFacebookF,
         FaInstagram,
