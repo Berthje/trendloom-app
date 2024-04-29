@@ -2,6 +2,7 @@
 import ShopHeader from '@/components/ShopHeader.vue';
 import ProductGrid from '@/components/ProductGrid.vue';
 import FilterBar from '@/components/FilterBar.vue';
+import BrandDetailPageService from '@/modules/BrandDetailPage/Services/BrandDetailPageService';
 import { useRoute } from 'vue-router';
 
 export default {
