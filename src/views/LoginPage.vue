@@ -3,6 +3,7 @@ import { RouterLink } from 'vue-router';
 import InputField from '../components/InputField.vue';
 import SocialButton from '../components/SocialButton.vue';
 import DividerWithText from '../components/DividerWithText.vue';
+import LoginPageService from '@/modules/LoginPage/Services/LoginPageService';
 
 export default {
   name: 'LoginPage',
@@ -11,6 +12,49 @@ export default {
     InputField,
     SocialButton,
     DividerWithText
+  },
+  data() {
+    return {
+      service: new LoginPageService,
+      email: '',
+      password: '',
+      errorMessage: ''
+    }
+  },
+  computed: {
+    emailStatus() {
+      const emailRegex = /^\S+@\S+\.\S+$/;
+      return this.email && emailRegex.test(this.email) ? 'default' : 'error';
+    },
+    passwordStatus() {
+      return this.password && this.password.length >= 8 ? 'default' : 'error';
+    },
+  },
+  methods: {
+    validate() {
+      return {
+        isEmailValid: this.emailStatus === 'default',
+        isPasswordValid: this.passwordStatus === 'default'
+      }
+    },
+    async login() {
+      const { isEmailValid, isPasswordValid } = this.validate();
+
+      if (isEmailValid && isPasswordValid) {
+        const response = await this.service.login({
+          email: this.email,
+          password: this.password
+        });
+
+        console.log(response)
+
+        if (response.message === "Customer logged in succcessfully") {
+          this.$router.push({ name: 'home' });
+        } else if (response.message === "Invalid details") {
+          this.errorMessage = response.message;
+        }
+      }
+    }
   }
 }
 </script>
@@ -26,13 +70,14 @@ export default {
           alt="Trendloom logo" v-once></RouterLink>
       <h2 class="text-3xl font-extrabold mb-4">Log In</h2>
       <div class="flex flex-col space-y-4">
+        <p class="text-red-700" v-if="errorMessage">{{ errorMessage }}</p>
         <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
-          errorMessage="The email must be a valid email address." status="default" type="text"/>
+          errorMessage="The email must be a valid email address." status="default" type="text" v-model="email" />
         <InputField id="password" label="Password" placeholder="your password"
           errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
-          type="password" />
+          type="password" v-model="password" />
         <RouterLink to="/forgot-password" class="text-md underline ml-auto">Forgot Password?</RouterLink>
-        <button
+        <button @click="login"
           class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">Log
           In
         </button>
