@@ -19,51 +19,34 @@ export default {
             lastName: '',
             email: '',
             password: '',
-            firstNameStatus: 'default',
-            lastNameStatus: 'default',
-            emailStatus: 'default',
-            passwordStatus: 'default',
         }
     },
-    methods: {
-        validateFirstName() {
-            if (!this.firstName) {
-                this.firstNameStatus = 'error';
-                return false;
-            }
-            this.firstNameStatus = 'default';
-            return true;
+    computed: {
+        firstNameStatus() {
+            return this.firstName ? 'default' : 'error';
         },
-        validateLastName() {
-            if (!this.lastName) {
-                this.lastNameStatus = 'error';
-                return false;
-            }
-            this.lastNameStatus = 'default';
-            return true;
+        lastNameStatus() {
+            return this.lastName ? 'default' : 'error';
         },
-        validateEmail() {
+        emailStatus() {
             const emailRegex = /^\S+@\S+\.\S+$/;
-            if (!this.email || !emailRegex.test(this.email)) {
-                this.emailStatus = 'error';
-                return false;
-            }
-            this.emailStatus = 'default';
-            return true;
+            return this.email && emailRegex.test(this.email) ? 'default' : 'error';
         },
-        validatePassword() {
-            if (!this.password || this.password.length < 8) {
-                this.passwordStatus = 'error';
-                return false;
-            }
-            this.passwordStatus = 'default';
-            return true;
+        passwordStatus() {
+            return this.password && this.password.length >= 8 ? 'default' : 'error';
+        },
+    },
+    methods: {
+        validate() {
+            return {
+                isFirstNameValid: this.firstNameStatus === 'default',
+                isLastNameValid: this.lastNameStatus === 'default',
+                isEmailValid: this.emailStatus === 'default',
+                isPasswordValid: this.passwordStatus === 'default',
+            };
         },
         async register() {
-            const isFirstNameValid = this.validateFirstName();
-            const isLastNameValid = this.validateLastName();
-            const isEmailValid = this.validateEmail();
-            const isPasswordValid = this.validatePassword();
+            const { isFirstNameValid, isLastNameValid, isEmailValid, isPasswordValid } = this.validate();
 
             if (isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid) {
                 const response = await this.service.register({
