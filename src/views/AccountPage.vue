@@ -1,0 +1,24 @@
+<script>
+
+export default {
+    name: 'AccountPage',
+}
+</script>
+
+<template>
+    <main class="flex w-full max-w-screen-xl mx-auto px-4 space-x-8">
+        <div class="flex flex-col space-y-2">
+            <RouterLink to="/account/profile" class="block px-2 py-1" active-class="underline font-bold">Profile
+            </RouterLink>
+            <RouterLink to="/account/orders" class="block px-2 py-1" active-class="underline font-bold">Orders
+            </RouterLink>
+            <RouterLink to="/account/returns" class="block px-2 py-1" active-class="underline font-bold">Returns
+            </RouterLink>
+            <RouterLink to="/account/favorites" class="block px-2 py-1" active-class="underline font-bold">Favorites
+            </RouterLink>
+        </div>
+        <div class="flex-grow">
+            <RouterView></RouterView>
+        </div>
+    </main>
+</template>

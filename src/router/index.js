@@ -9,6 +9,11 @@ import RegisterPage from "../views/RegisterPage.vue";
 import ProductDetailPage from "../views/ProductDetailPage.vue";
 import BrandDetailPage from "../views/BrandDetailPage.vue";
 import BrandsOverviewPage from "../views/BrandsOverviewPage.vue";
+import AccountOrders from "../views/AccountOrders.vue";
+import AccountReturns from "../views/AccountReturns.vue";
+import AccountFavorites from "../views/AccountFavorites.vue";
+import AccountProfile from "../views/AccountProfile.vue";
+import AccountPage from "../views/AccountPage.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -64,6 +69,16 @@ const router = createRouter({
             name: "register",
             component: RegisterPage,
             meta: { showTopAndBottombars: false },
+        },
+        {
+            path: "/account",
+            component: AccountPage,
+            children: [
+                { path: "orders", component: AccountOrders },
+                { path: "returns", component: AccountReturns },
+                { path: "favorites", component: AccountFavorites },
+                { path: "profile", component: AccountProfile },
+            ],
         },
     ],
 });
