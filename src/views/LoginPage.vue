@@ -52,10 +52,15 @@ export default {
     async getProfile() {
       const profile = await this.service.getProfile();
       console.log(profile);
+    },
+    async isLoggedIn() {
+      const response = await this.service.isLoggedIn();
+      console.log(response);
     }
   },
   created() {
     this.getProfile();
+    this.isLoggedIn();
   }
 }
 </script>
