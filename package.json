@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host app.trendloom.test --port 3000",
     "build": "vite build",
     "preview": "vite preview"
   },
