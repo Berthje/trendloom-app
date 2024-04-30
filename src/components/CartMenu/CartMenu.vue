@@ -25,35 +25,35 @@ export default {
                     title: "Product 1",
                     color: "Black",
                     size: "M",
-                    quantity: 3,
-                    price: 410.00
+                    quantity: 2,
+                    price: 27.19
                 },
                 {
                     id: 2,
                     imageUrl: "https://via.placeholder.com/150",
-                    title: "Product 1",
+                    title: "Product 2",
                     color: "Black",
-                    size: "M",
-                    quantity: 3,
-                    price: 410.00
+                    size: "XL",
+                    quantity: 1,
+                    price: 247.99
                 },
                 {
                     id: 3,
                     imageUrl: "https://via.placeholder.com/150",
-                    title: "Product 1",
-                    color: "Black",
+                    title: "Product 3",
+                    color: "Red",
                     size: "M",
                     quantity: 3,
-                    price: 410.00
+                    price: 78.49
                 },
                 {
                     id: 4,
                     imageUrl: "https://via.placeholder.com/150",
-                    title: "Product 1",
-                    color: "Black",
-                    size: "M",
-                    quantity: 3,
-                    price: 410.00
+                    title: "Product 4",
+                    color: "Yellow",
+                    size: "S",
+                    quantity: 7,
+                    price: 478.00
                 },
             ],
             MAX_PRODUCTS_SHOWN: 4
@@ -75,6 +75,9 @@ export default {
     methods: {
         close() {
             this.$emit('close');
+        },
+        removeProductFromCart(productId) {
+            this.products = this.products.filter(product => product.id !== productId);
         }
     },
     created() {
@@ -98,7 +101,7 @@ export default {
                 <div v-else class="flex flex-grow">
                     <ul class="overflow-y-auto flex-grow">
                         <ProductItem v-for="(product, index) in products.slice(0, MAX_PRODUCTS_SHOWN)" :key="product.id"
-                            :product="product" @close="close" />
+                            :product="product" @close="close" @remove="removeProductFromCart"/>
                     </ul>
                     <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
                         ..there {{ additionalProducts === 1 ? 'is' : 'are' }} {{ additionalProducts }} more {{
