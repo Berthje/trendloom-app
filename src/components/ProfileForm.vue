@@ -15,9 +15,8 @@ export default {
 }
 </script>
 <template>
-    <div>
-      <h2 class="py-2">Personal Details</h2>
-      <form class="border-b border-solid border-black pb-6 flex flex-wrap -mx-2">
+    <div class="py-4">
+      <form class="flex flex-wrap -mx-2">
         <div class="w-full md:w-1/2 px-2 mb-4" v-for="(field, index) in fields" :key="index">
           <InputField
             :id="field.id"

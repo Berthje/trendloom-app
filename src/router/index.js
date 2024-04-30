@@ -72,12 +72,14 @@ const router = createRouter({
         },
         {
             path: "/account",
+            name: "account",
             component: AccountPage,
             children: [
-                { path: "orders", component: AccountOrders },
-                { path: "returns", component: AccountReturns },
-                { path: "favorites", component: AccountFavorites },
-                { path: "profile", component: AccountProfile },
+                { path: "orders", name: "orders", component: AccountOrders },
+                { path: "returns", name: "returns", component: AccountReturns },
+                { path: "favorites", name: "favorites", component: AccountFavorites },
+                { path: "profile", name: "profile", component: AccountProfile },
+                { path: "", redirect: "account/profile" },
             ],
         },
     ],
