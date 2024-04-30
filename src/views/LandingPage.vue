@@ -9,7 +9,7 @@ export default {
     Hero,
     CategoriesOverview,
     MostPopularCategories
-  }
+  },
 }
 </script>
 
