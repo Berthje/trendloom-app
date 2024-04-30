@@ -15,7 +15,10 @@ export default class AuthenticationService {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Accept": "application/json",
+                "credentials": "include",
             },
+            credentials: "include",
             body: JSON.stringify(accountData),
         });
 
@@ -26,7 +29,8 @@ export default class AuthenticationService {
         const response = await fetch(`${BASE_URL}/register`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             body: JSON.stringify(accountData),
         });
