@@ -33,4 +33,18 @@ export default class AuthenticationService {
 
         return response.json();
     }
+
+    async getProfile() {
+        const response = await fetch(`${BASE_URL}/profile`);
+        const data = await response.json();
+
+        return data;
+    }
+
+    async isLoggedIn() {
+        const response = await fetch(`${BASE_URL}/profile`);
+        const data = await response.json();
+
+        return !data.error;
+    }
 }

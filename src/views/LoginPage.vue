@@ -48,7 +48,14 @@ export default {
           this.errorMessage = response.message;
         }
       }
+    },
+    async getProfile() {
+      const profile = await this.service.getProfile();
+      console.log(profile);
     }
+  },
+  created() {
+    this.getProfile();
   }
 }
 </script>
