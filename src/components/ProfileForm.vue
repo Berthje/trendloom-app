@@ -30,7 +30,7 @@ export default {
         </div>
         <div class="w-full px-2">
           <button
-            class="uppercase inline-block px-12 py-2 bg-black hover:bg-white hover:text-black transition ease-in-out duration-300 text-white">Save</button>
+            class="uppercase inline-block px-12 py-2 bg-black border hover:bg-white hover:text-black hover:border-black hover:border-solid hover:border transition ease-in-out duration-300 text-white">Save</button>
         </div>
       </form>
     </div>
