@@ -25,6 +25,7 @@ export default {
             :errorMessage="field.errorMessage"
             :status="field.status"
             :type="field.type"
+            :modelValue="field.value"
           />
         </div>
         <div class="w-full px-2">
