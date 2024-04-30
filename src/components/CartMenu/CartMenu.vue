@@ -93,7 +93,7 @@ export default {
                 <CartMenuHeader :amountOfProducts="products.length" />
                 <div v-if="products.length === 0">
                     <p class="text-sm mb-4">No products in the cart.</p>
-                    <RouterLink to="/shop"
+                    <RouterLink @click="$emit('close')" to="/shop"
                         class="inline-block px-4 py-2 border border-solid border-black uppercase text-sm hover:bg-black hover:text-white transition-all duration-150">
                         Return to shop
                     </RouterLink>
@@ -109,7 +109,7 @@ export default {
                                 'product' }}
                     </p>
                 </div>
-                <CartMenuFooter :subtotal="totalPrice"/>
+                <CartMenuFooter v-if="products.length > 0" :subtotal="totalPrice"/>
             </nav>
             <AiOutlineClose v-show="show"
                 class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-[23rem] top-3"
