@@ -90,7 +90,7 @@ export default {
             <ul class="hidden lg:flex space-x-4 uppercase text-md font-bold">
               <li v-for="link in LINKS" :key="link.path">
                 <RouterLink :to="link.path" class="hover:active-route transition-all duration-150"
-                  active-class="active-route">{{ link.name }}</RouterLink>
+                  active-class="active-route">{{ $t(link.name.toLowerCase()) }}</RouterLink>
               </li>
             </ul>
           </nav>

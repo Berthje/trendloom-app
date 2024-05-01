@@ -64,11 +64,11 @@ export default {
           alt="Trendloom logo" v-once></RouterLink>
       <h2 class="text-3xl font-extrabold mb-4">{{ $t('log_in') }}</h2>
       <div class="flex flex-col space-y-4">
-        <p class="text-red-700" v-if="errorMessage">{{ errorMessage }}</p>
+        <p class="text-red-700" v-if="errorMessage">{{ $t(errorMessage) }}</p>
         <InputField id="email" label="Email Address" placeholder="sample_email"
-          errorMessage="The email must be a valid email address." status="default" type="text" v-model="email" />
+          errorMessage="email_valid" status="default" type="text" v-model="email" />
         <InputField id="password" label="Password" placeholder="your_password"
-          errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." status="default"
+          errorMessage="password_valid" status="default"
           type="password" v-model="password" />
         <RouterLink to="/forgot-password" class="text-md underline ml-auto">{{ $t('forgot_password') }}?</RouterLink>
         <button @click="login"
