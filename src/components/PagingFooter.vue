@@ -1,6 +1,7 @@
 <script>
 export default {
     name: 'PagingFooter',
+    emits: ['change-page'],
     props: {
         links: {
             type: Array,

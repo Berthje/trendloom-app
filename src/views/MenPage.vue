@@ -25,7 +25,7 @@ export default {
     }
   },
   watch: {
-    filterOptions(newValue, oldValue){
+    filterOptions(newValue, oldValue) {
       this.fetchProducts();
     }
   },
@@ -33,11 +33,11 @@ export default {
     this.fetchProducts();
   },
   methods: {
-    async fetchProducts() {
-      const response = await this.service.allProducts(this.filterOptions);
+    async fetchProducts(url) {
+      const response = url ? await this.service.fetchPaginatedProducts(url) : await this.service.allProducts(this.filterOptions);
       this.products = response.data;
-      this.paginationLinks = response.links
-    }
+      this.paginationLinks = response.links;
+    },
   }
 }
 </script>
@@ -46,9 +46,9 @@ export default {
   <main>
     <ShopHeader title="Men's Shop" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
-      <FilterBar v-model:filterOptions="filterOptions"/>
+      <FilterBar v-model:filterOptions="filterOptions" />
       <ProductGrid :products="products" />
-      <PagingFooter :links="paginationLinks" />
+      <PagingFooter :links="paginationLinks" @change-page="fetchProducts" />
     </div>
   </main>
 </template>

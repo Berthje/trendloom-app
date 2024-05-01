@@ -19,7 +19,7 @@ export default {
       products: [],
       filterOptions: {
         sorting: 'default',
-        itemCount: '12'
+        itemCount: '1'
       },
       paginationLinks: []
     }
