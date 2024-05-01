@@ -1,4 +1,5 @@
 import { BASE_URL } from "./config";
+import { fetchWithLang } from "./helpers";
 
 export default class BasePageService {
     async allProducts(path, filterOptions) {
@@ -6,13 +7,13 @@ export default class BasePageService {
         url.searchParams.append("sort", filterOptions.sorting);
         url.searchParams.append("itemCount", filterOptions.itemCount);
 
-        const response = await fetch(url);
+        const response = await fetchWithLang(url);
 
         return response.json();
     }
 
     async fetchPaginatedProducts(url) {
-        const response = await fetch(url);
+        const response = await fetchWithLang(url);
         console.log(response)
         return response.json();
     }

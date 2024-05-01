@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../Core/config";
+import { fetchWithLang } from '../../Core/helpers';
 
 export default class BrandDetailPageService {
     async allProducts(filterOptions, brandId) {
@@ -6,7 +7,7 @@ export default class BrandDetailPageService {
         url.searchParams.append("sort", filterOptions.sorting);
         url.searchParams.append("itemCount", filterOptions.itemCount);
 
-        const response = await fetch(url);
+        const response = await fetchWithLang(url);
 
         return response.json();
     }
@@ -14,7 +15,7 @@ export default class BrandDetailPageService {
     async getBrand(brandId) {
         const url = `${BASE_URL}/brands/${brandId}`;
 
-        const response = await fetch(url);
+        const response = await fetchWithLang(url);
 
         return response.json();
     }
