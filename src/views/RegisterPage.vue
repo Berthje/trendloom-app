@@ -103,17 +103,17 @@ export default {
             <div class="flex flex-col space-y-4">
                 <p class="text-red-500" v-if="errorMessage">{{ errorMessage }}</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <InputField id="firstname" label="First Name" placeholder="sample_firstname"
+                    <InputField id="firstname" label="first_name" placeholder="sample_firstname"
                         errorMessage="first_name_required" :status="firstNameStatus" type="text"
                         class="sm:w-1/2" v-model="firstName" @input="validateFirstName" />
-                    <InputField id="lastname" label="Last Name" placeholder="sample_lastname"
+                    <InputField id="lastname" label="last_name" placeholder="sample_lastname"
                         errorMessage="last_name_required" :status="lastNameStatus" type="text"
                         class="sm:w-1/2" v-model="lastName" @input="validateLastName" />
                 </div>
-                <InputField id="email" label="Email Address" placeholder="sample_email"
+                <InputField id="email" label="email_address" placeholder="sample_email"
                     errorMessage="email_valid" :status="emailStatus" type="email"
                     v-model="email" @input="validateEmail" />
-                <InputField id="password" label="Password" placeholder="your_password"
+                <InputField id="password" label="password" placeholder="your_password"
                     errorMessage="password_requirement"
                     :status="passwordStatus" type="password" v-model="password" @input="validatePassword" />
                 <button

@@ -65,11 +65,10 @@ export default {
       <h2 class="text-3xl font-extrabold mb-4">{{ $t('log_in') }}</h2>
       <div class="flex flex-col space-y-4">
         <p class="text-red-700" v-if="errorMessage">{{ $t(errorMessage) }}</p>
-        <InputField id="email" label="Email Address" placeholder="sample_email"
-          errorMessage="email_valid" status="default" type="text" v-model="email" />
-        <InputField id="password" label="Password" placeholder="your_password"
-          errorMessage="password_valid" status="default"
-          type="password" v-model="password" />
+        <InputField id="email" label="email_address" placeholder="sample_email" errorMessage="email_valid"
+          status="default" type="text" v-model="email" />
+        <InputField id="password" label="password" placeholder="your_password" errorMessage="password_valid"
+          status="default" type="password" v-model="password" />
         <RouterLink to="/forgot-password" class="text-md underline ml-auto">{{ $t('forgot_password') }}?</RouterLink>
         <button @click="login"
           class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black">{{
@@ -84,7 +83,7 @@ export default {
       <p>{{ $t('no_account') }} <RouterLink to="/register" class="text-md font-extrabold underline">{{ $t('sign_up') }}
         </RouterLink>
       </p>
-      <p class="mt-4">{{ $t('go_back') }} <RouterLink to="/" class="text-md font-extrabold underline">{{$t('homepage')}}
+      <p class="mt-4">{{ $t('go_back') }} <RouterLink to="/" class="text-md font-extrabold underline">{{ $t('homepage') }}
         </RouterLink>
       </p>
     </div>
