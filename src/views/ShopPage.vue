@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     async fetchProducts(url) {
-      const response = url ? await this.service.fetchUrl(url) : await this.service.allProducts(this.filterOptions);
+      const response = url ? await this.service.fetchPaginatedProducts(url) : await this.service.allProducts(this.filterOptions);
       this.products = response.data;
       this.paginationLinks = response.links;
     },
