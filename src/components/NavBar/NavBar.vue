@@ -41,7 +41,7 @@ export default {
       menuOpen: false,
       searchOpen: false,
       cartOpen: false,
-      languageModalOpen: true,
+      languageModalOpen: false,
       searchQuery: '',
       cartItemCount: 0,
       cartTotalPrice: 0.00

@@ -28,7 +28,7 @@ export default {
 
 <template>
     <div v-show="show" class="fixed top-0 h-full w-full overflow-auto z-50 flex justify-center items-center">
-        <div class="bg-white w-full h-full flex flex-col justify-between">
+        <div class="bg-white w-full h-full sm:max-w-96 sm:max-h-[32rem] flex flex-col justify-between">
             <div>
                 <div class="border-b border-solid border-gray-300 p-3">
                     <AiOutlineClose class="h-6 w-6 bg-white cursor-pointer ml-auto hover:opacity-40" @click="close" />
