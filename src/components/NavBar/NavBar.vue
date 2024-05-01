@@ -39,6 +39,7 @@ export default {
       menuOpen: false,
       searchOpen: false,
       cartOpen: false,
+      languageModalOpen: false,
       searchQuery: '',
       cartItemCount: 0,
       cartTotalPrice: 0.00
@@ -51,26 +52,26 @@ export default {
     closeSearch() { this.searchOpen = false; },
     openCart() { this.cartOpen = true; },
     closeCart() { this.cartOpen = false; },
+    openLanguageModal() { this.languageModalOpen = true; },
+    closeLanguageModal() { this.languageModalOpen = false; },
     updateCart({ itemCount, totalPrice }) {
       this.cartItemCount = itemCount;
       this.cartTotalPrice = totalPrice;
     }
   },
+  computed: {
+    isAnyModalOpen() {
+      return this.menuOpen || this.searchOpen || this.cartOpen || this.languageModalOpen;
+    },
+  },
   watch: {
-    menuOpen(newVal) {
+    isAnyModalOpen(newVal) {
       if (newVal) {
         document.body.classList.add('overflow-hidden');
       } else {
         document.body.classList.remove('overflow-hidden');
       }
     },
-    searchOpen(newVal) {
-      if (newVal) {
-        document.body.classList.add('overflow-hidden');
-      } else {
-        document.body.classList.remove('overflow-hidden');
-      }
-    }
   }
 }
 </script>
@@ -91,7 +92,7 @@ export default {
               </li>
             </ul>
           </nav>
-          <AiOutlineSearch class="hidden cursor-pointer lg:block" size="22" @click="openSearch" />
+          <AiOutlineSearch class="hidden curfsor-pointer lg:block" size="22" @click="openSearch" />
         </div>
         <div class="flex items-center">
           <div class="hidden lg:flex space-x-3">
@@ -99,7 +100,7 @@ export default {
               <GoPerson size="1.25rem" />
             </RouterLink>
             <FaRegHeart size="1.25rem" />
-            <IoLanguage size="1.25rem" />
+            <IoLanguage size="1.25rem" @click="openLanguageModal" />
           </div>
           <CartSummary :cartItemCount="cartItemCount" :cartTotalPrice="cartTotalPrice" @click="openCart" />
         </div>
