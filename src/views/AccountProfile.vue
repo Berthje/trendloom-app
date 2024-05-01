@@ -9,22 +9,22 @@ export default {
   data() {
     return {
       personalDetailFields: [
-        { id: 'firstname', label: 'First Name', placeholder: 'John', errorMessage: 'The first name field is required.', status: 'default', type: 'text', value: '' },
-        { id: 'lastname', label: 'Last Name', placeholder: 'Doe', errorMessage: 'The last name field is required.', status: 'default', type: 'text', value: '' },
-        { id: 'email', label: 'Email', placeholder: 'firstname.lastname@gmail.com', errorMessage: 'The email should be valid.', status: 'default', type: 'email', value: '' },
-        { id: 'phone', label: 'Phone number', placeholder: '+12 345 67 89 00', errorMessage: 'The phone number should be valid.', status: 'default', type: 'tel', value: '' }
+        { id: 'firstname', label: 'first_name', placeholder: 'sample_firstname', errorMessage: 'first_name_required', status: 'default', type: 'text', value: '' },
+        { id: 'lastname', label: 'last_name', placeholder: 'sample_lastname', errorMessage: 'last_name_required', status: 'default', type: 'text', value: '' },
+        { id: 'email', label: 'email_address', placeholder: 'sample_email', errorMessage: 'email_valid', status: 'default', type: 'email', value: '' },
+        { id: 'phone', label: 'phone_number', placeholder: 'sample_phone', errorMessage: 'phone_number_valid', status: 'default', type: 'tel', value: '' }
       ],
       addressFields: [
-        { id: 'address', label: 'Address', placeholder: '123 Main St', errorMessage: 'The address field is required.', status: 'default', type: 'text', value: '' },
-        { id: 'type', label: 'Type (e.g. Residential, Business)', placeholder: 'Residential, Business', errorMessage: '', status: 'default', type: 'text', value: '' },
-        { id: 'zipcode', label: 'Zip Code', placeholder: '12345', errorMessage: 'The zip code field is required.', status: 'default', type: 'text', value: '' },
-        { id: 'city', label: 'City', placeholder: 'City', errorMessage: 'The city field is required.', status: 'default', type: 'text', value: '' },
-        { id: 'state', label: 'State', placeholder: 'State', errorMessage: 'The state field is required.', status: 'default', type: 'text', value: '' },
-        { id: 'country', label: 'Country', placeholder: 'Country', errorMessage: 'The country field is required.', status: 'default', type: 'text', value: '' },
+        { id: 'address', label: 'address', placeholder: 'sample_street', errorMessage: 'address_required', status: 'default', type: 'text', value: '' },
+        { id: 'type', label: 'address_type', placeholder: 'residential_business', errorMessage: '', status: 'default', type: 'text', value: '' },
+        { id: 'zipcode', label: 'zip_code', placeholder: 'sample_zip', errorMessage: 'zip_code_required', status: 'default', type: 'text', value: '' },
+        { id: 'city', label: 'city', placeholder: 'city', errorMessage: 'city_required', status: 'default', type: 'text', value: '' },
+        { id: 'state', label: 'state', placeholder: 'state', errorMessage: 'state_required', status: 'default', type: 'text', value: '' },
+        { id: 'country', label: 'country', placeholder: 'country', errorMessage: 'country_required', status: 'default', type: 'text', value: '' },
       ],
       passwordFields: [
-        { id: 'oldPassword', label: 'Old Password', placeholder: 'Enter your old password', errorMessage: 'The old password field is required.', status: 'default', type: 'password' },
-        { id: 'newPassword', label: 'New Password', placeholder: 'Enter your new password', errorMessage: 'The new password field is required.', status: 'default', type: 'password' },
+        { id: 'oldPassword', label: 'old_password', placeholder: 'enter_your_old_password', errorMessage: 'old_password_required', status: 'default', type: 'password' },
+        { id: 'newPassword', label: 'new_password', placeholder: 'enter_your_new_password', errorMessage: 'new_password_required', status: 'default', type: 'password' },
       ]
     }
   }
@@ -33,7 +33,7 @@ export default {
 
 <template>
   <main>
-    <h1 class="font-bold text-2xl pb-2 border-b border-solid border-black ">My Profile</h1>
+    <h1 class="font-bold text-2xl pb-2 border-b border-solid border-black ">{{ $t('my_profile') }}</h1>
     <ProfileForm :fields="personalDetailFields" />
     <ProfileForm :fields="addressFields" />
     <ProfileForm :fields="passwordFields" />

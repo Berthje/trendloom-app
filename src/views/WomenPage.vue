@@ -44,7 +44,7 @@ export default {
 
 <template>
   <main>
-    <ShopHeader title="Women's Shop" :links="[{ name: 'Home', path: '/' }, { name: 'Women', path: 'women' }]" />
+    <ShopHeader :title="$t('womens_shop')" :links="[{ name: 'Home', path: '/' }, { name: 'Women', path: 'women' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
       <FilterBar v-model:filterOptions="filterOptions" />
       <ProductGrid :products="products" @change-page="fetchProducts" />

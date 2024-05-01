@@ -32,13 +32,13 @@ export default {
 <template>
     <div class="flex items-center gap-4 justify-center">
         <button :disabled="!prevPageUrl" @click.prevent="goToPage(prevPageUrl)"
-            class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/40 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button">
-            Previous
+            {{$t('previous')}}
         </button>
         <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar">
             <a v-for="(link, index) in pageLinks" :key="link.label" @click.prevent="goToPage(link.url)" :class="[
-                'cursor-pointer relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
+                'cursor-pointer relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/40 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
                 { 'bg-gray-900 text-white': link.active },
                 { 'hidden sm:inline-block': index > 0 && index < pageLinks.length - 1 && !link.active }
             ]">
@@ -48,9 +48,9 @@ export default {
             </a>
         </div>
         <button :disabled="!nextPageUrl" @click.prevent="goToPage(nextPageUrl)"
-            class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/40 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button">
-            Next
+            {{$t('next')}}
         </button>
     </div>
 </template>

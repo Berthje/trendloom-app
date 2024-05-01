@@ -81,18 +81,20 @@ export default {
             </div>
             <div class="mt-8 lg:mt-0 lg:w-1/2">
                 <h1 class="font-bold text-3xl" v-if="product">{{ product.name }}</h1>
-                <h2 class="text-2xl my-1" v-if="product">€{{ Number(product.price).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}</h2>
+                <h2 class="text-2xl my-1" v-if="product">€{{ Number(product.price).toLocaleString('en-US', {
+                    minimumFractionDigits: 2
+                }) }}</h2>
                 <ul class="flex flex-col space-y-2 my-2" v-if="product">
-                    <li>Brand:
+                    <li>{{ $t('brand') }}:
                         <RouterLink :to="`/brands/${product.brand.id}`"
                             class="text-gray-400 underline hover:text-black">
                             {{ product.brand.name }}
                         </RouterLink>
                     </li>
-                    <li>SKU: <span class="text-gray-400">{{ product.sku }}</span></li>
+                    <li>{{ $t('sku') }}: <span class="text-gray-400">{{ product.sku }}</span></li>
                 </ul>
                 <div class="mb-6" v-if="product">
-                    <p class="text-gray-400 text-sm mb-1">Size:</p>
+                    <p class="text-gray-400 text-sm mb-1">{{ $t('size') }}:</p>
                     <ul v-if="product.sizes.length > 0" class="flex space-x-2">
                         <li v-for="(sizeObj, index) in product.sizes" :key="index" @click="selectSize(sizeObj.size)"
                             class="w-8 h-8 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs cursor-pointer"
@@ -105,14 +107,13 @@ export default {
                     <QuantitySelector />
                     <button
                         class="w-full flex items-center justify-center bg-black text-white uppercase text-[0.925rem] hover:text-black hover:bg-white border border-black border-solid transition-all duration-300 ease-in-out disabled:cursor-not-allowed disabled:opacity-50"
-                        :disabled="!selectedSize"
-                        >
-                        <AiOutlineShopping size="20" class="mr-2" /> Add to cart
+                        :disabled="!selectedSize">
+                        <AiOutlineShopping size="20" class="mr-2" /> {{ $t('add_to_cart') }}
                     </button>
                 </div>
                 <div class="flex items-center space-x-3 mt-6 mb-3 cursor-pointer hover:opacity-60">
                     <FaRegHeart />
-                    <p>Add to wishlist</p>
+                    <p>{{ $t('add_to_wishlist') }}</p>
                 </div>
                 <p v-if="product">{{ product.description }}</p>
             </div>

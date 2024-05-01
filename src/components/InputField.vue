@@ -60,10 +60,10 @@ export default {
 
 <template>
     <div>
-        <label :for="id" class="block mb-1 text-sm font-bold" :class="labelColor">{{ label }}</label>
+        <label :for="id" class="block mb-1 text-sm font-bold" :class="labelColor">{{ $t(label) }}</label>
         <div class="relative">
             <input :type="inputType" :id="id" class="text-sm block w-full p-2.5" :class="inputClasses"
-                :placeholder="placeholder" :value="modelValue" @input="updateValue">
+                :placeholder="$t(placeholder)" :value="modelValue" @input="updateValue">
             <button type="button" v-if="type === 'password'" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm"
                 @click="showPassword = !showPassword">
                 <GoEye v-if="showPassword" />
@@ -71,7 +71,7 @@ export default {
             </button>
         </div>
         <p v-if="status === 'error'" class="mt-2 text-xs text-red-600 dark:text-red-500">
-            <span class="font-medium">{{ errorMessage }}</span>
+            <span class="font-medium">{{ $t(errorMessage) }}</span>
         </p>
     </div>
 </template>

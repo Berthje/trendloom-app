@@ -20,11 +20,11 @@ export default {
         <div>
             <nav class="text-lg flex justify-center space-x-2">
                 <RouterLink v-for="(link, index) in links" :key="index" :to="link.path"
-                    class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400">{{ link.name }}&nbsp;
+                    class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400">{{ $t(link.name.toLowerCase()) }}&nbsp;
                 </RouterLink>
             </nav>
             <h3 class="font-extrabold text-4xl md:text-5xl lg:text-6xl uppercase">{{ title }}</h3>
-            <p v-if="description">{{description}}</p>
+            <p v-if="description" class="max-w-screen-md px-8">{{ description }}</p>
         </div>
     </section>
 </template>

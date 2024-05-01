@@ -67,10 +67,10 @@ export default {
                     password: this.password
                 });
 
-                if(response.id) {
+                if (response.id) {
                     this.resetForm();
-                    this.$router.push({name: 'login'});
-                } else if(response.errors.email) {
+                    this.$router.push({ name: 'login' });
+                } else if (response.errors.email) {
                     this.errorMessage = response.errors.email.join(', ');
                 }
             }
@@ -99,36 +99,39 @@ export default {
         <div class="p-8 w-full md:w-1/2 lg:p-16">
             <RouterLink to="/"><img src="../assets/logo-black.svg"
                     class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]" alt="Trendloom logo" v-once></RouterLink>
-            <h2 class="text-3xl font-extrabold mb-4">Sign up</h2>
+            <h2 class="text-3xl font-extrabold mb-4">{{ $t('sign_up') }}</h2>
             <div class="flex flex-col space-y-4">
                 <p class="text-red-500" v-if="errorMessage">{{ errorMessage }}</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <InputField id="firstname" label="First Name" placeholder="John"
+                    <InputField id="firstname" label="First Name" placeholder="sample_firstname"
                         errorMessage="The first name field is required." :status="firstNameStatus" type="text"
-                        class="sm:w-1/2" v-model="firstName" @input="validateFirstName"/>
-                    <InputField id="lastname" label="Last Name" placeholder="Doe"
-                        errorMessage="The last name field is required." :status="lastNameStatus" type="text" class="sm:w-1/2" v-model="lastName" @input="validateLastName"
-                    />
+                        class="sm:w-1/2" v-model="firstName" @input="validateFirstName" />
+                    <InputField id="lastname" label="Last Name" placeholder="sample_lastname"
+                        errorMessage="The last name field is required." :status="lastNameStatus" type="text"
+                        class="sm:w-1/2" v-model="lastName" @input="validateLastName" />
                 </div>
-                <InputField id="email" label="Email Address" placeholder="firstname.lastname@gmail.com"
-                    errorMessage="The email must be a valid email address." :status="emailStatus" type="email" v-model="email" @input="validateEmail"/>
-                <InputField id="password" label="Password" placeholder="your password"
-                    errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols." :status="passwordStatus"
-                    type="password" v-model="password" @input="validatePassword"/>
+                <InputField id="email" label="Email Address" placeholder="sample_email"
+                    errorMessage="The email must be a valid email address." :status="emailStatus" type="email"
+                    v-model="email" @input="validateEmail" />
+                <InputField id="password" label="Password" placeholder="your_password"
+                    errorMessage="It must be a combination of minimum 8 letters, numbers, and symbols."
+                    :status="passwordStatus" type="password" v-model="password" @input="validatePassword" />
                 <button
-                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black" @click="register">Register
-                    my account
+                    class="w-full block border-solid bg-black border-2 border-black text-white py-2 hover:bg-white hover:text-black hover:border-black"
+                    @click="register">{{ $t('register_my_account') }}
                 </button>
             </div>
-            <DividerWithText text="or social media" />
+            <DividerWithText text="social_media_login" />
             <div class="flex flex-col space-y-4 mb-8">
                 <SocialButton platform="Google" buttonText="Register" />
                 <SocialButton platform="Facebook" buttonText="Register" />
             </div>
-            <p>Already have an account? <RouterLink to="/login" class="text-md font-extrabold underline">Log in
+            <p>{{ $t('already_have_an_account') }} <RouterLink to="/login" class="text-md font-extrabold underline">{{
+                $t('log_in') }}
                 </RouterLink>
             </p>
-            <p class="mt-4">or go back to the <RouterLink to="/" class="text-md font-extrabold underline">homepage
+            <p class="mt-4">{{ $t('go_back') }} <RouterLink to="/" class="text-md font-extrabold underline">
+                    {{ $t('homepage') }}
                 </RouterLink>
             </p>
         </div>

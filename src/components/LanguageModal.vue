@@ -49,18 +49,18 @@ export default {
                     <AiOutlineClose class="h-6 w-6 bg-white cursor-pointer ml-auto hover:opacity-40" @click="close" />
                 </div>
                 <div class="p-6">
-                    <h2 class="text-2xl font-extrabold mb-8">Which language would you like us to use?</h2>
+                    <h2 class="text-2xl font-extrabold mb-8">{{ $t('choose_language') }}</h2>
                     <div v-for="lang in languages" :key="lang" class="mb-2 flex items-center space-x-2">
                         <input type="radio" :id="lang.id" :value="lang.code" v-model="selectedLanguage" name="language"
                             class="radio-button" />
-                        <label :for="lang.id" class="capitalize text-lg font-medium">{{ lang.name }}</label>
+                        <label :for="lang.id" class="capitalize text-lg font-medium">{{ $t(lang.name.toLowerCase()) }}</label>
                     </div>
                 </div>
             </div>
             <div class="p-6">
                 <button class="w-full py-2 bg-gray-200 text-black rounded mb-2 hover:opacity-70"
-                    @click="close">Cancel</button>
-                <button class="w-full py-2 bg-black text-white rounded hover:opacity-40" @click="save">Save</button>
+                    @click="close">{{$t('cancel')}}</button>
+                <button class="w-full py-2 bg-black text-white rounded hover:opacity-40" @click="save">{{$t('save')}}</button>
             </div>
         </div>
     </div>

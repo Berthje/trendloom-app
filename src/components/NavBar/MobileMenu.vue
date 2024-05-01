@@ -43,7 +43,7 @@ export default {
                         <div class="w-full relative flex items-center">
                             <input type="text"
                                 class="w-full h-auto min-h-10 pl-4 pr-6 leading-8 outline-none text-start"
-                                placeholder="Search for products..." autocomplete="off">
+                                :placeholder="$t('search_for_products')" autocomplete="off">
                         </div>
                         <div class="flex items-center">
                             <button class="inline-flex items-center justify-center whitespace-nowrap h-10 p-0 min-w-10"
@@ -54,7 +54,7 @@ export default {
                     </div>
                 </form>
                 <div class="flex flex-col space-y-8">
-                    <h2 class="text-center py-2 border-b-2 border-solid border-black">Menu</h2>
+                    <h2 class="text-center py-2 border-b-2 border-solid border-black">{{ $t('menu') }}</h2>
                     <ul class="flex flex-col space-y-4">
                         <li v-for="link in links" :key="link.path">
                             <RouterLink :to="link.path" active-class="active-route" @click="close">{{ link.name }}
@@ -63,20 +63,20 @@ export default {
                     </ul>
                     <ul class="uppercase flex flex-col space-y-4">
                         <li @click="close">
-                            <RouterLink to="/login" class="flex items-center" >
+                            <RouterLink to="/login" class="flex items-center">
                                 <GoPerson size="1.125rem" class="mr-2" />
-                                Account
+                                {{ $t('account') }}
                             </RouterLink>
                         </li>
                         <li @click="close">
                             <RouterLink to="/wishlist" class="flex items-center">
                                 <FaRegHeart size="1.125rem" class="mr-2" />
-                                Wishlist
+                                {{ $t('wishlist') }}
                             </RouterLink>
                         </li>
                         <li class="flex items-center cursor-pointer" @click="openLanguageModal">
-                            <IoLanguage size="1.125rem" class="mr-2"/>
-                            Language
+                            <IoLanguage size="1.125rem" class="mr-2" />
+                            {{ $t('language') }}
                         </li>
                     </ul>
                 </div>

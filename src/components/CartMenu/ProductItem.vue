@@ -32,7 +32,7 @@ export default {
             <div class="text-[0.925rem]">
                 <dl class="text-[#858585]">
                     <div class="flex space-x-1">
-                        <dt>Size:</dt>
+                        <dt>{{$t('size')}}:</dt>
                         <dd>
                             <p>{{ product.size }}</p>
                         </dd>

@@ -49,7 +49,7 @@ export default {
 
 <template>
     <main>
-        <ShopHeader :title="brand.name" :description="brand.description" :links="[{ name: 'Home', path: '/' }, { name: brand.name, path: `/brands/${brand.id}` }]" />
+        <ShopHeader :title="brand.name" :description="brand.description" :links="[{ name: 'Home', path: '/' }, { name: 'Brands', path: `/brands` }]" />
         <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
             <FilterBar v-model:filterOptions="filterOptions"/>
             <ProductGrid :products="products" />

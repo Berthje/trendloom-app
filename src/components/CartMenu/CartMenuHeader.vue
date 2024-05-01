@@ -19,7 +19,8 @@ export default {
 <template>
     <RouterLink to="/shopping-cart" class="block mb-6 overflow-hidden">
         <AiOutlineShopping size="36" class="inline-block mb-2" />
-        <h2 class="uppercase text-lg">Cart {{ amountOfProducts > 0 ? `(${amountOfProducts} ${amountOfProducts > 1 ?
-            'products' : 'product'})` : '' }}</h2>
+        <h2 class="uppercase text-lg">{{ $t('cart') }} {{ amountOfProducts > 0 ? `(${amountOfProducts} ${amountOfProducts
+            > 1 ?
+            $t('products') : $t('product')})` : '' }}</h2>
     </RouterLink>
 </template>

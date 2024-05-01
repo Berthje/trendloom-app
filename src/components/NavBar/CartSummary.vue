@@ -28,6 +28,6 @@ export default {
                 {{ cartItemCount }}
             </span>
         </div>
-        <p class="hidden lg:block ml-2 text-[0.875rem] font-bold">CART €{{ Number(cartTotalPrice).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}</p>
+        <p class="hidden lg:block ml-2 text-[0.875rem] font-bold uppercase">{{$t('cart')}} €{{ Number(cartTotalPrice).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}</p>
     </div>
 </template>

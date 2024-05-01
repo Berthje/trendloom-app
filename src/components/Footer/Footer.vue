@@ -13,22 +13,22 @@ export default {
     data() {
         return {
             supportLinks: [
-                { text: 'Contact us', href: '#' },
-                { text: 'FAQs', href: '#' },
-                { text: 'Size Guide', href: '#' },
-                { text: 'Shipping & Return', href: '#' },
+                { text: 'contact_us', href: '#' },
+                { text: 'faqs', href: '#' },
+                { text: 'size_guide', href: '#' },
+                { text: 'shipping_return', href: '#' },
             ],
             shopLinks: [
-                { text: 'Men\'s Shopping', to: '/men' },
-                { text: 'Women\'s Shopping', to: '/women' },
-                { text: 'Kids\' Shopping', to: '/kids' },
-                { text: 'Contact', to: '/contact' },
+                { text: 'mens_shopping', to: '/men' },
+                { text: 'womens_shopping', to: '/women' },
+                { text: 'kids_shopping', to: '/kids' },
+                { text: 'contact', to: '/contact' },
             ],
             companyLinks: [
-                { text: 'Our Story', href: '#' },
-                { text: 'Careers', href: '#' },
-                { text: 'Terms & Conditions', href: '#' },
-                { text: 'Privacy & Cookie Policy', href: '#' },
+                { text: 'our_story', href: '#' },
+                { text: 'careers', href: '#' },
+                { text: 'terms_conditions', href: '#' },
+                { text: 'privacy_cookie_policy', href: '#' },
             ],
             contactLinks: [
                 { text: 'BE (+32) 478 91 47', href: 'tel:04789147' },
@@ -53,10 +53,10 @@ export default {
             <div class="max-w-screen-xl w-full mx-auto">
                 <section class="flex flex-wrap">
                     <LogoDescription />
-                    <FooterLinks title="Support" :links="supportLinks" />
-                    <FooterLinks title="Shop" :links="shopLinks" />
-                    <FooterLinks title="Company" :links="companyLinks" />
-                    <FooterLinks title="Contact" :links="contactLinks" />
+                    <FooterLinks :title="$t('support')" :links="supportLinks" />
+                    <FooterLinks :title="$t('shop')" :links="shopLinks" />
+                    <FooterLinks :title="$t('company')" :links="companyLinks" />
+                    <FooterLinks :title="$t('contact')" :links="contactLinks" />
                 </section>
                 <CopyrightSection />
             </div>

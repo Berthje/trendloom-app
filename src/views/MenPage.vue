@@ -44,7 +44,7 @@ export default {
 
 <template>
   <main>
-    <ShopHeader title="Men's Shop" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
+    <ShopHeader :title="$t('mens_shop')" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
       <FilterBar v-model:filterOptions="filterOptions" />
       <ProductGrid :products="products" />
