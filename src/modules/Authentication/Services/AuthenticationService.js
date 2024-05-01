@@ -25,6 +25,20 @@ export default class AuthenticationService {
         return response.json();
     }
 
+    async logout() {
+        const response = await fetch(`${BASE_URL}/logout`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "credentials": "include",
+            },
+            credentials: "include",
+        });
+
+        return response.json();
+    }
+
     async register(accountData) {
         const response = await fetch(`${BASE_URL}/register`, {
             method: "POST",

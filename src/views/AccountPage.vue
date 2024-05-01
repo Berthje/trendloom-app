@@ -1,7 +1,22 @@
 <script>
+import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService';
 
 export default {
     name: 'AccountPage',
+    data() {
+        return {
+            service: new AuthenticationService(),
+        }
+    },
+    methods: {
+        async logout() {
+            const response = await this.service.logout();
+
+            if(response.status) {
+                this.$router.push({ name: 'home' });
+            }
+        }
+    }
 }
 </script>
 
@@ -20,6 +35,7 @@ export default {
             <RouterLink to="/account/favorites" class="block px-2 py-1" active-class="underline font-bold">{{
                 $t('favorites') }}
             </RouterLink>
+            <button class="block px-2 py-1" @click="logout">{{ $t('logout') }}</button>
         </div>
         <div class="flex-grow">
             <RouterView></RouterView>
