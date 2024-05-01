@@ -1,6 +1,7 @@
 <script>
 export default {
     name: 'QuantitySelector',
+    emits: ['quantity-change'],
     data() {
         return {
             quantity: 1
@@ -11,6 +12,7 @@ export default {
             if (newVal < 1) {
                 this.quantity = 1;
             }
+            this.$emit('quantity-change', this.quantity);
         }
     },
     methods: {

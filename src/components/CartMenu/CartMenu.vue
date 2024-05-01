@@ -104,7 +104,8 @@ export default {
                             :product="product" @close="close" @remove="removeProductFromCart" />
                     </ul>
                     <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
-                        ..{{$t('there')}} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts }} {{ $t('more') }}
+                        ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts }}
+                        {{ $t('more') }}
                         {{
                             additionalProducts > 1 ? $t('products') :
                                 $t('product') }}

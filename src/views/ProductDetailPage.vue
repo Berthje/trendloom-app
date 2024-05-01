@@ -6,9 +6,11 @@ import { AiOutlineShopping } from "vue3-icons/ai";
 import { FaRegHeart } from "vue3-icons/fa";
 import QuantitySelector from '@/components/QuantitySelector.vue';
 import ProductDetailPage from '@/modules/ProductDetailPage/Services/ProductDetailService';
+import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService';
 
 export default {
     name: 'ProductDetailPage',
+    emits: ['addToCart'],
     components: {
         ShopHeader,
         RiArrowRightSLine,
@@ -20,14 +22,19 @@ export default {
     data() {
         return {
             service: new ProductDetailPage(),
+            authService: new AuthenticationService(),
             imageRefs: [],
             product: null,
             selectedSize: null,
+            quantity: 1,
             mainImage: '',
             currentIndex: 0
         }
     },
     methods: {
+        updateQuantity(quantity) {
+            this.quantity = quantity;
+        },
         nextImage() {
             this.currentIndex = (this.currentIndex + 1) % this.product.media.length;
             this.mainImage = this.product.media[this.currentIndex].image_url;
@@ -46,6 +53,28 @@ export default {
         },
         selectSize(sizeObj) {
             this.selectedSize = sizeObj;
+        },
+        async addToCart() {
+            const isAuthenticated = await this.authService.isLoggedIn();
+            if (!isAuthenticated) {
+                this.$router.push({ name: 'login' });
+                return;
+            }
+
+            const customer = await this.authService.getProfile();
+            if (!customer.data.address_id) {
+                this.$router.push({ name: "profile" });
+                return;
+            }
+
+            const orderData = {
+                product: this.product,
+                quantity: this.quantity,
+                size: this.selectedSize,
+                customer: customer
+            };
+
+            this.service.placeOrder(orderData);
         }
     },
     created() {
@@ -104,10 +133,10 @@ export default {
                     </ul>
                 </div>
                 <div class="flex space-x-6 h-10">
-                    <QuantitySelector />
+                    <QuantitySelector @quantity-change="updateQuantity" />
                     <button
                         class="w-full flex items-center justify-center bg-black text-white uppercase text-[0.925rem] hover:text-black hover:bg-white border border-black border-solid transition-all duration-300 ease-in-out disabled:cursor-not-allowed disabled:opacity-50"
-                        :disabled="!selectedSize">
+                        :disabled="!selectedSize" @click="addToCart">
                         <AiOutlineShopping size="20" class="mr-2" /> {{ $t('add_to_cart') }}
                     </button>
                 </div>
