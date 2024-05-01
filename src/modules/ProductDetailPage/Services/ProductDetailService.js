@@ -14,8 +14,6 @@ export default class ProductDetailPage {
 
     async placeOrder(orderData) {
         const { product, quantity, size, customer } = orderData;
-        //then create a order_item with /order_items endpoint with order_id and product_id and product_size_id and product_details (json), the quantity
-        //then update the order with /orders endpoint with the order_id and update the amount_products and total price
 
         const url = `${BASE_URL}/orders`;
         //ADDRESS ID MUST BE FROM CUSTOMER, TEMP 1 TO TEST -> customer.data.address_id
@@ -23,8 +21,8 @@ export default class ProductDetailPage {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "credentials": "include",
+                Accept: "application/json",
+                credentials: "include",
             },
             credentials: "include",
             body: JSON.stringify({
@@ -34,13 +32,41 @@ export default class ProductDetailPage {
                 order_date: formatDate(new Date()),
                 status: "not_completed",
                 amount_products: 0,
-                total_price: 0.00,
+                total_price: 0.0,
                 payment_method: "unknown",
                 shipping_method: "unknown",
-                tracking_number: null
+                tracking_number: null,
             }),
         });
 
-        console.log(response);
+        if (response.status === 201) {
+            const order = await response.json();
+            this.placeOrderItem(product, quantity, size, customer, order.id);
+        }
+    }
+
+    async placeOrderItem(product, quantity, size, customer, orderId) {
+        //then create a order_item with /order_items endpoint with order_id and product_id and product_size_id and product_details (json), the quantity
+        const url = `${BASE_URL}/order-items`;
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                credentials: "include",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                order_id: orderId,
+                product_id: product.id,
+                product_size_id: size.id,
+                product_details: JSON.stringify(product),
+                quantity: quantity,
+            }),
+        });
+
+        console.log(response)
+
+        //then update the order with /orders endpoint with the order_id and update the amount_products and total price
     }
 }

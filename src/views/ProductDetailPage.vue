@@ -62,10 +62,11 @@ export default {
             }
 
             const customer = await this.authService.getProfile();
-            if (!customer.data.address_id) {
-                this.$router.push({ name: "profile" });
-                return;
-            }
+            //LATER UNCOMMENT THIS , TEST PURPOSES
+            // if (!customer.data.address_id) {
+            //     this.$router.push({ name: "profile" });
+            //     return;
+            // }
 
             const orderData = {
                 product: this.product,
@@ -125,9 +126,9 @@ export default {
                 <div class="mb-6" v-if="product">
                     <p class="text-gray-400 text-sm mb-1">{{ $t('size') }}:</p>
                     <ul v-if="product.sizes.length > 0" class="flex space-x-2">
-                        <li v-for="(sizeObj, index) in product.sizes" :key="index" @click="selectSize(sizeObj.size)"
+                        <li v-for="(sizeObj, index) in product.sizes" :key="index" @click="selectSize(sizeObj)"
                             class="w-8 h-8 relative border border-gray-300 border-solid flex items-center justify-center text-gray-500 text-xs cursor-pointer"
-                            :class="{ 'bg-black text-white border-black': selectedSize === sizeObj.size }">
+                            :class="{ 'bg-black text-white border-black': selectedSize === sizeObj }">
                             {{ sizeObj.size }}
                         </li>
                     </ul>
