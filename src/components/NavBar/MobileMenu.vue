@@ -17,10 +17,14 @@ export default {
         show: Boolean,
         links: Array
     },
-    emits: ['close'],
+    emits: ['close', 'openLanguageModal'],
     methods: {
         close() {
             this.$emit('close');
+        },
+        openLanguageModal() {
+            this.$emit('openLanguageModal');
+            this.close();
         }
     }
 }
@@ -58,23 +62,21 @@ export default {
                         </li>
                     </ul>
                     <ul class="uppercase flex flex-col space-y-4">
-                        <li>
-                            <RouterLink to="/login" class="flex items-center" @click="close">
+                        <li @click="close">
+                            <RouterLink to="/login" class="flex items-center" >
                                 <GoPerson size="1.125rem" class="mr-2" />
                                 Account
                             </RouterLink>
                         </li>
-                        <li>
-                            <RouterLink to="/wishlist" class="flex items-center" @click="close">
+                        <li @click="close">
+                            <RouterLink to="/wishlist" class="flex items-center">
                                 <FaRegHeart size="1.125rem" class="mr-2" />
                                 Wishlist
                             </RouterLink>
                         </li>
-                        <li>
-                            <RouterLink to="/language" class="flex items-center" @click="close">
-                                <IoLanguage size="1.125rem" class="mr-2" />
-                                English
-                            </RouterLink>
+                        <li class="flex items-center cursor-pointer" @click="openLanguageModal">
+                            <IoLanguage size="1.125rem" class="mr-2"/>
+                            Language
                         </li>
                     </ul>
                 </div>

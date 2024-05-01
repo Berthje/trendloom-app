@@ -9,6 +9,7 @@ import MobileMenu from "./MobileMenu.vue";
 import CartMenu from "../CartMenu/CartMenu.vue";
 import SearchModal from "./SearchModal.vue";
 import CartSummary from "./CartSummary.vue";
+import LanguageModal from "../LanguageModal.vue"
 
 export default {
   name: 'NavBar',
@@ -22,9 +23,10 @@ export default {
     MobileMenu,
     CartMenu,
     SearchModal,
-    CartSummary
+    CartSummary,
+    LanguageModal
   },
-  emits: ['openMenu', 'closeMenu', 'openSearch', 'closeSearch', 'openCart', 'closeCart'],
+  emits: ['openMenu', 'closeMenu', 'openSearch', 'closeSearch', 'openCart', 'closeCart', 'openLanguageModal', 'closeLanguageModal'],
   data() {
     return {
       LINKS: [
@@ -92,15 +94,15 @@ export default {
               </li>
             </ul>
           </nav>
-          <AiOutlineSearch class="hidden curfsor-pointer lg:block" size="22" @click="openSearch" />
+          <AiOutlineSearch class="hidden cursor-pointer lg:block" size="22" @click="openSearch" />
         </div>
         <div class="flex items-center">
           <div class="hidden lg:flex space-x-3">
             <RouterLink to="/login">
-              <GoPerson size="1.25rem" />
+              <GoPerson size="1.25rem" class="cursor-pointer"/>
             </RouterLink>
-            <FaRegHeart size="1.25rem" />
-            <IoLanguage size="1.25rem" @click="openLanguageModal" />
+            <FaRegHeart size="1.25rem" class="cursor-pointer"/>
+            <IoLanguage size="1.25rem" @click="openLanguageModal" class="cursor-pointer"/>
           </div>
           <CartSummary :cartItemCount="cartItemCount" :cartTotalPrice="cartTotalPrice" @click="openCart" />
         </div>
@@ -108,7 +110,7 @@ export default {
     </div>
   </header>
   <DarkOverlay :show="menuOpen || searchOpen || cartOpen || languageModalOpen" @close="closeMenu; closeSearch; closeCart; closeLanguageModal" />
-  <MobileMenu :show="menuOpen" :links="LINKS" @close="closeMenu" />
+  <MobileMenu :show="menuOpen" :links="LINKS" @close="closeMenu" @openLanguageModal="openLanguageModal" />
   <SearchModal :show="searchOpen" v-model="searchQuery"  @close="closeSearch" />
   <CartMenu :show="cartOpen" @close="closeCart" @updateCart="updateCart" />
   <LanguageModal :show="languageModalOpen" @close="closeLanguageModal"/>
