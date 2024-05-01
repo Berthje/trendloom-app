@@ -64,7 +64,7 @@ export default {
           alt="Trendloom logo" v-once></RouterLink>
       <h2 class="text-3xl font-extrabold mb-4">{{ $t('log_in') }}</h2>
       <div class="flex flex-col space-y-4">
-        <p class="text-red-700" v-if="errorMessage">{{ $t(errorMessage) }}</p>
+        <p class="text-red-700" v-if="errorMessage">{{ $t(errorMessage.toLowerCase().replace(' ', '_')) }}</p>
         <InputField id="email" label="email_address" placeholder="sample_email" errorMessage="email_valid"
           status="default" type="text" v-model="email" />
         <InputField id="password" label="password" placeholder="your_password" errorMessage="password_valid"
