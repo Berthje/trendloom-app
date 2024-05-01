@@ -1,6 +1,6 @@
 <script>
 import { AiOutlineClose } from "vue3-icons/ai";
-
+import LanguageService from '@/modules/LanguageModal/Services/LanguageService';
 export default {
     name: 'LanguageModal',
     components: {
@@ -11,14 +11,26 @@ export default {
     },
     data() {
         return {
-            selectedLanguage: null,
-            languages: ["francais", "nederlands"]
+            service: new LanguageService(),
+            selectedLanguage: localStorage.getItem('preferredLanguage') || 'en',
+            languages: []
         };
     },
     methods: {
         close() {
             this.$emit('close');
-        }
+        },
+        save() {
+            localStorage.setItem('preferredLanguage', this.selectedLanguage);
+            this.close();
+        },
+        async fetchLanguages() {
+            const response = await this.service.getLanguages();
+            this.languages = response.data;
+        },
+    },
+    created() {
+        this.fetchLanguages();
     }
 }
 </script>
@@ -33,14 +45,16 @@ export default {
                 <div class="p-6">
                     <h2 class="text-2xl font-extrabold mb-8">Which language would you like us to use?</h2>
                     <div v-for="lang in languages" :key="lang" class="mb-2 flex items-center space-x-2">
-                        <input type="radio" :id="lang" :value="lang" name="language" class="radio-button" />
-                        <label :for="lang" class="capitalize text-lg font-medium">{{ lang }}</label>
+                        <input type="radio" :id="lang.id" :value="lang.code" v-model="selectedLanguage" name="language"
+                            class="radio-button" />
+                        <label :for="lang.id" class="capitalize text-lg font-medium">{{ lang.name }}</label>
                     </div>
                 </div>
             </div>
             <div class="p-6">
-                <button class="w-full py-2 bg-gray-200 text-black rounded mb-2 hover:opacity-70">Cancel</button>
-                <button class="w-full py-2 bg-black text-white rounded hover:opacity-40">Save</button>
+                <button class="w-full py-2 bg-gray-200 text-black rounded mb-2 hover:opacity-70"
+                    @click="close">Cancel</button>
+                <button class="w-full py-2 bg-black text-white rounded hover:opacity-40" @click="save">Save</button>
             </div>
         </div>
     </div>
