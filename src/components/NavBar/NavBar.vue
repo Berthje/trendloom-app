@@ -107,8 +107,9 @@ export default {
       </nav>
     </div>
   </header>
-  <DarkOverlay :show="menuOpen || searchOpen || cartOpen" @close="closeMenu; closeSearch; closeCart" />
+  <DarkOverlay :show="menuOpen || searchOpen || cartOpen || languageModalOpen" @close="closeMenu; closeSearch; closeCart; closeLanguageModal" />
   <MobileMenu :show="menuOpen" :links="LINKS" @close="closeMenu" />
-  <SearchModal v-model="searchQuery" :show="searchOpen" @close="closeSearch" />
+  <SearchModal :show="searchOpen" v-model="searchQuery"  @close="closeSearch" />
   <CartMenu :show="cartOpen" @close="closeCart" @updateCart="updateCart" />
+  <LanguageModal :show="languageModalOpen" @close="closeLanguageModal"/>
 </template>
