@@ -12,8 +12,22 @@ export default class ProductDetailPage {
         return data;
     }
 
+    async getOrders(customerId) {
+        const url = `${BASE_URL}/customers/${customerId}/orders`;
+        const response = await fetch(url, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                credentials: "include",
+            },
+            credentials: "include",
+        });
+        const data = await response.json();
+        return data;
+    }
+
     async placeOrder(orderData) {
-        const { product, quantity, size, customer } = orderData;
+        const { customer } = orderData;
 
         const url = `${BASE_URL}/orders`;
         //ADDRESS ID MUST BE FROM CUSTOMER, TEMP 1 TO TEST -> customer.data.address_id
@@ -41,12 +55,12 @@ export default class ProductDetailPage {
 
         if (response.status === 201) {
             const order = await response.json();
-            this.placeOrderItem(product, quantity, size, customer, order.id);
+            this.placeOrderItem(orderData, order.id);
         }
     }
 
-    async placeOrderItem(product, quantity, size, customer, orderId) {
-        //then create a order_item with /order_items endpoint with order_id and product_id and product_size_id and product_details (json), the quantity
+    async placeOrderItem(orderData, orderId) {
+        const { product, size, quantity } = orderData;
         const url = `${BASE_URL}/order-items`;
         const response = await fetch(url, {
             method: "POST",
@@ -65,7 +79,7 @@ export default class ProductDetailPage {
             }),
         });
 
-        console.log(response)
+        console.log(response);
 
         //then update the order with /orders endpoint with the order_id and update the amount_products and total price
     }

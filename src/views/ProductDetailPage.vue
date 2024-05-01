@@ -5,7 +5,7 @@ import { RiArrowRightSLine, RiArrowLeftSLine } from "vue3-icons/ri";
 import { AiOutlineShopping } from "vue3-icons/ai";
 import { FaRegHeart } from "vue3-icons/fa";
 import QuantitySelector from '@/components/QuantitySelector.vue';
-import ProductDetailPage from '@/modules/ProductDetailPage/Services/ProductDetailService';
+import ProductDetailService from '@/modules/ProductDetailPage/Services/ProductDetailService';
 import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService';
 
 export default {
@@ -21,7 +21,7 @@ export default {
     },
     data() {
         return {
-            service: new ProductDetailPage(),
+            service: new ProductDetailService(),
             authService: new AuthenticationService(),
             imageRefs: [],
             product: null,
@@ -62,20 +62,24 @@ export default {
             }
 
             const customer = await this.authService.getProfile();
+            const existingOrders = await this.service.getOrders(customer.data.id);
+            const openOrder = existingOrders.find(order => order.status === 'not_completed');
             //LATER UNCOMMENT THIS , TEST PURPOSES
             // if (!customer.data.address_id) {
             //     this.$router.push({ name: "profile" });
             //     return;
             // }
-
             const orderData = {
                 product: this.product,
                 quantity: this.quantity,
                 size: this.selectedSize,
                 customer: customer
             };
-
-            this.service.placeOrder(orderData);
+            if (openOrder) {
+                this.service.placeOrderItem(orderData, openOrder.id);
+            } else {
+                this.service.placeOrder(orderData);
+            }
         }
     },
     created() {
