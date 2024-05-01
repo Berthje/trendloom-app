@@ -35,7 +35,7 @@ export default {
             <RouterLink to="/account/favorites" class="block px-2 py-1" active-class="underline font-bold">{{
                 $t('favorites') }}
             </RouterLink>
-            <button class="block px-2 py-1" @click="logout">{{ $t('logout') }}</button>
+            <button class="block px-2 py-1 text-left" @click="logout">{{ $t('logout') }}</button>
         </div>
         <div class="flex-grow">
             <RouterView></RouterView>
