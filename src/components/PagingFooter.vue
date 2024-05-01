@@ -23,6 +23,7 @@ export default {
     methods: {
         goToPage(url) {
             this.$emit('change-page', url);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         },
     },
 };
