@@ -1,6 +1,7 @@
 <script>
-import { AiOutlineClose } from "vue3-icons/ai";
 import LanguageService from '@/modules/LanguageModal/Services/LanguageService';
+import { AiOutlineClose } from 'vue3-icons/ai';
+
 export default {
     name: 'LanguageModal',
     components: {
@@ -12,7 +13,7 @@ export default {
     data() {
         return {
             service: new LanguageService(),
-            selectedLanguage: localStorage.getItem('preferredLanguage') || 'en',
+            selectedLanguage: null,
             languages: []
         };
     },
@@ -21,17 +22,22 @@ export default {
             this.$emit('close');
         },
         save() {
-            localStorage.setItem('preferredLanguage', this.selectedLanguage);
+            this.service.setPreferredLanguage(this.selectedLanguage);
             this.close();
         },
         async fetchLanguages() {
             const response = await this.service.getLanguages();
             this.languages = response.data;
         },
+        getPreferredLanguage() {
+            this.selectedLanguage = this.service.getPreferredLanguage();
+            console.log(this.selectedLanguage)
+        }
     },
     created() {
         this.fetchLanguages();
-    }
+        this.getPreferredLanguage();
+    },
 }
 </script>
 
