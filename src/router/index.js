@@ -28,16 +28,19 @@ const router = createRouter({
         },
         {
             path: "/men",
+            alias: "/mannen",
             name: "men",
             component: MenPage,
         },
         {
             path: "/women",
+            alias: "/vrouwen",
             name: "women",
             component: WomenPage,
         },
         {
             path: "/kids",
+            alias: "/kinderen",
             name: "kids",
             component: KidsPage,
         },

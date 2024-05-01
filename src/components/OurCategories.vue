@@ -12,18 +12,6 @@ export default {
             required: true
         }
     },
-    data() {
-        return {
-            categoryRoutes: {
-                'men': 'men',
-                'mannen': 'men',
-                'women': 'women',
-                'vrouwen': 'women',
-                'kids': 'kids',
-                'kinderen': 'kids',
-            }
-        }
-    },
 }
 </script>
 
@@ -33,7 +21,7 @@ export default {
         <p class="text-sm text-gray-600 mb-6">{{ $t('explore_popular_categories') }}</p>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-12">
             <CategoryCard v-for="(category, index) in categories" :key="index" :imageSrc="category.media.image_url"
-                :altText="category.description" :title="category.name" :route="`/${categoryRoutes[category.name.toLowerCase()]}`"  />
+                :altText="category.description" :title="category.name" :route="`/${category.name.toLowerCase()}`"  />
         </div>
     </section>
 </template>
