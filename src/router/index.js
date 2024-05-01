@@ -103,7 +103,7 @@ const router = createRouter({
                     component: AccountProfile,
                     meta: { requiresAuth: true },
                 },
-                { path: "", redirect: "account/profile" },
+                { path: "", redirect: "/account/profile" },
             ],
         },
     ],
