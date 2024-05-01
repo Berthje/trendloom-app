@@ -13,4 +13,11 @@ export default class LanguageService {
     getPreferredLanguage() {
         return localStorage.getItem("preferredLanguage") || "english";
     }
+
+    async getTranslations() {
+        const response = await fetch(`${BASE_URL}/translations`);
+        const data = await response.json();
+        
+        return data;
+    }
 }

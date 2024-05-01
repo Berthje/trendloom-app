@@ -23,6 +23,7 @@ export default {
         },
         save() {
             this.service.setPreferredLanguage(this.selectedLanguage);
+            this.$i18n.locale = this.selectedLanguage;
             this.close();
         },
         async fetchLanguages() {
