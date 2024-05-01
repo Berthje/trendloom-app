@@ -18,9 +18,6 @@ export default {
     methods: {
         close() {
             this.$emit('close');
-        },
-        save() {
-            this.$emit('save', this.selectedLanguage);
         }
     }
 }
