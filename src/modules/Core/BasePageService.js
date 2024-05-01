@@ -10,4 +10,9 @@ export default class BasePageService {
 
         return response.json();
     }
+
+    async fetchUrl(url) {
+        const response = await fetch(url);
+        return response.json();
+    }
 }

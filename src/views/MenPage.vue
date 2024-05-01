@@ -2,6 +2,7 @@
 import ShopHeader from '@/components/ShopHeader.vue';
 import FilterBar from '@/components/FilterBar.vue';
 import ProductGrid from '@/components/ProductGrid.vue';
+import PagingFooter from '@/components/PagingFooter.vue';
 import MenPageService from '@/modules/MenPage/Services/MenPageService';
 
 export default {
@@ -9,7 +10,8 @@ export default {
   components: {
     ShopHeader,
     FilterBar,
-    ProductGrid
+    ProductGrid,
+    PagingFooter
   },
   data() {
     return {
@@ -18,7 +20,8 @@ export default {
       filterOptions: {
         sorting: 'default',
         itemCount: '12'
-      }
+      },
+      paginationLinks: []
     }
   },
   watch: {
@@ -31,8 +34,9 @@ export default {
   },
   methods: {
     async fetchProducts() {
-      const products = await this.service.allProducts(this.filterOptions);
-      this.products = products.data;
+      const response = await this.service.allProducts(this.filterOptions);
+      this.products = response.data;
+      this.paginationLinks = response.links
     }
   }
 }
@@ -44,6 +48,7 @@ export default {
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
       <FilterBar v-model:filterOptions="filterOptions"/>
       <ProductGrid :products="products" />
+      <PagingFooter :links="paginationLinks" />
     </div>
   </main>
 </template>
