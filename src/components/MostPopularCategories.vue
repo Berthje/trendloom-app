@@ -11,7 +11,7 @@ export default {
             type: Array,
             required: true
         }
-    }
+    },
 }
 </script>
 
@@ -20,8 +20,9 @@ export default {
         <h3 class="text-2xl font-medium uppercase custom-underline mb-4">{{ $t('most_popular_categories') }}</h3>
         <p class="text-sm text-gray-600 mb-6">{{ $t('explore_popular_categories') }}</p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-12">
-            <CategoryCard v-for="(category, index) in categories" :key="index" :imageSrc="category.imageSrc"
-                :altText="category.altText" :title="category.title" :productCount="category.productCount" />
+            <CategoryCard v-for="(category, index) in categories" :key="index"
+                :imageSrc="category.media ? category.media.image_url : '/images/categories/shoes.webp'"
+                :altText="category.description" :title="category.name" :route="`/${category.name.toLowerCase()}`" />
         </div>
     </section>
 </template>

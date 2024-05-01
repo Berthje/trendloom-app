@@ -10,17 +10,16 @@ export default {
         imageSrc: String,
         altText: String,
         title: String,
-        productCount: String,
+        route: String,
     }
 }
 </script>
 <template>
-    <RouterLink to="/women" class="group">
+    <RouterLink :to="route" class="group">
         <div class="text-center">
             <img :src="imageSrc" class="inline-block w-full aspect-square object-cover mb-2" :alt="altText">
             <div>
                 <h4 class="uppercase font-bold text-lg group-hover:underline">{{ title }}</h4>
-                <p class="text-sm">{{ productCount }} {{$t('products')}}</p>
             </div>
         </div>
     </RouterLink>

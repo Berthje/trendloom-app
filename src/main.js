@@ -9,6 +9,7 @@ import { createI18n } from "vue-i18n";
 export const i18n = createI18n({
     locale: localStorage.getItem("preferredLanguage") || "en",
     fallbackLocale: "nl",
+    silentTranslationWarn: true,
 });
 
 const app = createApp(App);
