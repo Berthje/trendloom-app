@@ -3,6 +3,7 @@ export default {
     name: 'ShopHeader',
     props: {
         title: String,
+        description: String,
         links: Array
     }
 }
@@ -23,6 +24,7 @@ export default {
                 </RouterLink>
             </nav>
             <h3 class="font-extrabold text-4xl md:text-5xl lg:text-6xl uppercase">{{ title }}</h3>
+            <p v-if="description">{{description}}</p>
         </div>
     </section>
 </template>
