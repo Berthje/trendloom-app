@@ -31,7 +31,6 @@ export default {
         },
         getPreferredLanguage() {
             this.selectedLanguage = this.service.getPreferredLanguage();
-            console.log(this.selectedLanguage)
         }
     },
     created() {
