@@ -14,6 +14,9 @@ import AccountReturns from "../views/AccountReturns.vue";
 import AccountFavorites from "../views/AccountFavorites.vue";
 import AccountProfile from "../views/AccountProfile.vue";
 import AccountPage from "../views/AccountPage.vue";
+import AuthenticationService from "@/modules/Authentication/Services/AuthenticationService";
+
+const authService = new AuthenticationService();
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,15 +77,49 @@ const router = createRouter({
             path: "/account",
             name: "account",
             component: AccountPage,
+            meta: { requiresAuth: true },
             children: [
-                { path: "orders", name: "orders", component: AccountOrders },
-                { path: "returns", name: "returns", component: AccountReturns },
-                { path: "favorites", name: "favorites", component: AccountFavorites },
-                { path: "profile", name: "profile", component: AccountProfile },
+                {
+                    path: "orders",
+                    name: "orders",
+                    component: AccountOrders,
+                    meta: { requiresAuth: true },
+                },
+                {
+                    path: "returns",
+                    name: "returns",
+                    component: AccountReturns,
+                    meta: { requiresAuth: true },
+                },
+                {
+                    path: "favorites",
+                    name: "favorites",
+                    component: AccountFavorites,
+                    meta: { requiresAuth: true },
+                },
+                {
+                    path: "profile",
+                    name: "profile",
+                    component: AccountProfile,
+                    meta: { requiresAuth: true },
+                },
                 { path: "", redirect: "account/profile" },
             ],
         },
     ],
+});
+
+router.beforeEach(async (to, from, next) => {
+    const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+    const isLoggedIn = await authService.isLoggedIn();
+
+    if (requiresAuth && !isLoggedIn) {
+        next("/login");
+    } else if (to.path === "/login" && isLoggedIn) {
+        next("/account");
+    } else {
+        next();
+    }
 });
 
 router.afterEach(() => {
