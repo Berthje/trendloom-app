@@ -39,14 +39,26 @@ export default class AuthenticationService {
     }
 
     async getProfile() {
-        const response = await fetch(`${BASE_URL}/profile`);
+        const response = await fetch(`${BASE_URL}/profile`, {
+            headers: {
+                "Content-Type": "application/json",
+                "credentials": "include",
+            },
+            credentials: "include",
+        });
         const data = await response.json();
 
         return data;
     }
 
     async isLoggedIn() {
-        const response = await fetch(`${BASE_URL}/profile`);
+        const response = await fetch(`${BASE_URL}/profile`, {
+            headers: {
+                "Content-Type": "application/json",
+                "credentials": "include",
+            },
+            credentials: "include",
+        });
         const data = await response.json();
 
         return !data.error;
