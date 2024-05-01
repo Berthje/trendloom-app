@@ -20,7 +20,7 @@ export default {
         <div>
             <nav class="text-lg flex justify-center space-x-2">
                 <RouterLink v-for="(link, index) in links" :key="index" :to="link.path"
-                    class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400">{{ $t(link.name.toLowerCase()) }}&nbsp;
+                    class="[&:not(:last-child)]:after:content-['>'] hover:text-gray-400 capitalize">{{ $t(link.name.toLowerCase()) }}&nbsp;
                 </RouterLink>
             </nav>
             <h3 class="font-extrabold text-4xl md:text-5xl lg:text-6xl uppercase">{{ title }}</h3>
