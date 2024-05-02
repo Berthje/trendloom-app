@@ -43,8 +43,14 @@ export default {
         close() {
             this.$emit('close');
         },
-        removeProductFromCart(orderItemId) {
-            this.products = this.products.filter(product => product.orderItemId !== orderItemId);
+        async removeProductFromCart(productObject) {
+            const profile = await this.authService.getProfile();
+            const orders = await this.service.getOrders(profile.data.id);
+            const openOrder = orders.find(order => order.status === 'not_completed');
+            this.products = this.products.filter(product => product.orderItemId !== productObject.orderItemId);
+            this.service.deleteOrderItem(productObject, openOrder.id);
+
+            this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
         }
     },
     async created() {

@@ -31,8 +31,8 @@ export default class ProductDetailService {
         const response = await fetch(url, {
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "credentials": "include",
+                Accept: "application/json",
+                credentials: "include",
             },
             credentials: "include",
         });
@@ -42,9 +42,8 @@ export default class ProductDetailService {
 
     async placeOrder(orderData) {
         const { customer } = orderData;
-
         const url = `${BASE_URL}/orders`;
-        //ADDRESS ID MUST BE FROM CUSTOMER, TEMP 1 TO TEST -> customer.data.address_id
+
         const response = await fetch(url, {
             method: "POST",
             headers: {
@@ -60,7 +59,7 @@ export default class ProductDetailService {
                 order_date: formatDate(new Date()),
                 status: "not_completed",
                 amount_products: 0,
-                total_price: 0.00,
+                total_price: 0.0,
                 payment_method: "unknown",
                 shipping_method: "unknown",
                 tracking_number: null,
@@ -108,33 +107,83 @@ export default class ProductDetailService {
         const orderResponse = await fetch(orderUrl, {
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "credentials": "include",
+                Accept: "application/json",
+                credentials: "include",
             },
             credentials: "include",
         });
         const order = await orderResponse.json();
 
-        const newTotalPrice = parseFloat(order[0].total_price) + parseFloat(updatedData.total_price);
-        const newAmountProducts = parseInt(order[0].amount_products) + parseInt(updatedData.amount_products);
+        const newTotalPrice =
+            parseFloat(order[0].total_price) +
+            parseFloat(updatedData.total_price);
+        const newAmountProducts =
+            parseInt(order[0].amount_products) +
+            parseInt(updatedData.amount_products);
 
         const url = `${BASE_URL}/orders/${orderId}`;
         const response = await fetch(url, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                "credentials": "include",
+                Accept: "application/json",
+                credentials: "include",
             },
             credentials: "include",
             body: JSON.stringify({
                 total_price: newTotalPrice,
-                amount_products: newAmountProducts
+                amount_products: newAmountProducts,
             }),
         });
 
         if (response.status === 200) {
             console.log("Order updated successfully");
         }
+    }
+
+    async deleteOrderItem(product, orderId) {
+        const url = `${BASE_URL}/order-items/${product.orderItemId}`;
+        await fetch(url, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                credentials: "include",
+            },
+            credentials: "include",
+        });
+
+        const orderUrl = `${BASE_URL}/orders/${orderId}`;
+        const orderResponse = await fetch(orderUrl, {
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                credentials: "include",
+            },
+            credentials: "include",
+        });
+        const order = await orderResponse.json();
+        console.log(order)
+
+        const newTotalPrice =
+            parseFloat(order[0].total_price) -
+            parseFloat(product.price * product.quantity);
+        const newAmountProducts =
+            parseInt(order[0].amount_products) - parseInt(product.quantity);
+
+        const updateUrl = `${BASE_URL}/orders/${orderId}`;
+        const updateResponse = await fetch(updateUrl, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                credentials: "include",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                total_price: newTotalPrice,
+                amount_products: newAmountProducts,
+            }),
+        });
     }
 }
