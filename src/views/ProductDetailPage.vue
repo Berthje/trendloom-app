@@ -37,12 +37,13 @@ export default {
             this.quantity = quantity;
         },
         nextImage() {
-            this.currentIndex = (this.currentIndex + 1) % this.product.media.length;
-            this.mainImage = this.product.media[this.currentIndex].image_url;
-            this.imageRefs[this.currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            this.updateImageIndex(1);
         },
         prevImage() {
-            this.currentIndex = (this.currentIndex - 1 + this.product.media.length) % this.product.media.length;
+            this.updateImageIndex(-1);
+        },
+        updateImageIndex(direction) {
+            this.currentIndex = (this.currentIndex + direction + this.product.media.length) % this.product.media.length;
             this.mainImage = this.product.media[this.currentIndex].image_url;
             this.imageRefs[this.currentIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         },
@@ -56,36 +57,71 @@ export default {
             this.selectedSize = sizeObj;
         },
         async addToCart() {
+            this.errorMessage = null;
             const isAuthenticated = await this.authService.isLoggedIn();
             if (!isAuthenticated) {
-                this.$router.push({ name: 'login' });
+                this.redirectToLogin();
                 return;
             }
 
             const customer = await this.authService.getProfile();
             if (!customer.data.address_id) {
-                this.$router.push({ name: "profile" });
+                this.redirectToProfile();
                 return;
             }
 
             const existingOrders = await this.service.getOrders(customer.data.id);
             const openOrder = existingOrders.find(order => order.status === 'not_completed');
 
-            const orderData = {
+            const orderData = this.createOrderData(customer, openOrder);
+
+            if (openOrder) {
+                await this.placeOrderItem(orderData, openOrder.id);
+            } else {
+                this.placeOrder(orderData);
+            }
+        },
+        redirectToLogin() {
+            this.$router.push({ name: 'login' });
+        },
+        redirectToProfile() {
+            this.$router.push({ name: "profile" });
+        },
+        createOrderData(customer, openOrder) {
+            return {
                 product: this.product,
                 quantity: this.quantity,
                 size: this.selectedSize,
                 customer: customer,
                 address_id: customer.data.address_id
             };
-            if (openOrder) {
-                const errorMessage = await this.service.placeOrderItem(orderData, openOrder.id);
-                if (errorMessage) {
-                    this.errorMessage = errorMessage;
-                }
+        },
+        async placeOrderItem(orderData, orderId) {
+            const errorMessage = await this.service.placeOrderItem(orderData, orderId);
+            if (errorMessage) {
+                this.errorMessage = errorMessage;
             } else {
-                this.service.placeOrder(orderData);
+                this.resetVariables();
+                this.showSuccessToast();
             }
+        },
+        placeOrder(orderData) {
+            this.service.placeOrder(orderData);
+            this.resetVariables();
+            this.showSuccessToast();
+        },
+        resetVariables() {
+            this.selectedSize = null;
+            this.quantity = 1;
+        },
+        showSuccessToast() {
+            this.$toast.open({
+                message: 'Added to cart successfully!',
+                position: 'bottom-right',
+                duration: 1000,
+                dismissible: true,
+                pauseOnHover: true,
+            });
         }
     },
     created() {
@@ -94,7 +130,7 @@ export default {
         this.fetchProduct(productId);
     }
 }
-</script>
+</script>a
 
 <template>
     <main>
