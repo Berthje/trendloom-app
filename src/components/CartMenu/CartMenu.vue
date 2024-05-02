@@ -27,13 +27,16 @@ export default {
         }
     },
     watch: {
-        products(newProducts) {
-            this.$emit('updateCart', { itemCount: newProducts.length, totalPrice: this.totalPrice });
+        products() {
+            this.$emit('updateCart', { itemCount: this.itemCount, totalPrice: this.totalPrice });
         }
     },
     computed: {
         additionalProducts() {
             return this.products.length - this.MAX_PRODUCTS_SHOWN;
+        },
+        itemCount() {
+            return this.products.reduce((total, product) => total + product.quantity, 0);
         },
         totalPrice() {
             return this.products.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -79,7 +82,7 @@ export default {
     <transition name="slide">
         <div v-show="show" class="fixed top-0 h-full w-full overflow-auto z-50">
             <nav class="fixed top-0 right-0 h-full w-[22rem] bg-white overflow-auto p-8 text-center flex flex-col">
-                <CartMenuHeader :amountOfProducts="products.length" />
+                <CartMenuHeader :amountOfProducts="itemCount" />
                 <div v-if="products.length === 0">
                     <p class="text-sm mb-4">{{ $t('no_products_in_cart') }}</p>
                     <RouterLink @click="$emit('close')" to="/shop"
@@ -94,13 +97,13 @@ export default {
                     </ul>
                 </div>
                 <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
-                        ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts
-                        }}
-                        {{ $t('more') }}
-                        {{
-                            additionalProducts > 1 ? $t('products') :
-                                $t('product') }}
-                    </p>
+                    ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts
+                    }}
+                    {{ $t('more') }}
+                    {{
+                        additionalProducts > 1 ? $t('products') :
+                            $t('product') }}
+                </p>
                 <CartMenuFooter v-if="products.length > 0" :subtotal="totalPrice" />
             </nav>
             <AiOutlineClose v-show="show"
