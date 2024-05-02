@@ -54,21 +54,8 @@ export default {
 
       this.setProfileData();
     },
-    async save(type) {
-      let data;
-      switch (type) {
-        case 'personalDetails':
-          data = this.personalDetailFields.reduce((obj, field) => ({ ...obj, [field.id]: field.value }), {});
-          break;
-        case 'address':
-          data = this.addressFields.reduce((obj, field) => ({ ...obj, [field.id]: field.value }), {});
-          break;
-        case 'password':
-          data = this.passwordFields.reduce((obj, field) => ({ ...obj, [field.id]: field.value }), {});
-          break;
-      }
-
-      const response = await this.service.save(type, data);
+    async save(formData) {
+      const response = await this.service.save(formData.type, formData.fields);
       console.log(await response);
     }
   },

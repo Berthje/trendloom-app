@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     save() {
-      this.$emit('save', this.type);
+      this.$emit('save', { type: this.type, fields: this.fields });
     }
   }
 }
@@ -28,7 +28,7 @@ export default {
     <form class="flex flex-wrap -mx-2" @submit.prevent="save">
       <div class="w-full md:w-1/2 px-2 mb-4" v-for="(field, index) in fields" :key="index">
         <InputField :id="field.id" :label="field.label" :placeholder="field.placeholder"
-          :errorMessage="field.errorMessage" :status="field.status" :type="field.type" :modelValue="field.value" />
+          :errorMessage="field.errorMessage" :status="field.status" :type="field.type" v-model="field.value" />
       </div>
       <div class="w-full px-2">
         <button type="submit"
