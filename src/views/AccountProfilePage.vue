@@ -39,17 +39,20 @@ export default {
         }
       });
     },
+    setProfileData() {
+      this.personalDetailFields.forEach(field => {
+        field.value = this.profileData[field.id];
+      });
+
+      this.addressFields.forEach(field => {
+        field.value = this.profileData.address[field.id];
+      });
+    },
     async fetchProfileData() {
       const response = await this.service.getProfileData();
       this.profileData = response.data;
 
-      ['personalDetailFields', 'addressFields'].forEach(fieldArrayName => {
-        this[fieldArrayName].forEach(field => {
-          if (this.profileData[field.id]) {
-            field.value = this.profileData[field.id];
-          }
-        });
-      });
+      this.setProfileData();
     }
   },
   async created() {
