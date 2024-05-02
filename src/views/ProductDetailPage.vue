@@ -28,7 +28,8 @@ export default {
             selectedSize: null,
             quantity: 1,
             mainImage: '',
-            currentIndex: 0
+            currentIndex: 0,
+            errorMessage: null
         }
     },
     methods: {
@@ -78,7 +79,10 @@ export default {
                 address_id: customer.data.address_id
             };
             if (openOrder) {
-                this.service.placeOrderItem(orderData, openOrder.id);
+                const errorMessage = await this.service.placeOrderItem(orderData, openOrder.id);
+                if (errorMessage) {
+                    this.errorMessage = errorMessage;
+                }
             } else {
                 this.service.placeOrder(orderData);
             }
@@ -147,6 +151,7 @@ export default {
                         <AiOutlineShopping size="20" class="mr-2" /> {{ $t('add_to_cart') }}
                     </button>
                 </div>
+                <p class="text-red-500 mt-4" v-if="errorMessage">{{ errorMessage }}</p>
                 <div class="flex items-center space-x-3 mt-6 mb-3 cursor-pointer hover:opacity-60">
                     <FaRegHeart />
                     <p>{{ $t('add_to_wishlist') }}</p>

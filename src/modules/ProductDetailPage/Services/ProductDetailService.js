@@ -98,7 +98,7 @@ export default class ProductDetailService {
         const sizeStock = stockData.find((stock) => stock.size_id === size.id);
 
         if (!sizeStock || sizeStock.quantity_in_stock < quantity) {
-            throw new Error("The requested quantity is not available");
+            return "The requested quantity is not available";
         }
 
         const response = await fetch(
