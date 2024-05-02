@@ -31,10 +31,10 @@ export default {
                 { text: 'privacy_cookie_policy', href: '#' },
             ],
             contactLinks: [
-                { text: 'BE (+32) 478 91 47', href: 'tel:04789147' },
-                { text: 'US (+22) 156 7345', href: 'tel:01567345' },
-                { text: 'support@trendloom.com', href: 'mailto:support@trendloom.com' },
-                { text: 'sales@trendloom.com', href: 'mailto:sales@trendloom.com' },
+                { text: 'belgian_telephone_number', href: 'tel:04789147' },
+                { text: 'usa_telephone_number', href: 'tel:01567345' },
+                { text: 'support_email', href: 'mailto:support@trendloom.com' },
+                { text: 'sales_email', href: 'mailto:sales@trendloom.com' },
             ]
         }
     }

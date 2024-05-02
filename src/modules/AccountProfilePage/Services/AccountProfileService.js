@@ -104,6 +104,6 @@ export default class AccountProfileService {
     }
 
     async savePassword(data) {
-        console.log("!!TO BE IMPLEMENTED LATER, NOT MVP!!");
+        console.info("!!TO BE IMPLEMENTED LATER, NOT MVP!!");
     }
 }

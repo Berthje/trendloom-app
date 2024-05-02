@@ -15,7 +15,6 @@ export default {
         },
         nextPageUrl() {
             const link = this.links.find(link => link.label.includes('&raquo;'));
-            console.log(link)
             return link && link.url ? link.url : null;
         },
         pageLinks() {
