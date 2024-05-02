@@ -1,7 +1,7 @@
 <script>
 
 export default {
-  name: 'AccountOrders',
+  name: 'AccountOrdersPage',
 }
 </script>
 

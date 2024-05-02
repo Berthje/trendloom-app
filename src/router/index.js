@@ -9,10 +9,10 @@ import RegisterPage from "../views/RegisterPage.vue";
 import ProductDetailPage from "../views/ProductDetailPage.vue";
 import BrandDetailPage from "../views/BrandDetailPage.vue";
 import BrandsOverviewPage from "../views/BrandsOverviewPage.vue";
-import AccountOrders from "../views/AccountOrders.vue";
-import AccountReturns from "../views/AccountReturns.vue";
-import AccountFavorites from "../views/AccountFavorites.vue";
-import AccountProfile from "../views/AccountProfile.vue";
+import AccountOrdersPage from "../views/AccountOrdersPage.vue";
+import AccountReturnsPage from "../views/AccountReturnsPage.vue";
+import AccountFavorites from "../views/AccountFavoritesPage.vue";
+import AccountProfilePage from "../views/AccountProfilePage.vue";
 import AccountPage from "../views/AccountPage.vue";
 import AuthenticationService from "@/modules/Authentication/Services/AuthenticationService";
 
@@ -85,13 +85,13 @@ const router = createRouter({
                 {
                     path: "orders",
                     name: "orders",
-                    component: AccountOrders,
+                    component: AccountOrdersPage,
                     meta: { requiresAuth: true },
                 },
                 {
                     path: "returns",
                     name: "returns",
-                    component: AccountReturns,
+                    component: AccountReturnsPage,
                     meta: { requiresAuth: true },
                 },
                 {
@@ -103,7 +103,7 @@ const router = createRouter({
                 {
                     path: "profile",
                     name: "profile",
-                    component: AccountProfile,
+                    component: AccountProfilePage,
                     meta: { requiresAuth: true },
                 },
                 { path: "", redirect: "/account/profile" },

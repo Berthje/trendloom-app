@@ -2,7 +2,7 @@
 import ProfileForm from '@/components/ProfileForm.vue';
 
 export default {
-  name: 'AccountProfile',
+  name: 'AccountProfilePage',
   components: {
     ProfileForm
   },
@@ -27,7 +27,19 @@ export default {
         { id: 'newPassword', label: 'new_password', placeholder: 'enter_your_new_password', errorMessage: 'new_password_required', status: 'default', type: 'password' },
       ]
     }
-  }
+  },
+  methods: {
+    validateAddressFields() {
+      this.addressFields.forEach(field => {
+        if (!field.value) {
+          field.status = 'error';
+        }
+      });
+    },
+  },
+  created() {
+    this.validateAddressFields();
+  },
 }
 </script>
 

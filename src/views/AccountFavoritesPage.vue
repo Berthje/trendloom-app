@@ -1,7 +1,7 @@
 <script>
 
 export default {
-  name: 'AccountFavorites',
+  name: 'AccountFavoritesPage',
 }
 </script>
 
