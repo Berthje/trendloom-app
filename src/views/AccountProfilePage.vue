@@ -51,9 +51,25 @@ export default {
     async fetchProfileData() {
       const response = await this.service.getProfileData();
       this.profileData = response[0];
-      console.log(this.profileData)
 
       this.setProfileData();
+    },
+    async save(type) {
+      let data;
+      switch (type) {
+        case 'personalDetails':
+          data = this.personalDetailFields.reduce((obj, field) => ({ ...obj, [field.id]: field.value }), {});
+          break;
+        case 'address':
+          data = this.addressFields.reduce((obj, field) => ({ ...obj, [field.id]: field.value }), {});
+          break;
+        case 'password':
+          data = this.passwordFields.reduce((obj, field) => ({ ...obj, [field.id]: field.value }), {});
+          break;
+      }
+
+      const response = await this.service.save(type, data);
+      console.log(await response);
     }
   },
   async created() {
@@ -66,8 +82,8 @@ export default {
 <template>
   <main>
     <h1 class="font-bold text-2xl pb-2 border-b border-solid border-black ">{{ $t('my_profile') }}</h1>
-    <ProfileForm :fields="personalDetailFields" />
-    <ProfileForm :fields="addressFields" />
-    <ProfileForm :fields="passwordFields" />
+    <ProfileForm :fields="personalDetailFields" type="personalDetails" @save="save" />
+    <ProfileForm :fields="addressFields" type="address" @save="save" />
+    <ProfileForm :fields="passwordFields" type="password" @save="save" />
   </main>
 </template>

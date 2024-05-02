@@ -19,4 +19,28 @@ export default class AccountProfileService {
 
         return response.json();
     }
+
+    async save(type, data) {
+        switch (type) {
+            case 'personalDetails':
+              await this.savePersonalDetails(data);
+              break;
+            case 'address':
+              await this.saveAddress(data);
+              break;
+            case 'password':
+              await this.savePassword(data);
+              break;
+          }
+    }
+
+    async savePersonalDetails(data) {
+        console.log(data);
+    }
+    async saveAddress(data) {
+        console.log(data);
+    }
+    async savePassword(data) {
+        console.log("TO BE IMPLEMENTED", data);
+    }
 }
