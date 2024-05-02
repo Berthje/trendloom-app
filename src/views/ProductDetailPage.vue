@@ -134,7 +134,7 @@ export default {
 </script>a
 
 <template>
-    <main>
+    <main v-if="product">
         <ShopHeader :title="product.name" :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: '/shop' }]" />
         <section class="px-4 pt-4 pb-16 lg:flex lg:max-w-screen-xl lg:mx-auto lg:space-x-8">
             <div class="sm:flex sm:flex-row-reverse lg:w-1/2">
