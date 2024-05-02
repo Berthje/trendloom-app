@@ -5,54 +5,72 @@ import { fetchWithLang, formatDate } from "../../Core/helpers";
 export default class ProductDetailService {
     authService = new AuthenticationService();
 
+    getFetchOptions(method, body) {
+        return {
+            method,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                credentials: "include",
+            },
+            credentials: "include",
+            body: JSON.stringify(body),
+        };
+    }
+
+    async fetchAndUpdateOrder(orderId, updatedData) {
+        const orderUrl = `${BASE_URL}/orders/${orderId}`;
+        const orderResponse = await fetch(
+            orderUrl,
+            this.getFetchOptions("GET")
+        );
+        const order = await orderResponse.json();
+
+        const newTotalPrice =
+            parseFloat(order[0].total_price) +
+            parseFloat(updatedData.total_price);
+        const newAmountProducts =
+            parseInt(order[0].amount_products) +
+            parseInt(updatedData.amount_products);
+
+        const updateResponse = await fetch(
+            orderUrl,
+            this.getFetchOptions("PUT", {
+                total_price: newTotalPrice,
+                amount_products: newAmountProducts,
+            })
+        );
+
+        if (updateResponse.status === 200) {
+            console.log("Order updated successfully");
+        }
+    }
+
     async getProduct(productId) {
         const url = `${BASE_URL}/products/${productId}`;
         const response = await fetchWithLang(url);
-        const data = await response.json();
-        return data;
+        return await response.json();
     }
 
     async getOrders(customerId) {
         const url = `${BASE_URL}/customers/${customerId}/orders`;
-        const response = await fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-        });
-        const data = await response.json();
-        return data;
+        const response = await fetch(url, this.getFetchOptions("GET"));
+        return await response.json();
     }
 
     async getOrderItems(orderId) {
         const url = `${BASE_URL}/orders/${orderId}/order-items`;
-        const response = await fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-        });
-        const data = await response.json();
-        return data;
+        const response = await fetch(url, this.getFetchOptions("GET"));
+        return await response.json();
     }
 
     async placeOrder(orderData) {
         const { customer } = orderData;
         const url = `${BASE_URL}/orders`;
 
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-            body: JSON.stringify({
+        const response = await fetch(
+            url,
+            this.getFetchOptions("POST", {
                 customer_id: customer.data.id,
                 address_id: orderData.address_id,
                 coupon_id: null,
@@ -63,8 +81,8 @@ export default class ProductDetailService {
                 payment_method: "unknown",
                 shipping_method: "unknown",
                 tracking_number: null,
-            }),
-        });
+            })
+        );
 
         if (response.status === 201) {
             const order = await response.json();
@@ -75,22 +93,17 @@ export default class ProductDetailService {
     async placeOrderItem(orderData, orderId) {
         const { product, size, quantity } = orderData;
         const url = `${BASE_URL}/order-items`;
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-            body: JSON.stringify({
+
+        const response = await fetch(
+            url,
+            this.getFetchOptions("POST", {
                 order_id: orderId,
                 product_id: product.id,
                 product_size_id: size.id,
                 product_details: JSON.stringify(product),
                 quantity: quantity,
-            }),
-        });
+            })
+        );
 
         if (response.status === 201) {
             const orderItem = await response.json();
@@ -98,92 +111,18 @@ export default class ProductDetailService {
                 amount_products: orderItem.quantity,
                 total_price: product.price * orderItem.quantity,
             };
-            this.updateOrder(orderId, updatedData);
-        }
-    }
-
-    async updateOrder(orderId, updatedData) {
-        const orderUrl = `${BASE_URL}/orders/${orderId}`;
-        const orderResponse = await fetch(orderUrl, {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-        });
-        const order = await orderResponse.json();
-
-        const newTotalPrice =
-            parseFloat(order[0].total_price) +
-            parseFloat(updatedData.total_price);
-        const newAmountProducts =
-            parseInt(order[0].amount_products) +
-            parseInt(updatedData.amount_products);
-
-        const url = `${BASE_URL}/orders/${orderId}`;
-        const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                total_price: newTotalPrice,
-                amount_products: newAmountProducts,
-            }),
-        });
-
-        if (response.status === 200) {
-            console.log("Order updated successfully");
+            this.fetchAndUpdateOrder(orderId, updatedData);
         }
     }
 
     async deleteOrderItem(product, orderId) {
         const url = `${BASE_URL}/order-items/${product.orderItemId}`;
-        await fetch(url, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-        });
+        await fetch(url, this.getFetchOptions("DELETE"));
 
-        const orderUrl = `${BASE_URL}/orders/${orderId}`;
-        const orderResponse = await fetch(orderUrl, {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-        });
-        const order = await orderResponse.json();
-        console.log(order)
-
-        const newTotalPrice =
-            parseFloat(order[0].total_price) -
-            parseFloat(product.price * product.quantity);
-        const newAmountProducts =
-            parseInt(order[0].amount_products) - parseInt(product.quantity);
-
-        const updateUrl = `${BASE_URL}/orders/${orderId}`;
-        const updateResponse = await fetch(updateUrl, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                total_price: newTotalPrice,
-                amount_products: newAmountProducts,
-            }),
-        });
+        const updatedData = {
+            amount_products: -product.quantity,
+            total_price: -product.price * product.quantity,
+        };
+        this.fetchAndUpdateOrder(orderId, updatedData);
     }
 }
