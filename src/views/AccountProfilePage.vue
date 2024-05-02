@@ -1,5 +1,6 @@
 <script>
 import ProfileForm from '@/components/ProfileForm.vue';
+import AccountProfileService from '@/modules/AccountProfilePage/Services/AccountProfileService';
 
 export default {
   name: 'AccountProfilePage',
@@ -8,6 +9,8 @@ export default {
   },
   data() {
     return {
+      service: new AccountProfileService(),
+      profileData: {},
       personalDetailFields: [
         { id: 'firstname', label: 'first_name', placeholder: 'sample_firstname', errorMessage: 'first_name_required', status: 'default', type: 'text', value: '' },
         { id: 'lastname', label: 'last_name', placeholder: 'sample_lastname', errorMessage: 'last_name_required', status: 'default', type: 'text', value: '' },
@@ -36,8 +39,13 @@ export default {
         }
       });
     },
+    async fetchProfileData() {
+      const response = await this.service.getProfileData();
+      this.profileData = response.data;
+    }
   },
-  created() {
+  async created() {
+    await this.fetchProfileData();
     this.validateAddressFields();
   },
 }
