@@ -33,8 +33,8 @@ export default {
         }
     },
     methods: {
-        updateQuantity(quantity) {
-            this.quantity = quantity;
+        updateQuantity(newQuantity) {
+            this.quantity = newQuantity;
         },
         nextImage() {
             this.updateImageIndex(1);
