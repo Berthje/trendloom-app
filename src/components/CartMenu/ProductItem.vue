@@ -14,7 +14,7 @@ export default {
             required: true
         }
     },
-    emits: ['close', 'remove']
+    emits: ['close', 'remove'],
 }
 </script>
 
@@ -23,18 +23,18 @@ export default {
         <AiOutlineClose size="16" @click="$emit('remove', product.id)"
             class="absolute top-2 right-2 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 cursor-pointer text-gray-500 hover:text-black" />
         <RouterLink :to="`/shop/product/${product.id}`" class="mr-5 w-20" @click="$emit('close')">
-            <img :src="product.imageUrl" :alt="product.title" />
+            <img :src="product.media[0].image_url" :alt="product.name" />
         </RouterLink>
         <div>
             <h4 class="leading-none mb-1">
-                <RouterLink :to="`/shop/product/${product.id}`" @click="$emit('close')">{{ product.title }}</RouterLink>
+                <RouterLink :to="`/shop/product/${product.id}`" @click="$emit('close')">{{ product.name }}</RouterLink>
             </h4>
             <div class="text-[0.925rem]">
                 <dl class="text-[#858585]">
                     <div class="flex space-x-1">
                         <dt>{{$t('size')}}:</dt>
                         <dd>
-                            <p>{{ product.size }}</p>
+                            <p>{{ product.selectedSize }}</p>
                         </dd>
                     </div>
                 </dl>

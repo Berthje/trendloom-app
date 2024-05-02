@@ -2,7 +2,7 @@ import AuthenticationService from "@/modules/Authentication/Services/Authenticat
 import { BASE_URL } from "../../Core/config";
 import { fetchWithLang, formatDate } from "../../Core/helpers";
 
-export default class ProductDetailPage {
+export default class ProductDetailService {
     authService = new AuthenticationService();
 
     async getProduct(productId) {
@@ -26,6 +26,20 @@ export default class ProductDetailPage {
         return data;
     }
 
+    async getOrderItems(orderId) {
+        const url = `${BASE_URL}/orders/${orderId}/order-items`;
+        const response = await fetch(url, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "credentials": "include",
+            },
+            credentials: "include",
+        });
+        const data = await response.json();
+        return data;
+    }
+
     async placeOrder(orderData) {
         const { customer } = orderData;
 
@@ -41,7 +55,7 @@ export default class ProductDetailPage {
             credentials: "include",
             body: JSON.stringify({
                 customer_id: customer.data.id,
-                address_id: 1,
+                address_id: orderData.address_id,
                 coupon_id: null,
                 order_date: formatDate(new Date()),
                 status: "not_completed",

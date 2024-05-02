@@ -3,6 +3,8 @@ import { AiOutlineClose } from "vue3-icons/ai";
 import ProductItem from "./ProductItem.vue"
 import CartMenuHeader from "./CartMenuHeader.vue"
 import CartMenuFooter from './CartMenuFooter.vue';
+import ProductDetailService from "@/modules/ProductDetailPage/Services/ProductDetailService";
+import AuthenticationService from "@/modules/Authentication/Services/AuthenticationService";
 
 export default {
     name: 'CartMenu',
@@ -18,44 +20,9 @@ export default {
     emits: ['close', 'updateCart'],
     data() {
         return {
-            products: [
-                {
-                    id: 1,
-                    imageUrl: "https://via.placeholder.com/150",
-                    title: "Product 1",
-                    color: "Black",
-                    size: "M",
-                    quantity: 2,
-                    price: 27.19
-                },
-                {
-                    id: 2,
-                    imageUrl: "https://via.placeholder.com/150",
-                    title: "Product 2",
-                    color: "Black",
-                    size: "XL",
-                    quantity: 1,
-                    price: 247.99
-                },
-                {
-                    id: 3,
-                    imageUrl: "https://via.placeholder.com/150",
-                    title: "Product 3",
-                    color: "Red",
-                    size: "M",
-                    quantity: 3,
-                    price: 78.49
-                },
-                {
-                    id: 4,
-                    imageUrl: "https://via.placeholder.com/150",
-                    title: "Product 4",
-                    color: "Yellow",
-                    size: "S",
-                    quantity: 7,
-                    price: 478.00
-                },
-            ],
+            service: new ProductDetailService(),
+            authService: new AuthenticationService(),
+            products: [],
             MAX_PRODUCTS_SHOWN: 4
         }
     },
@@ -80,7 +47,23 @@ export default {
             this.products = this.products.filter(product => product.id !== productId);
         }
     },
-    created() {
+    async created() {
+        const profile = await this.authService.getProfile();
+        const orders = await this.service.getOrders(profile.data.id);
+        const openOrder = orders.find(order => order.status === 'not_completed');
+
+        if (openOrder) {
+            const orderItems = await this.service.getOrderItems(openOrder.id);
+            this.products = await Promise.all(
+                orderItems.map(async item => {
+                    const product = await this.service.getProduct(item.product.id);
+                    return { ...product, quantity: item.quantity, selectedSize: item.size.size };
+                })
+            );
+        }
+
+        console.log(this.products)
+
         this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
     }
 }
@@ -104,7 +87,8 @@ export default {
                             :product="product" @close="close" @remove="removeProductFromCart" />
                     </ul>
                     <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
-                        ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts }}
+                        ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts
+                        }}
                         {{ $t('more') }}
                         {{
                             additionalProducts > 1 ? $t('products') :

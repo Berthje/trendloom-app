@@ -62,18 +62,20 @@ export default {
             }
 
             const customer = await this.authService.getProfile();
+            if (!customer.data.address_id) {
+                this.$router.push({ name: "profile" });
+                return;
+            }
+
             const existingOrders = await this.service.getOrders(customer.data.id);
             const openOrder = existingOrders.find(order => order.status === 'not_completed');
-            //LATER UNCOMMENT THIS , TEST PURPOSES
-            // if (!customer.data.address_id) {
-            //     this.$router.push({ name: "profile" });
-            //     return;
-            // }
+
             const orderData = {
                 product: this.product,
                 quantity: this.quantity,
                 size: this.selectedSize,
-                customer: customer
+                customer: customer,
+                address_id: customer.data.address_id
             };
             if (openOrder) {
                 this.service.placeOrderItem(orderData, openOrder.id);
