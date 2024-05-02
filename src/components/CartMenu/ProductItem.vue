@@ -20,7 +20,7 @@ export default {
 
 <template>
     <li class="relative group w-full flex text-left p-4 hover:bg-gray-100 transition-all duration-300 rounded-sm">
-        <AiOutlineClose size="16" @click="$emit('remove', product.id)"
+        <AiOutlineClose size="16" @click="$emit('remove', product.orderItemId)"
             class="absolute top-2 right-2 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 cursor-pointer text-gray-500 hover:text-black" />
         <RouterLink :to="`/shop/product/${product.id}`" class="mr-5 w-20" @click="$emit('close')">
             <img :src="product.media[0].image_url" :alt="product.name" />

@@ -17,7 +17,7 @@ export default {
     props: {
         show: Boolean
     },
-    emits: ['close', 'updateCart'],
+    emits: ['close', 'updateCart', 'remove'],
     data() {
         return {
             service: new ProductDetailService(),
@@ -43,8 +43,8 @@ export default {
         close() {
             this.$emit('close');
         },
-        removeProductFromCart(productId) {
-            this.products = this.products.filter(product => product.id !== productId);
+        removeProductFromCart(orderItemId) {
+            this.products = this.products.filter(product => product.orderItemId !== orderItemId);
         }
     },
     async created() {
@@ -57,7 +57,7 @@ export default {
             this.products = await Promise.all(
                 orderItems.map(async item => {
                     const product = await this.service.getProduct(item.product.id);
-                    return { ...product, quantity: item.quantity, selectedSize: item.size.size };
+                    return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
                 })
             );
         }
