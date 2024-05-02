@@ -55,8 +55,7 @@ export default {
       this.setProfileData();
     },
     async save(formData) {
-      const response = await this.service.save(formData.type, formData.fields);
-      console.log(await response);
+      await this.service.save(formData.type, formData.fields);
     }
   },
   async created() {
