@@ -8,83 +8,73 @@ export default class AccountProfileService {
     async getProfileData() {
         const profile = await this.authService.getProfile();
         const url = new URL(`${BASE_URL}/customers/${profile.data.id}`);
+        const response = await this.fetchData(url);
+        this.initialData = response;
+        return response;
+    }
+
+    async fetchData(url) {
         const response = await fetch(url, {
             method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
+            headers: this.getHeaders(),
             credentials: "include",
         });
+        return await response.json();
+    }
 
-        const data = await response.json();
-        this.initialData = data;
-        return data;
+    getHeaders() {
+        return {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            credentials: "include",
+        };
     }
 
     async save(type, data) {
-        switch (type) {
-            case "personalDetails":
-                await this.savePersonalDetails(data);
-                break;
-            case "address":
-                await this.saveAddress(data);
-                break;
-            case "password":
-                await this.savePassword(data);
-                break;
+        const saveMethods = {
+            personalDetails: this.savePersonalDetails,
+            address: this.saveAddress,
+            password: this.savePassword,
+        };
+        if (saveMethods[type]) {
+            await saveMethods[type].call(this, data);
         }
     }
 
     async savePersonalDetails(data) {
-        const updatedFields = data.reduce((obj, field) => {
-            if (field.value !== this.initialData[0][field.id]) {
-                return { ...obj, [field.id]: field.value };
-            }
-            return obj;
-        }, {});
+        const updatedFields = this.getUpdatedFields(data, this.initialData[0]);
         const profile = await this.authService.getProfile();
         const url = new URL(`${BASE_URL}/customers/${profile.data.id}`);
-        const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-            body: JSON.stringify(updatedFields),
-        });
-
-        return response;
+        return await this.putData(url, updatedFields);
     }
 
     async saveAddress(data) {
-        const updatedFields = data.reduce((obj, field) => {
-            if (field.value !== this.initialData[0]["address"][field.id]) {
+        const updatedFields = this.getUpdatedFields(data, this.initialData[0]["address"]);
+        const profile = await this.authService.getProfile();
+        const url = new URL(`${BASE_URL}/addresses/${profile.data.address_id}`);
+        return await this.putData(url, updatedFields);
+    }
+
+    async putData(url, updatedFields) {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: this.getHeaders(),
+            credentials: "include",
+            body: JSON.stringify(updatedFields),
+        });
+        return response;
+    }
+
+    getUpdatedFields(data, initialData) {
+        return data.reduce((obj, field) => {
+            if (field.value !== initialData[field.id]) {
                 return { ...obj, [field.id]: field.value };
             }
             return obj;
         }, {});
-        const profile = await this.authService.getProfile();
-        const url = new URL(`${BASE_URL}/addresses/${profile.data.address_id}`);
-        console.log(JSON.stringify(updatedFields));
-        const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-            body: JSON.stringify(updatedFields),
-        });
-
-        return response;
     }
 
     async savePassword(data) {
-        console.log("!!TO BE IMPLEMENTED LATER, NOT MVP!!")
+        console.log("!!TO BE IMPLEMENTED LATER, NOT MVP!!");
     }
 }
