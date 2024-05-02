@@ -92,7 +92,8 @@ export default {
                         <ProductItem v-for="(product, index) in products.slice(0, MAX_PRODUCTS_SHOWN)" :key="product.id"
                             :product="product" @close="close" @remove="removeProductFromCart" />
                     </ul>
-                    <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
+                </div>
+                <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
                         ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts
                         }}
                         {{ $t('more') }}
@@ -100,7 +101,6 @@ export default {
                             additionalProducts > 1 ? $t('products') :
                                 $t('product') }}
                     </p>
-                </div>
                 <CartMenuFooter v-if="products.length > 0" :subtotal="totalPrice" />
             </nav>
             <AiOutlineClose v-show="show"

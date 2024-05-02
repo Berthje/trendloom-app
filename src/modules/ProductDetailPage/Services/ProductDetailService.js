@@ -94,12 +94,11 @@ export default class ProductDetailService {
         const { product, size, quantity } = orderData;
         const url = `${BASE_URL}/order-items`;
 
-        const stock = await this.getProductStock(product.id);
+        const stockData = await this.getProductStock(product.id);
+        const sizeStock = stockData.find((stock) => stock.size_id === size.id);
 
-        console.log(stock)
-
-        if (stock < quantity) {
-            throw new Error('The requested quantity is not available');
+        if (!sizeStock || sizeStock.quantity_in_stock < quantity) {
+            throw new Error("The requested quantity is not available");
         }
 
         const response = await fetch(
@@ -139,6 +138,6 @@ export default class ProductDetailService {
         const response = await fetch(url, this.getFetchOptions("GET"));
         const data = await response.json();
 
-        return data.quantity_in_stock;
+        return data;
     }
 }
