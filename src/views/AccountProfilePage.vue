@@ -50,7 +50,8 @@ export default {
     },
     async fetchProfileData() {
       const response = await this.service.getProfileData();
-      this.profileData = response.data;
+      this.profileData = response[0];
+      console.log(this.profileData)
 
       this.setProfileData();
     }
