@@ -46,7 +46,7 @@ export default class ProductDetailPage {
                 order_date: formatDate(new Date()),
                 status: "not_completed",
                 amount_products: 0,
-                total_price: 0.0,
+                total_price: 0.00,
                 payment_method: "unknown",
                 shipping_method: "unknown",
                 tracking_number: null,
