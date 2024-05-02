@@ -12,15 +12,15 @@ export default {
       service: new AccountProfileService(),
       profileData: {},
       personalDetailFields: [
-        { id: 'firstname', label: 'first_name', placeholder: 'sample_firstname', errorMessage: 'first_name_required', status: 'default', type: 'text', value: '' },
-        { id: 'lastname', label: 'last_name', placeholder: 'sample_lastname', errorMessage: 'last_name_required', status: 'default', type: 'text', value: '' },
+        { id: 'first_name', label: 'first_name', placeholder: 'sample_firstname', errorMessage: 'first_name_required', status: 'default', type: 'text', value: '' },
+        { id: 'last_name', label: 'last_name', placeholder: 'sample_lastname', errorMessage: 'last_name_required', status: 'default', type: 'text', value: '' },
         { id: 'email', label: 'email_address', placeholder: 'sample_email', errorMessage: 'email_valid', status: 'default', type: 'email', value: '' },
-        { id: 'phone', label: 'phone_number', placeholder: 'sample_phone', errorMessage: 'phone_number_valid', status: 'default', type: 'tel', value: '' }
+        { id: 'phone_number', label: 'phone_number', placeholder: 'sample_phone', errorMessage: 'phone_number_valid', status: 'default', type: 'tel', value: '' }
       ],
       addressFields: [
         { id: 'address', label: 'address', placeholder: 'sample_street', errorMessage: 'address_required', status: 'default', type: 'text', value: '' },
         { id: 'type', label: 'address_type', placeholder: 'residential_business', errorMessage: '', status: 'default', type: 'text', value: '' },
-        { id: 'zipcode', label: 'zip_code', placeholder: 'sample_zip', errorMessage: 'zip_code_required', status: 'default', type: 'text', value: '' },
+        { id: 'zip', label: 'zip_code', placeholder: 'sample_zip', errorMessage: 'zip_code_required', status: 'default', type: 'text', value: '' },
         { id: 'city', label: 'city', placeholder: 'city', errorMessage: 'city_required', status: 'default', type: 'text', value: '' },
         { id: 'state', label: 'state', placeholder: 'state', errorMessage: 'state_required', status: 'default', type: 'text', value: '' },
         { id: 'country', label: 'country', placeholder: 'country', errorMessage: 'country_required', status: 'default', type: 'text', value: '' },
@@ -42,6 +42,14 @@ export default {
     async fetchProfileData() {
       const response = await this.service.getProfileData();
       this.profileData = response.data;
+
+      ['personalDetailFields', 'addressFields'].forEach(fieldArrayName => {
+        this[fieldArrayName].forEach(field => {
+          if (this.profileData[field.id]) {
+            field.value = this.profileData[field.id];
+          }
+        });
+      });
     }
   },
   async created() {
