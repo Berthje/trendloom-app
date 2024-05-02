@@ -10,11 +10,12 @@ export default {
     },
     computed: {
         prevPageUrl() {
-            const link = this.links.find(link => link.label === '&laquo; Previous');
+            const link = this.links.find(link => link.label.includes('&laquo;'));
             return link && link.url ? link.url : null;
         },
         nextPageUrl() {
-            const link = this.links.find(link => link.label === 'Next &raquo;');
+            const link = this.links.find(link => link.label.includes('&raquo;'));
+            console.log(link)
             return link && link.url ? link.url : null;
         },
         pageLinks() {
