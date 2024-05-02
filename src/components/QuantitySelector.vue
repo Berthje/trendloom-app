@@ -38,7 +38,7 @@ export default {
                     d="M1 1h16" />
             </svg>
         </button>
-        <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation"
+        <input type="number" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation"
             class="border-x-0 border-y border-gray-300 h-full text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-10 py-2.5"
             placeholder="2" v-model.number="quantity" required min="1" />
         <button type="button" id="increment-button" data-input-counter-increment="quantity-input"

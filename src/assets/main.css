@@ -10,4 +10,10 @@
     .active-route {
         @apply underline underline-offset-8 decoration-2 decoration-[#888888] text-[#888888];
     }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 }

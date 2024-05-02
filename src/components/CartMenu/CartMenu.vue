@@ -71,9 +71,8 @@ export default {
                         return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
                     })
                 );
+                this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
             }
-
-            this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
         },
     },
     async created() {
