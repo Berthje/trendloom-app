@@ -113,7 +113,7 @@ export default {
         },
         resetVariables() {
             this.selectedSize = null;
-            this.quantity = 1;
+            this.updateQuantity(1);
         },
         showSuccessToast() {
             this.$toast.open({
@@ -181,7 +181,7 @@ export default {
                     </ul>
                 </div>
                 <div class="flex space-x-6 h-10">
-                    <QuantitySelector @quantity-change="updateQuantity" />
+                    <QuantitySelector :initial-quantity="quantity" @quantity-change="updateQuantity" />
                     <button
                         class="w-full flex items-center justify-center bg-black text-white uppercase text-[0.925rem] hover:text-black hover:bg-white border border-black border-solid transition-all duration-300 ease-in-out disabled:cursor-not-allowed disabled:opacity-50"
                         :disabled="!selectedSize" @click="addToCart">
