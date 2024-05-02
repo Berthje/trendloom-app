@@ -31,17 +31,17 @@ export default {
 };
 </script>
 <template>
-    <div class="flex items-center gap-4 justify-center">
+    <div class="flex items-center md:gap-4 justify-center">
         <button :disabled="!prevPageUrl" @click.prevent="goToPage(prevPageUrl)"
             class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/40 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button">
-            {{$t('previous')}}
+            {{ $t('previous') }}
         </button>
         <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar">
             <a v-for="(link, index) in pageLinks" :key="link.label" @click.prevent="goToPage(link.url)" :class="[
                 'cursor-pointer relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase transition-all hover:bg-gray-900/40 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
                 { 'bg-gray-900 text-white': link.active },
-                { 'hidden sm:inline-block': index > 0 && index < pageLinks.length - 1 && !link.active }
+                { 'hidden sm:inline-block': !link.active && Math.abs(pageLinks.findIndex(l => l.active) - index) > 1 && index !== 0 && index !== pageLinks.length - 1 }
             ]">
                 <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     {{ link.label }}
@@ -49,9 +49,9 @@ export default {
             </a>
         </div>
         <button :disabled="!nextPageUrl" @click.prevent="goToPage(nextPageUrl)"
-            class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/40 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            class="flex items-center gap-2 px-3 md:px-6 py-3 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/40 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button">
-            {{$t('next')}}
+            {{ $t('next') }}
         </button>
     </div>
 </template>
