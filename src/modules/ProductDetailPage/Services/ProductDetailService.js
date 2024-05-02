@@ -17,7 +17,7 @@ export default class ProductDetailPage {
         const response = await fetch(url, {
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
+                Accept: "application/json",
                 credentials: "include",
             },
             credentials: "include",
@@ -79,8 +79,48 @@ export default class ProductDetailPage {
             }),
         });
 
-        console.log(response);
+        if (response.status === 201) {
+            const orderItem = await response.json();
+            const updatedData = {
+                amount_products: orderItem.quantity,
+                total_price: product.price * orderItem.quantity,
+            };
+            this.updateOrder(orderId, updatedData);
+        }
+    }
 
-        //then update the order with /orders endpoint with the order_id and update the amount_products and total price
+    async updateOrder(orderId, updatedData) {
+        const orderUrl = `${BASE_URL}/orders/${orderId}`;
+        const orderResponse = await fetch(orderUrl, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "credentials": "include",
+            },
+            credentials: "include",
+        });
+        const order = await orderResponse.json();
+
+        const newTotalPrice = parseFloat(order[0].total_price) + parseFloat(updatedData.total_price);
+        const newAmountProducts = parseInt(order[0].amount_products) + parseInt(updatedData.amount_products);
+
+        const url = `${BASE_URL}/orders/${orderId}`;
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "credentials": "include",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+                total_price: newTotalPrice,
+                amount_products: newAmountProducts
+            }),
+        });
+
+        if (response.status === 200) {
+            console.log("Order updated successfully");
+        }
     }
 }
