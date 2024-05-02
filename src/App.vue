@@ -12,9 +12,15 @@ export default {
     RouterView,
     Footer
   },
+  emits: ['productAddedToCart'],
   computed: {
     showTopAndBottombars() {
       return this.$route.meta.showTopAndBottombars !== false;
+    }
+  },
+  methods: {
+    handleProductAddedToCart() {
+      this.$refs.navbar.productAddedToCart();
     }
   },
   data() {
@@ -24,7 +30,7 @@ export default {
   },
   async created() {
     const data = await this.service.getTranslations();
-    
+
     for (const language in data) {
       const languageTranslation = data[language];
       this.$i18n.setLocaleMessage(language, languageTranslation);
@@ -35,7 +41,7 @@ export default {
 
 <template>
   <AnnouncementBar v-if="showTopAndBottombars" />
-  <NavBar v-if="showTopAndBottombars" />
-  <RouterView />
+  <NavBar ref="navbar" v-if="showTopAndBottombars" />
+  <RouterView @productAddedToCart="handleProductAddedToCart" />
   <Footer v-if="showTopAndBottombars" />
 </template>

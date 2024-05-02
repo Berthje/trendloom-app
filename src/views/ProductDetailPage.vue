@@ -10,7 +10,7 @@ import AuthenticationService from '@/modules/Authentication/Services/Authenticat
 
 export default {
     name: 'ProductDetailPage',
-    emits: ['addToCart'],
+    emits: ['addToCart', 'productAddedToCart', 'quantity-change'],
     components: {
         ShopHeader,
         RiArrowRightSLine,
@@ -74,7 +74,6 @@ export default {
             const openOrder = existingOrders.find(order => order.status === 'not_completed');
 
             const orderData = this.createOrderData(customer, openOrder);
-
             if (openOrder) {
                 await this.placeOrderItem(orderData, openOrder.id);
             } else {
@@ -103,12 +102,14 @@ export default {
             } else {
                 this.resetVariables();
                 this.showSuccessToast();
+                this.$emit('productAddedToCart');
             }
         },
         placeOrder(orderData) {
             this.service.placeOrder(orderData);
             this.resetVariables();
             this.showSuccessToast();
+            this.$emit('productAddedToCart');
         },
         resetVariables() {
             this.selectedSize = null;

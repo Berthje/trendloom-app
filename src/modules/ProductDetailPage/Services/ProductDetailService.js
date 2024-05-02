@@ -42,7 +42,7 @@ export default class ProductDetailService {
         );
 
         if (updateResponse.status === 200) {
-            console.log("Order updated successfully");
+            console.info("Order updated successfully");
         }
     }
 

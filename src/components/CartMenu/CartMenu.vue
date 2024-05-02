@@ -46,6 +46,9 @@ export default {
         close() {
             this.$emit('close');
         },
+        productAddedToCart() {
+            this.fetchCartItems();
+        },
         async removeProductFromCart(productObject) {
             const profile = await this.authService.getProfile();
             const orders = await this.service.getOrders(profile.data.id);
@@ -54,7 +57,24 @@ export default {
             this.service.deleteOrderItem(productObject, openOrder.id);
 
             this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
-        }
+        },
+        async fetchCartItems() {
+            const profile = await this.authService.getProfile();
+            const orders = await this.service.getOrders(profile.data.id);
+            const openOrder = orders.find(order => order.status === 'not_completed');
+
+            if (openOrder) {
+                const orderItems = await this.service.getOrderItems(openOrder.id);
+                this.products = await Promise.all(
+                    orderItems.map(async item => {
+                        const product = await this.service.getProduct(item.product.id);
+                        return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
+                    })
+                );
+            }
+
+            this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
+        },
     },
     async created() {
         const profile = await this.authService.getProfile();
@@ -70,8 +90,6 @@ export default {
                 })
             );
         }
-
-        console.log(this.products)
 
         this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
     }
