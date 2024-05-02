@@ -49,10 +49,29 @@ export default class AccountProfileService {
     }
 
     async saveAddress(data) {
-        const updatedFields = this.getUpdatedFields(data, this.initialData[0]["address"]);
         const profile = await this.authService.getProfile();
-        const url = new URL(`${BASE_URL}/addresses/${profile.data.address_id}`);
-        return await this.putData(url, updatedFields);
+        const addressExists = profile.data.address_id;
+
+        const initialAddressData = this.initialData[0]?.address || {};
+        const updatedFields = this.getUpdatedFields(data, initialAddressData);
+
+        if (addressExists) {
+            const url = new URL(
+                `${BASE_URL}/addresses/${profile.data.address_id}`
+            );
+            return await this.putData(url, updatedFields);
+        } else {
+            const url = new URL(`${BASE_URL}/addresses`);
+            const response = await this.postData(url, updatedFields);
+            const { id } = await response.json();
+
+            const customerUrl = new URL(
+                `${BASE_URL}/customers/${profile.data.id}`
+            );
+            return await this.putData(customerUrl, {
+                address_id: id,
+            });
+        }
     }
 
     async putData(url, updatedFields) {
@@ -61,6 +80,16 @@ export default class AccountProfileService {
             headers: this.getHeaders(),
             credentials: "include",
             body: JSON.stringify(updatedFields),
+        });
+        return response;
+    }
+
+    async postData(url, data) {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: this.getHeaders(),
+            credentials: "include",
+            body: JSON.stringify(data),
         });
         return response;
     }

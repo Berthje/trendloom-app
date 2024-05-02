@@ -35,18 +35,21 @@ export default {
     validateAddressFields() {
       this.addressFields.forEach(field => {
         if (!field.value) {
+
           field.status = 'error';
         }
       });
     },
     setProfileData() {
-      this.personalDetailFields.forEach(field => {
-        field.value = this.profileData[field.id];
-      });
+      this.personalDetailFields = JSON.parse(JSON.stringify(this.personalDetailFields.map(field => {
+        return { ...field, value: this.profileData[field.id] };
+      })));
 
-      this.addressFields.forEach(field => {
-        field.value = this.profileData.address[field.id];
-      });
+      if (this.profileData.address) {
+        this.addressFields = JSON.parse(JSON.stringify(this.addressFields.map(field => {
+          return { ...field, value: this.profileData.address[field.id] };
+        })));
+      }
     },
     async fetchProfileData() {
       const response = await this.service.getProfileData();
