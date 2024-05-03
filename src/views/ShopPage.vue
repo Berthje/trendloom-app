@@ -36,6 +36,13 @@ export default {
   created() {
     this.fetchProducts();
   },
+  mounted() {
+    this.filterOptions.search = this.$route.query.search || '';
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.filterOptions.search = to.query.search || '';
+    next();
+  },
   methods: {
     async fetchProducts(url) {
       const response = url ? await this.service.fetchPaginatedProducts(url) : await this.service.allProducts(this.filterOptions);

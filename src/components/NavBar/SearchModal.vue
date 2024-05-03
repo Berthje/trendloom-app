@@ -10,7 +10,7 @@ export default {
     props: {
         show: Boolean,
     },
-    emits: ['close', 'update:modelValue'],
+    emits: ['close', 'update:modelValue', 'submit'],
     data() {
         return {
             searchQuery: ''
@@ -22,6 +22,10 @@ export default {
         },
         updateModelValue() {
             this.$emit('update:modelValue', this.searchQuery);
+        },
+        submitSearch() {
+            this.$emit('submit', this.searchQuery);
+            this.close();
         }
     },
     watch: {
@@ -36,7 +40,7 @@ export default {
     <transition name="slide-down">
         <div v-show="show" class="hidden fixed top-0 bg-white w-full py-6 overflow-auto z-50 text-center lg:block">
             <h3 class="mb-4 font-bold text-2xl capitalize">{{ $t('what_are_you_looking_for') }}</h3>
-            <form action="#" class="inline-block w-[40rem] relative mb-4">
+            <form action="#" class="inline-block w-[40rem] relative mb-4" @submit.prevent="submitSearch">
                 <div class="w-full overflow-hidden text-black flex items-center border border-solid border-gray-300">
                     <div class="w-full relative flex items-center">
                         <input v-model="searchQuery" type="text"

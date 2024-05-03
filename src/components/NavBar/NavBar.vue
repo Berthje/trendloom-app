@@ -63,6 +63,9 @@ export default {
     productAddedToCart() {
       this.$refs.cartMenu.productAddedToCart();
     },
+    handleSubmit(searchQuery) {
+      this.$router.push({ name: 'shop', query: { search: searchQuery } });
+    }
   },
   computed: {
     isAnyModalOpen() {
@@ -115,7 +118,7 @@ export default {
   <DarkOverlay :show="menuOpen || searchOpen || cartOpen || languageModalOpen"
     @close="closeMenu; closeSearch; closeCart; closeLanguageModal" />
   <MobileMenu :show="menuOpen" :links="LINKS" @close="closeMenu" @openLanguageModal="openLanguageModal" />
-  <SearchModal :show="searchOpen" v-model="searchQuery" @close="closeSearch" />
-  <CartMenu :show="cartOpen" @close="closeCart" @updateCart="updateCart" ref="cartMenu"/>
+  <SearchModal :show="searchOpen" v-model="searchQuery" @close="closeSearch" @submit="handleSubmit" />
+  <CartMenu :show="cartOpen" @close="closeCart" @updateCart="updateCart" ref="cartMenu" />
   <LanguageModal :show="languageModalOpen" @close="closeLanguageModal" />
 </template>
