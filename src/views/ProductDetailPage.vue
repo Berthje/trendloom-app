@@ -101,7 +101,7 @@ export default {
                 this.errorMessage = errorMessage;
             } else {
                 this.resetVariables();
-                this.showSuccessToast();
+                this.showSuccessToast('Added to cart successfully!');
                 this.$emit('productAddedToCart');
             }
         },
@@ -115,14 +115,22 @@ export default {
             this.selectedSize = null;
             this.updateQuantity(1);
         },
-        showSuccessToast() {
+        showSuccessToast(text) {
             this.$toast.open({
-                message: 'Added to cart successfully!',
+                message: text,
                 position: 'bottom-right',
                 duration: 1000,
                 dismissible: true,
                 pauseOnHover: true,
             });
+        },
+        async addToFavorites() {
+            const customer = await this.authService.getProfile();
+            const response = await this.service.addToFavorites(this.product.id, customer.data.id);
+
+            if (response.status === 201) {
+                this.showSuccessToast('Wishlisted the product!');
+            }
         }
     },
     created() {
@@ -191,7 +199,7 @@ export default {
                 <p class="text-red-500 mt-4" v-if="errorMessage">{{ errorMessage }}</p>
                 <div class="flex items-center space-x-3 mt-6 mb-3 cursor-pointer hover:opacity-60">
                     <FaRegHeart />
-                    <p>{{ $t('add_to_wishlist') }}</p>
+                    <p @click="addToFavorites">{{ $t('add_to_wishlist') }}</p>
                 </div>
                 <p v-if="product">{{ product.description }}</p>
             </div>

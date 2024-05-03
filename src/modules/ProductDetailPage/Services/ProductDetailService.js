@@ -3,8 +3,6 @@ import { BASE_URL } from "../../Core/config";
 import { fetchWithLang, formatDate } from "../../Core/helpers";
 
 export default class ProductDetailService {
-    authService = new AuthenticationService();
-
     getFetchOptions(method, body) {
         return {
             method,
@@ -139,5 +137,13 @@ export default class ProductDetailService {
         const data = await response.json();
 
         return data;
+    }
+
+    async addToFavorites(productId, customerId)
+    {
+        const url = `${BASE_URL}/wishlists/`;
+        const response = await fetch(url, this.getFetchOptions("POST", { product_id: productId, customer_id: customerId }));
+
+        return response;
     }
 }

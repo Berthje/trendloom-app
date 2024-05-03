@@ -69,7 +69,7 @@ export default {
                             </RouterLink>
                         </li>
                         <li @click="close">
-                            <RouterLink to="/wishlist" class="flex items-center">
+                            <RouterLink to="/account/favorites" class="flex items-center">
                                 <FaRegHeart size="1.125rem" class="mr-2" />
                                 {{ $t('wishlist') }}
                             </RouterLink>
