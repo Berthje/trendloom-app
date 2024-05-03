@@ -12,6 +12,19 @@ export async function fetchWithLang(url, options) {
     return fetch(urlWithLang, options);
 }
 
+export function getFetchOptions(method, body) {
+    return {
+        method,
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            credentials: "include",
+        },
+        credentials: "include",
+        body: JSON.stringify(body),
+    };
+}
+
 function appendLangParam(url, lang) {
     const urlObj = new URL(url);
     urlObj.searchParams.append("lang", lang);
