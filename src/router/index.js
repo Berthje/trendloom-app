@@ -128,19 +128,16 @@ const router = createRouter({
                     path: "products",
                     name: "adminProducts",
                     component: AdminProductsPage,
-                    meta: { requiresAuth: true, requiresAdmin: true },
                 },
                 {
                     path: "categories",
                     name: "adminCategories",
                     component: AdminCategoriesPage,
-                    meta: { requiresAuth: true, requiresAdmin: true },
                 },
                 {
                     path: "brands",
                     name: "adminBrands",
                     component: AdminBrandsPage,
-                    meta: { requiresAuth: true, requiresAdmin: true },
                 },
                 {
                     path: "",
