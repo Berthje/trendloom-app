@@ -122,7 +122,7 @@ const router = createRouter({
             path: "/admin",
             name: "admin",
             component: AdminDashboardPage,
-            meta: { requiresAuth: true, requiresAdmin: true },
+            meta: { requiresAuth: true, requiresAdmin: true, showTopAndBottombars: false },
             children: [
                 {
                     path: "products",
@@ -158,13 +158,14 @@ router.beforeEach(async (to, from, next) => {
         (record) => record.meta.requiresAdmin
     );
     const isLoggedIn = await authService.isLoggedIn();
-    const user = isLoggedIn ? await authService.getProfile() : null;
+    const { data: user } = isLoggedIn ? await authService.getProfile() : {};
 
     if (requiresAuth && !isLoggedIn) {
         next("/login");
     } else if (to.path === "/login" && isLoggedIn) {
         next("/account");
-    } else if (requiresAdmin && !user?.isAdmin) {
+    } else if (requiresAdmin && !user?.is_admin) {
+        console.log(user);
         next("/");
     } else {
         next();
