@@ -124,12 +124,4 @@ export default class ProductDetailService {
 
         return data;
     }
-
-    async addToFavorites(productId, customerId)
-    {
-        const url = `${BASE_URL}/wishlists/`;
-        const response = await fetch(url, getFetchOptions("POST", { product_id: productId, customer_id: customerId }));
-
-        return response;
-    }
 }

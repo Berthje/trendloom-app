@@ -123,14 +123,6 @@ export default {
                 dismissible: true,
                 pauseOnHover: true,
             });
-        },
-        async addToFavorites() {
-            const customer = await this.authService.getProfile();
-            const response = await this.service.addToFavorites(this.product.id, customer.data.id);
-
-            if (response.status === 201) {
-                this.showSuccessToast('Wishlisted the product!');
-            }
         }
     },
     created() {
@@ -199,7 +191,7 @@ export default {
                 <p class="text-red-500 mt-4" v-if="errorMessage">{{ errorMessage }}</p>
                 <div class="flex items-center space-x-3 mt-6 mb-3 cursor-pointer hover:opacity-60">
                     <FaRegHeart />
-                    <p @click="addToFavorites">{{ $t('add_to_wishlist') }}</p>
+                    <p>{{ $t('add_to_wishlist') }}</p>
                 </div>
                 <p v-if="product">{{ product.description }}</p>
             </div>
