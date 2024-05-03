@@ -1,26 +1,12 @@
-import AuthenticationService from "@/modules/Authentication/Services/AuthenticationService";
 import { BASE_URL } from "../../Core/config";
-import { fetchWithLang, formatDate } from "../../Core/helpers";
+import { fetchWithLang, getFetchOptions, formatDate } from "../../Core/helpers";
 
 export default class ProductDetailService {
-    getFetchOptions(method, body) {
-        return {
-            method,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                credentials: "include",
-            },
-            credentials: "include",
-            body: JSON.stringify(body),
-        };
-    }
-
     async fetchAndUpdateOrder(orderId, updatedData) {
         const orderUrl = `${BASE_URL}/orders/${orderId}`;
         const orderResponse = await fetch(
             orderUrl,
-            this.getFetchOptions("GET")
+            getFetchOptions("GET")
         );
         const order = await orderResponse.json();
 
@@ -33,7 +19,7 @@ export default class ProductDetailService {
 
         const updateResponse = await fetch(
             orderUrl,
-            this.getFetchOptions("PUT", {
+            getFetchOptions("PUT", {
                 total_price: newTotalPrice,
                 amount_products: newAmountProducts,
             })
@@ -52,13 +38,13 @@ export default class ProductDetailService {
 
     async getOrders(customerId) {
         const url = `${BASE_URL}/customers/${customerId}/orders`;
-        const response = await fetch(url, this.getFetchOptions("GET"));
+        const response = await fetch(url, getFetchOptions("GET"));
         return await response.json();
     }
 
     async getOrderItems(orderId) {
         const url = `${BASE_URL}/orders/${orderId}/order-items`;
-        const response = await fetch(url, this.getFetchOptions("GET"));
+        const response = await fetch(url, getFetchOptions("GET"));
         return await response.json();
     }
 
@@ -68,7 +54,7 @@ export default class ProductDetailService {
 
         const response = await fetch(
             url,
-            this.getFetchOptions("POST", {
+            getFetchOptions("POST", {
                 customer_id: customer.data.id,
                 address_id: orderData.address_id,
                 coupon_id: null,
@@ -101,7 +87,7 @@ export default class ProductDetailService {
 
         const response = await fetch(
             url,
-            this.getFetchOptions("POST", {
+            getFetchOptions("POST", {
                 order_id: orderId,
                 product_id: product.id,
                 product_size_id: size.id,
@@ -122,7 +108,7 @@ export default class ProductDetailService {
 
     async deleteOrderItem(product, orderId) {
         const url = `${BASE_URL}/order-items/${product.orderItemId}`;
-        await fetch(url, this.getFetchOptions("DELETE"));
+        await fetch(url, getFetchOptions("DELETE"));
 
         const updatedData = {
             amount_products: -product.quantity,
@@ -133,7 +119,7 @@ export default class ProductDetailService {
 
     async getProductStock(productId) {
         const url = `${BASE_URL}/product-stock/${productId}`;
-        const response = await fetch(url, this.getFetchOptions("GET"));
+        const response = await fetch(url, getFetchOptions("GET"));
         const data = await response.json();
 
         return data;
@@ -142,7 +128,7 @@ export default class ProductDetailService {
     async addToFavorites(productId, customerId)
     {
         const url = `${BASE_URL}/wishlists/`;
-        const response = await fetch(url, this.getFetchOptions("POST", { product_id: productId, customer_id: customerId }));
+        const response = await fetch(url, getFetchOptions("POST", { product_id: productId, customer_id: customerId }));
 
         return response;
     }
