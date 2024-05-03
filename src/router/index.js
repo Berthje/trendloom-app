@@ -21,7 +21,6 @@ import AdminBrandsPage from "../views/AdminBrandsPage.vue";
 
 import AuthenticationService from "@/modules/Authentication/Services/AuthenticationService";
 
-
 const authService = new AuthenticationService();
 
 const router = createRouter({
@@ -112,7 +111,11 @@ const router = createRouter({
                     component: AccountProfilePage,
                     meta: { requiresAuth: true },
                 },
-                { path: "", redirect: "/account/profile" },
+                {
+                    path: "",
+                    redirect: "/account/profile",
+                    name: "account",
+                },
             ],
         },
         {
@@ -139,7 +142,11 @@ const router = createRouter({
                     component: AdminBrandsPage,
                     meta: { requiresAuth: true, requiresAdmin: true },
                 },
-                { path: "", redirect: "/admin/products" },
+                {
+                    path: "",
+                    redirect: "/admin/products",
+                    name: "admin",
+                },
             ],
         },
     ],
@@ -147,7 +154,9 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
     const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-    const requiresAdmin = to.matched.some((record) => record.meta.requiresAdmin);
+    const requiresAdmin = to.matched.some(
+        (record) => record.meta.requiresAdmin
+    );
     const isLoggedIn = await authService.isLoggedIn();
     const user = isLoggedIn ? await authService.getProfile() : null;
 
@@ -155,7 +164,7 @@ router.beforeEach(async (to, from, next) => {
         next("/login");
     } else if (to.path === "/login" && isLoggedIn) {
         next("/account");
-    } else if(requiresAdmin && !user?.isAdmin) {
+    } else if (requiresAdmin && !user?.isAdmin) {
         next("/");
     } else {
         next();
