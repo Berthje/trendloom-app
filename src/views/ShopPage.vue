@@ -19,14 +19,18 @@ export default {
       products: [],
       filterOptions: {
         sorting: 'default',
-        itemCount: '12'
+        itemCount: '12',
+        search: ''
       },
       paginationLinks: []
     }
   },
   watch: {
-    filterOptions(newValue, oldValue) {
-      this.fetchProducts();
+    filterOptions: {
+      handler(newValue, oldValue) {
+        this.fetchProducts();
+      },
+      deep: true
     }
   },
   created() {
@@ -44,7 +48,8 @@ export default {
 
 <template>
   <main>
-    <ShopHeader :title="$t('all_our_products')" :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: 'shop' }]" />
+    <ShopHeader :title="$t('all_our_products')"
+      :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: 'shop' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
       <FilterBar v-model:filterOptions="filterOptions" />
       <ProductGrid :products="products" />

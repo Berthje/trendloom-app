@@ -55,11 +55,11 @@ export default {
                 <h4 class="text-lg uppercase text-gray-500 text-[0.875rem]">{{ $t('popular_searches') }} </h4>
                 <ul class="flex justify-center space-x-2 text-[0.925rem]">
                     <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all"
-                        @click="searchQuery = 'Jeans'">{{ $t('jeans') }}</li>
+                        @click="searchQuery = $t('jeans')">{{ $t('jeans') }}</li>
                     <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all"
-                        @click="searchQuery = 'T-shirts'">{{ $t('t_shirts') }}</li>
+                        @click="searchQuery = $t('t_shirts')">{{ $t('t_shirts') }}</li>
                     <li class="bg-gray-200 px-2 cursor-pointer hover:bg-black hover:text-white transition-all"
-                        @click="searchQuery = 'Shoes'">{{ $t('shoes') }}</li>
+                        @click="searchQuery = $t('shoes')">{{ $t('shoes') }}</li>
                 </ul>
             </div>
             <AiOutlineClose v-show="show" class="h-6 w-6 cursor-pointer z-50 absolute right-3 top-3" @click="close" />

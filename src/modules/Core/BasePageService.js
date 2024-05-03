@@ -7,6 +7,9 @@ export default class BasePageService {
         if (filterOptions) {
             url.searchParams.append("sort", filterOptions.sorting);
             url.searchParams.append("itemCount", filterOptions.itemCount);
+            if (filterOptions.search) {
+                url.searchParams.append("search", filterOptions.search);
+            }
         }
         const response = await fetchWithLang(url);
 
