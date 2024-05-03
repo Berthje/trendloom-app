@@ -23,6 +23,8 @@ export default {
             service: new ProductDetailService(),
             authService: new AuthenticationService(),
             products: [],
+            profile: null,
+            orders: null,
             MAX_PRODUCTS_SHOWN: 4
         }
     },
@@ -50,18 +52,14 @@ export default {
             this.fetchCartItems();
         },
         async removeProductFromCart(productObject) {
-            const profile = await this.authService.getProfile();
-            const orders = await this.service.getOrders(profile.data.id);
-            const openOrder = orders.find(order => order.status === 'not_completed');
+            const openOrder = this.orders.find(order => order.status === 'not_completed');
             this.products = this.products.filter(product => product.orderItemId !== productObject.orderItemId);
             this.service.deleteOrderItem(productObject, openOrder.id);
 
             this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
         },
         async fetchCartItems() {
-            const profile = await this.authService.getProfile();
-            const orders = await this.service.getOrders(profile.data.id);
-            const openOrder = orders.find(order => order.status === 'not_completed');
+            const openOrder = this.orders.find(order => order.status === 'not_completed');
 
             if (openOrder) {
                 const orderItems = await this.service.getOrderItems(openOrder.id);
@@ -76,21 +74,9 @@ export default {
         },
     },
     async created() {
-        const profile = await this.authService.getProfile();
-        const orders = await this.service.getOrders(profile.data.id);
-        const openOrder = orders.find(order => order.status === 'not_completed');
-
-        if (openOrder) {
-            const orderItems = await this.service.getOrderItems(openOrder.id);
-            this.products = await Promise.all(
-                orderItems.map(async item => {
-                    const product = await this.service.getProduct(item.product.id);
-                    return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
-                })
-            );
-        }
-
-        this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
+        this.profile = await this.authService.getProfile();
+        this.orders = await this.service.getOrders(this.profile.data.id);
+        this.fetchCartItems();
     }
 }
 </script>
