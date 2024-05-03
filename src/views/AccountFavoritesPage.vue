@@ -1,5 +1,4 @@
 <script>
-
 export default {
   name: 'AccountFavoritesPage',
 }
@@ -7,6 +6,7 @@ export default {
 
 <template>
   <main>
-    <h1 class="font-bold text-2xl pb-2 border-b border-solid border-black ">{{$t('my_favorites')}}</h1>
+    <h1 class="font-bold text-2xl pb-2 border-b border-solid border-black ">{{ $t('my_favorites') }}</h1>
+    <p class="mt-4 text-2xl font-bold underline">THIS IS NOT PART OF MY MVP</p>
   </main>
 </template>
