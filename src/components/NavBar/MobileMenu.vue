@@ -17,14 +17,31 @@ export default {
         show: Boolean,
         links: Array
     },
-    emits: ['close', 'openLanguageModal'],
+    emits: ['close', 'openLanguageModal', 'update:modelValue', 'submit'],
+    data() {
+        return {
+            searchQuery: ''
+        }
+    },
     methods: {
         close() {
             this.$emit('close');
         },
+        updateModelValue() {
+            this.$emit('update:modelValue', this.searchQuery);
+        },
         openLanguageModal() {
             this.$emit('openLanguageModal');
             this.close();
+        },
+        submitSearch() {
+            this.$emit('submit', this.searchQuery);
+            this.close();
+        }
+    },
+    watch: {
+        searchQuery() {
+            this.updateModelValue();
         }
     }
 }
@@ -37,11 +54,11 @@ export default {
                 <RouterLink to="/" class="block mb-6" @click="close">
                     <img src="../../assets/logo-black.svg" class="w-36 mx-auto" alt="Trendloom Logo" v-once>
                 </RouterLink>
-                <form action="#" class="relative mb-4">
+                <form class="relative mb-4" @submit.prevent="submitSearch">
                     <div
                         class="w-full overflow-hidden text-black flex items-center border border-solid border-gray-300">
                         <div class="w-full relative flex items-center">
-                            <input type="text"
+                            <input v-model="searchQuery" type="text"
                                 class="w-full h-auto min-h-10 pl-4 pr-6 leading-8 outline-none text-start"
                                 :placeholder="$t('search_for_products')" autocomplete="off">
                         </div>
