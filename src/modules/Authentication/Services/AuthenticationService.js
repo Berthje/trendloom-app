@@ -77,4 +77,17 @@ export default class AuthenticationService {
 
         return !data.error;
     }
+
+    async isAdmin() {
+        const response = await fetch(`${BASE_URL}/profile`, {
+            headers: {
+                "Content-Type": "application/json",
+                "credentials": "include",
+            },
+            credentials: "include",
+        });
+        const data = await response.json();
+
+        return data.isAdmin;
+    }
 }

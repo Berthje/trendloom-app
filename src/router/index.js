@@ -14,7 +14,13 @@ import AccountReturnsPage from "../views/AccountReturnsPage.vue";
 import AccountFavorites from "../views/AccountFavoritesPage.vue";
 import AccountProfilePage from "../views/AccountProfilePage.vue";
 import AccountPage from "../views/AccountPage.vue";
+import AdminDashboardPage from "../views/AdminDashboardPage.vue";
+import AdminProductsPage from "../views/AdminProductsPage.vue";
+import AdminCategoriesPage from "../views/AdminCategoriesPage.vue";
+import AdminBrandsPage from "../views/AdminBrandsPage.vue";
+
 import AuthenticationService from "@/modules/Authentication/Services/AuthenticationService";
+
 
 const authService = new AuthenticationService();
 
@@ -109,17 +115,48 @@ const router = createRouter({
                 { path: "", redirect: "/account/profile" },
             ],
         },
+        {
+            path: "/admin",
+            name: "admin",
+            component: AdminDashboardPage,
+            meta: { requiresAuth: true, requiresAdmin: true },
+            children: [
+                {
+                    path: "products",
+                    name: "adminProducts",
+                    component: AdminProductsPage,
+                    meta: { requiresAuth: true, requiresAdmin: true },
+                },
+                {
+                    path: "categories",
+                    name: "adminCategories",
+                    component: AdminCategoriesPage,
+                    meta: { requiresAuth: true, requiresAdmin: true },
+                },
+                {
+                    path: "brands",
+                    name: "adminBrands",
+                    component: AdminBrandsPage,
+                    meta: { requiresAuth: true, requiresAdmin: true },
+                },
+                { path: "", redirect: "/admin/products" },
+            ],
+        },
     ],
 });
 
 router.beforeEach(async (to, from, next) => {
     const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+    const requiresAdmin = to.matched.some((record) => record.meta.requiresAdmin);
     const isLoggedIn = await authService.isLoggedIn();
+    const user = isLoggedIn ? await authService.getProfile() : null;
 
     if (requiresAuth && !isLoggedIn) {
         next("/login");
     } else if (to.path === "/login" && isLoggedIn) {
         next("/account");
+    } else if(requiresAdmin && !user?.isAdmin) {
+        next("/");
     } else {
         next();
     }
