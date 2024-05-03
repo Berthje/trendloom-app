@@ -18,6 +18,9 @@ import AdminDashboardPage from "../views/AdminDashboardPage.vue";
 import AdminProductsPage from "../views/AdminProductsPage.vue";
 import AdminCategoriesPage from "../views/AdminCategoriesPage.vue";
 import AdminBrandsPage from "../views/AdminBrandsPage.vue";
+import AdminCouponsPage from "../views/AdminCouponsPage.vue";
+import AdminOrdersPage from "../views/AdminOrdersPage.vue";
+import AdminCustomersPage from "../views/AdminCustomersPage.vue";
 
 import AuthenticationService from "@/modules/Authentication/Services/AuthenticationService";
 
@@ -135,9 +138,24 @@ const router = createRouter({
                     component: AdminCategoriesPage,
                 },
                 {
+                    path: "coupons",
+                    name: "adminCoupons",
+                    component: AdminCouponsPage,
+                },
+                {
                     path: "brands",
                     name: "adminBrands",
                     component: AdminBrandsPage,
+                },
+                {
+                    path: "orders",
+                    name: "adminOrders",
+                    component: AdminOrdersPage,
+                },
+                {
+                    path: "customers",
+                    name: "adminCustomers",
+                    component: AdminCustomersPage,
                 },
                 {
                     path: "",
