@@ -21,7 +21,7 @@ export default {
                 itemCount: '9'
             },
             headers: [
-                { key: 'media', text: 'Logo' },
+                { key: 'logo_url', text: 'Logo' },
                 { key: 'name', text: 'Name' },
                 { key: 'description', text: 'Description' },
             ],

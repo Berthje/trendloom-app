@@ -13,24 +13,24 @@ export default {
     },
     methods: {
         getNestedProperty(row, headerKey) {
-        const keys = headerKey.split('.');
-        let value = keys.reduce((obj, key) => obj && obj[key], row);
+            const keys = headerKey.split('.');
+            let value = keys.reduce((obj, key) => obj && obj[key], row);
 
-        if (Array.isArray(value) && keys[keys.length - 1] === 'media') {
-            const primaryImage = value.find(image => image.is_primary === 1);
-            value = primaryImage ? primaryImage.image_url : null;
-        }
-        
-        if (typeof value === 'object' && value !== null && keys[keys.length - 1] === 'media') {
-            value = value.image_url;
-        }
+            if (Array.isArray(value) && keys[keys.length - 1] === 'media') {
+                const primaryImage = value.find(image => image.is_primary === 1);
+                value = primaryImage ? primaryImage.image_url : null;
+            }
 
-        if (Array.isArray(value) && keys[keys.length - 1] === 'stock') {
-            value = value.reduce((total, stockItem) => total + stockItem.quantity_in_stock, 0);
-        }
+            if (typeof value === 'object' && value !== null && keys[keys.length - 1] === 'media') {
+                value = value.image_url;
+            }
 
-        return value;
-    },
+            if (Array.isArray(value) && keys[keys.length - 1] === 'stock') {
+                value = value.reduce((total, stockItem) => total + stockItem.quantity_in_stock, 0);
+            }
+
+            return value;
+        },
         deleteRow(rowId) {
             this.$emit('delete-row', rowId)
         }
@@ -59,11 +59,11 @@ export default {
                             <tr v-for="row in rows" :key="row.id" class="even:bg-gray-50 odd:bg-white">
                                 <td v-for="header in headers" :key="header.key"
                                     class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div v-if="header.key === 'media' && getNestedProperty(row, header.key)"
+                                    <div v-if="(header.key === 'media' || header.key === 'logo_url') && getNestedProperty(row, header.key)"
                                         class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded">
-                                        <img :src="getNestedProperty(row, header.key)"
-                                            class="object-cover w-10 h-10" alt="primary overview of product" />
+                                        <img :src="getNestedProperty(row, header.key)" class="object-cover w-10 h-10"
+                                            alt="primary overview of product" />
                                     </div>
                                     <div v-else-if="header.key === 'status'"
                                         class="inline-flex items-center px-3 py-1 rounded-full gap-x-2" :class="{
@@ -91,7 +91,8 @@ export default {
                                             </svg>
                                         </button>
                                         <button
-                                            class="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none" @click="deleteRow(row.id)">
+                                            class="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none"
+                                            @click="deleteRow(row.id)">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
