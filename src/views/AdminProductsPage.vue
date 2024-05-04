@@ -26,7 +26,7 @@ export default {
                 { key: 'name', text: 'Name' },
                 { key: 'brand.name', text: 'Brand' },
                 { key: 'category.name', text: 'Category' },
-                { key: 'quantity', text: 'Quantity' },
+                { key: 'stock', text: 'Quantity' },
                 { key: 'price', text: 'Price' },
                 { key: 'status', text: 'Status' },
             ],

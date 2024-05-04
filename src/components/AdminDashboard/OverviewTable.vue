@@ -21,6 +21,10 @@ export default {
                 value = primaryImage ? primaryImage.image_url : null;
             }
 
+            if (Array.isArray(value) && keys[keys.length - 1] === 'stock') {
+                value = value.reduce((total, stockItem) => total + stockItem.quantity_in_stock, 0);
+            }
+
             return value;
         }
     }
