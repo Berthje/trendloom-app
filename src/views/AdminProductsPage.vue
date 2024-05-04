@@ -9,7 +9,8 @@ export default {
         <section>
             <div class="flex items-center gap-x-3">
                 <h2 class="text-2xl font-medium text-gray-800">Products</h2>
-                <span class="px-3 py-1 text-sm text-orange-600 font-medium bg-orange-100 rounded-full">12 products</span>
+                <span class="px-3 py-1 text-sm text-orange-600 font-medium bg-orange-100 rounded-full">12
+                    products</span>
             </div>
             <div class="flex flex-col mt-6">
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -18,14 +19,12 @@ export default {
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col"
-                                            class="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
+                                        <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
                                             <div class="flex items-center gap-x-3">
                                                 <span>Picture</span>
                                             </div>
                                         </th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             <button class="flex items-center gap-x-2">
                                                 <span>SKU</span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -35,20 +34,15 @@ export default {
                                                 </svg>
                                             </button>
                                         </th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Name</th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Brand</th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Category</th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Quantity</th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Price</th>
                                         <th scope="col"
                                             class="px-12 py-3.5 text-sm font-normal text-left text-gray-500">
