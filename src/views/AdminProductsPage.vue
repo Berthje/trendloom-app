@@ -46,6 +46,13 @@ export default {
             this.products = response.data;
             this.paginationLinks = response.links;
         },
+        async deleteProduct(productId) {
+            const response = await this.service.deleteProduct(productId);
+
+            if (response.status === 204) {
+                this.fetchProducts();
+            }
+        }
     }
 }
 </script>
@@ -54,8 +61,9 @@ export default {
     <main>
         <section>
             <PageHeader title="Products" :itemCount="products.length" itemLabel="products" />
-            <OverviewTable :headers="headers" :rows="products" />
-            <Pagination :links="paginationLinks" @change-page="fetchProducts" />
+            <OverviewTable v-if="products.length > 0" :headers="headers" :rows="products" @delete-row="deleteProduct" />
+            <Pagination v-if="products.length > 0" :links="paginationLinks" @change-page="fetchProducts" />
+            <p class="mt-4" v-else>No products found.</p>
         </section>
     </main>
 </template>

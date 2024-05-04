@@ -26,6 +26,9 @@ export default {
             }
 
             return value;
+        },
+        deleteRow(rowId) {
+            this.$emit('delete-row', rowId)
         }
     }
 }
@@ -84,7 +87,7 @@ export default {
                                             </svg>
                                         </button>
                                         <button
-                                            class="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none">
+                                            class="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none" @click="deleteRow(row.id)">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
