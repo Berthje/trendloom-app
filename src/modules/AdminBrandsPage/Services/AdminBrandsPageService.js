@@ -7,7 +7,7 @@ export default class AdminBrandsPageService extends BasePageService {
         return super.all("brands", filterOptions);
     }
 
-    async deleteBrands(brandId) {
+    async deleteBrand(brandId) {
         const url = `${BASE_URL}/admin/brands/${brandId}`;
         const response = await fetch(url, getFetchOptions("DELETE"));
 
