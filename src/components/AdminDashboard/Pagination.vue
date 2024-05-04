@@ -45,7 +45,7 @@ export default {
         <div class="items-center hidden lg:flex gap-x-3">
             <a v-for="(link, index) in pageLinks" :key="link.label" @click.prevent="goToPage(link.url)"
                 :class="['px-2 py-1 text-sm  rounded-md', { 'text-blue-500 bg-blue-100': link.active }, { 'cursor-pointer hidden sm:inline-block': !link.active }]">{{
-                link.label }}</a>
+                    link.label }}</a>
         </div>
         <a href="#" :disabled="!nextPageUrl" @click.prevent="goToPage(nextPageUrl)"
             class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
