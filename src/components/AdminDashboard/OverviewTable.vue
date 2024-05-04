@@ -14,7 +14,14 @@ export default {
     methods: {
         getNestedProperty(row, headerKey) {
             const keys = headerKey.split('.');
-            return keys.reduce((obj, key) => obj && obj[key], row);
+            let value = keys.reduce((obj, key) => obj && obj[key], row);
+
+            if (Array.isArray(value) && keys[keys.length - 1] === 'media') {
+                const primaryImage = value.find(image => image.is_primary === 1);
+                value = primaryImage ? primaryImage.image_url : null;
+            }
+
+            return value;
         }
     }
 }
@@ -41,22 +48,22 @@ export default {
                             <tr v-for="row in rows" :key="row.id" class="even:bg-gray-50 odd:bg-white">
                                 <td v-for="header in headers" :key="header.key"
                                     class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div v-if="header.key === 'image' && row[header.key]"
+                                    <div v-if="header.key === 'media' && getNestedProperty(row, header.key)"
                                         class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded">
-                                        <img :src="row[header.key]" class="object-cover w-10 h-10 rounded-full"
-                                            alt="" />
+                                        <img :src="getNestedProperty(row, header.key)"
+                                            class="object-cover w-10 h-10" alt="primary overview of product" />
                                     </div>
                                     <div v-else-if="header.key === 'status'"
                                         class="inline-flex items-center px-3 py-1 rounded-full gap-x-2" :class="{
-                                            'bg-emerald-100/60 text-emerald-500': row[header.key] === 'Active',
-                                            'bg-yellow-100/60 text-yellow-500': row[header.key] === 'Draft',
-                                            'bg-gray-100/60 text-gray-500': row[header.key] === 'Hidden'
+                                            'bg-emerald-100/60 text-emerald-500': row[header.key] === 'active',
+                                            'bg-yellow-100/60 text-yellow-500': row[header.key] === 'draft',
+                                            'bg-gray-100/60 text-gray-500': row[header.key] === 'hidden'
                                         }">
                                         <span class="h-1.5 w-1.5 rounded-full" :class="{
-                                            'bg-emerald-500': row[header.key] === 'Active',
-                                            'bg-yellow-500': row[header.key] === 'Draft',
-                                            'bg-gray-500': row[header.key] === 'Hidden'
+                                            'bg-emerald-500': row[header.key] === 'active',
+                                            'bg-yellow-500': row[header.key] === 'draft',
+                                            'bg-gray-500': row[header.key] === 'hidden'
                                         }"></span>
                                         <h2 class="text-sm font-normal">{{ row[header.key] }}</h2>
                                     </div>

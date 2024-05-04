@@ -21,7 +21,7 @@ export default {
                 itemCount: '9'
             },
             headers: [
-                { key: 'image', text: 'Picture' },
+                { key: 'media', text: 'Picture' },
                 { key: 'sku', text: 'SKU' },
                 { key: 'name', text: 'Name' },
                 { key: 'brand.name', text: 'Brand' },
