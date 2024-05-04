@@ -10,6 +10,12 @@ export default {
             type: Array,
             required: true
         }
+    },
+    methods: {
+        getNestedProperty(row, headerKey) {
+            const keys = headerKey.split('.');
+            return keys.reduce((obj, key) => obj && obj[key], row);
+        }
     }
 }
 </script>
@@ -54,7 +60,7 @@ export default {
                                         }"></span>
                                         <h2 class="text-sm font-normal">{{ row[header.key] }}</h2>
                                     </div>
-                                    <span v-else>{{ row[header.key] }}</span>
+                                    <span v-else>{{ getNestedProperty(row, header.key) }}</span>
                                 </td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     <div class="flex items-center gap-x-5">
