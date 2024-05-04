@@ -62,7 +62,7 @@ export default {
                                     <div v-if="(header.key === 'media' || header.key === 'logo_url') && getNestedProperty(row, header.key)"
                                         class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded">
-                                        <img :src="getNestedProperty(row, header.key)" class="object-cover w-10 h-10"
+                                        <img :src="getNestedProperty(row, header.key)" class="object-contain h-10 w-10"
                                             alt="primary overview of product" />
                                     </div>
                                     <div v-else-if="header.key === 'status'"
