@@ -65,7 +65,6 @@ export default {
                 const orderItems = await this.service.getOrderItems(openOrder.id);
                 this.products = await Promise.all(
                     orderItems.map(async item => {
-                        console.log(item)
                         const product = await this.service.getProduct(item.product.id);
                         return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
                     })
