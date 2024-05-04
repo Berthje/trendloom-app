@@ -16,7 +16,7 @@ export default class BasePageService {
         return response.json();
     }
 
-    async fetchPaginatedProducts(url) {
+    async fetchPaginatedData(url) {
         const response = await fetchWithLang(url);
         return response.json();
     }

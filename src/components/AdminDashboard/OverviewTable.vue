@@ -13,20 +13,24 @@ export default {
     },
     methods: {
         getNestedProperty(row, headerKey) {
-            const keys = headerKey.split('.');
-            let value = keys.reduce((obj, key) => obj && obj[key], row);
+        const keys = headerKey.split('.');
+        let value = keys.reduce((obj, key) => obj && obj[key], row);
 
-            if (Array.isArray(value) && keys[keys.length - 1] === 'media') {
-                const primaryImage = value.find(image => image.is_primary === 1);
-                value = primaryImage ? primaryImage.image_url : null;
-            }
+        if (Array.isArray(value) && keys[keys.length - 1] === 'media') {
+            const primaryImage = value.find(image => image.is_primary === 1);
+            value = primaryImage ? primaryImage.image_url : null;
+        }
+        
+        if (typeof value === 'object' && value !== null && keys[keys.length - 1] === 'media') {
+            value = value.image_url;
+        }
 
-            if (Array.isArray(value) && keys[keys.length - 1] === 'stock') {
-                value = value.reduce((total, stockItem) => total + stockItem.quantity_in_stock, 0);
-            }
+        if (Array.isArray(value) && keys[keys.length - 1] === 'stock') {
+            value = value.reduce((total, stockItem) => total + stockItem.quantity_in_stock, 0);
+        }
 
-            return value;
-        },
+        return value;
+    },
         deleteRow(rowId) {
             this.$emit('delete-row', rowId)
         }

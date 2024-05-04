@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         async fetchCategories(url) {
-            const response = url ? await this.service.fetchPaginatedCategories(url) : await this.service.allCategories(this.filterOptions);
+            const response = url ? await this.service.fetchPaginatedData(url) : await this.service.allCategories(this.filterOptions);
             this.categories = response.data;
             this.paginationLinks = response.links;
         },
@@ -56,7 +56,8 @@ export default {
     <main>
         <section>
             <PageHeader title="Categories" :itemCount="categories.length" itemLabel="categories" />
-            <OverviewTable v-if="categories.length > 0" :headers="headers" :rows="categories" @delete-row="deleteCategory" />
+            <OverviewTable v-if="categories.length > 0" :headers="headers" :rows="categories"
+                @delete-row="deleteCategory" />
             <Pagination v-if="categories.length > 0" :links="paginationLinks" @change-page="fetchCategories" />
             <p class="mt-4" v-else>No categories found.</p>
         </section>
