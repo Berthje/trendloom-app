@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <header class="flex items-center justify-between py-2 mb-6">
+    <header class="flex items-center justify-between mb-6 border-b border-gray-300 border-solid">
         <div class="flex items-center space-x-4">
             <div class="text-gray-500">1/32</div>
             <div class="flex space-x-2">
@@ -23,6 +23,6 @@ export default {
                 </button>
             </div>
         </div>
-        <RouterLink class="block" to="/account/profile">Layton Berth</RouterLink>
+        <RouterLink class="font-medium hover:opacity-70" to="/account/profile">Layton Berth</RouterLink>
     </header>
 </template>

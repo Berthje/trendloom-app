@@ -14,9 +14,9 @@ export default {
 <template>
     <main class="flex">
         <DashboardSidebar />
-        <div class="p-6 pl-12 flex-grow">
-            <DashboardHeader />
-            <RouterView></RouterView>
+        <div class="flex-grow">
+            <DashboardHeader class="py-4 px-12" />
+            <RouterView class="py-4 px-12"></RouterView>
         </div>
     </main>
 </template>

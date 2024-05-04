@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-    <aside class="w-72 h-screen flex flex-col justify-between text-black p-6">
+    <aside class="w-72 h-screen flex flex-col justify-between text-black p-6 border-r border-gray-300 border-solid">
         <div>
             <img src="../../assets/logo-black-dashboard.svg" class="mb-8 px-2" alt="Trendloom logo" v-once>
             <div class="flex flex-col space-y-1">
