@@ -60,7 +60,6 @@ export default {
                                     <div class="flex items-center gap-x-5">
                                         <button
                                             class="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
-                                            <!-- Edit icon -->
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -69,7 +68,6 @@ export default {
                                         </button>
                                         <button
                                             class="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none">
-                                            <!-- Delete icon -->
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
