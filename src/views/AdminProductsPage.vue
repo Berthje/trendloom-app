@@ -1,17 +1,18 @@
 <script>
+import PageHeader from '@/components/AdminDashboard/PageHeader.vue';
+
 export default {
     name: 'AdminProductsPage',
+    components: {
+        PageHeader,
+    },
 }
 </script>
 
 <template>
     <main>
         <section>
-            <div class="flex items-center gap-x-3">
-                <h2 class="text-2xl font-medium text-gray-800">Products</h2>
-                <span class="px-3 py-1 text-sm text-orange-600 font-medium bg-orange-100 rounded-full">12
-                    products</span>
-            </div>
+            <PageHeader title="Products" :itemCount="12" itemLabel="products" />
             <div class="flex flex-col mt-6">
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -79,9 +80,9 @@ export default {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             NIKE-AIR270</td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             Nike Air 1"07</td>
                                         <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             Nike
