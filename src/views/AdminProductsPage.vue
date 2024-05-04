@@ -9,7 +9,7 @@ export default {
         <section>
             <div class="flex items-center gap-x-3">
                 <h2 class="text-2xl font-medium text-gray-800">Products</h2>
-                <span class="px-3 py-1 text-sm text-blue-600 bg-blue-100 rounded-full">12 products</span>
+                <span class="px-3 py-1 text-sm text-orange-600 font-medium bg-orange-100 rounded-full">12 products</span>
             </div>
             <div class="flex flex-col mt-6">
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -19,13 +19,13 @@ export default {
                                 <thead class="bg-gray-50">
                                     <tr>
                                         <th scope="col"
-                                            class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
                                             <div class="flex items-center gap-x-3">
                                                 <span>Picture</span>
                                             </div>
                                         </th>
                                         <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             <button class="flex items-center gap-x-2">
                                                 <span>SKU</span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -36,22 +36,22 @@ export default {
                                             </button>
                                         </th>
                                         <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Name</th>
                                         <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Brand</th>
                                         <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Category</th>
                                         <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Quantity</th>
                                         <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500">
                                             Price</th>
                                         <th scope="col"
-                                            class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            class="px-12 py-3.5 text-sm font-normal text-left text-gray-500">
                                             <button class="flex items-center gap-x-2">
                                                 <span>Status</span>
                                                 <svg class="h-3" viewBox="0 0 10 11" fill="none"
@@ -105,7 +105,6 @@ export default {
                                             <div
                                                 class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60">
                                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-
                                                 <h2 class="text-sm font-normal text-emerald-500">Active</h2>
                                             </div>
                                         </td>
@@ -142,7 +141,7 @@ export default {
                 <a href="#"
                     class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                        stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                     </svg>
@@ -167,7 +166,7 @@ export default {
                     </span>
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                        stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                     </svg>
