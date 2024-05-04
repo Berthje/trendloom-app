@@ -6,15 +6,23 @@ export default {
     data() {
         return {
             service: new AuthenticationService(),
+            isAdmin: false,
         }
+    },
+    async created() {
+        this.checkIfAdmin();
     },
     methods: {
         async logout() {
             const response = await this.service.logout();
 
-            if(response.status) {
+            if (response.status) {
                 this.$router.push({ name: 'home' });
             }
+        },
+        async checkIfAdmin() {
+            const response = await this.service.isAdmin();
+            this.isAdmin = response;
         }
     }
 }
@@ -35,6 +43,7 @@ export default {
             <RouterLink to="/account/favorites" class="block px-2 py-1" active-class="underline font-bold">{{
                 $t('favorites') }}
             </RouterLink>
+            <RouterLink v-if="isAdmin" to="/admin" class="block px-2 py-1" active-class="underline font-bold">Admin</RouterLink>
             <button class="block px-2 py-1 text-left" @click="logout">{{ $t('logout') }}</button>
         </div>
         <div class="flex-grow">

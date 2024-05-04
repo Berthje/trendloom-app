@@ -88,6 +88,6 @@ export default class AuthenticationService {
         });
         const data = await response.json();
 
-        return data.isAdmin;
+        return data.data.is_admin;
     }
 }
