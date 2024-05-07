@@ -3,6 +3,7 @@ import PageHeader from '@/components/AdminDashboard/PageHeader.vue';
 import OverviewTable from '@/components/AdminDashboard/OverviewTable.vue';
 import Pagination from '@/components/AdminDashboard/Pagination.vue';
 import AdminProductsPageService from '@/modules/AdminProductsPage/Services/AdminProductsPageService';
+import { debounce } from 'lodash';
 
 export default {
     name: 'AdminProductsPage',
@@ -11,6 +12,7 @@ export default {
         OverviewTable,
         Pagination
     },
+    emits: ['search'],
     data() {
         return {
             service: new AdminProductsPageService(),
@@ -18,7 +20,8 @@ export default {
             paginationLinks: [],
             filterOptions: {
                 sorting: 'default',
-                itemCount: '9'
+                itemCount: '9',
+                search: ''
             },
             headers: [
                 { key: 'media', text: 'Picture' },
@@ -52,7 +55,11 @@ export default {
             if (response.status === 204) {
                 this.fetchProducts();
             }
-        }
+        },
+        handleSearch: debounce(function(searchText) {
+                this.filterOptions.search = searchText;
+                this.fetchProducts();
+        }, 350),
     }
 }
 </script>
@@ -60,7 +67,7 @@ export default {
 <template>
     <main>
         <section>
-            <PageHeader title="Products" titleSingular="product" :itemCount="products.length" itemLabel="products" placeholderText="Search for products..." />
+            <PageHeader title="Products" titleSingular="product" :itemCount="products.length" itemLabel="products" placeholderText="Search for products..." @search="handleSearch" />
             <OverviewTable v-if="products.length > 0" :headers="headers" :rows="products" @delete-row="deleteProduct" />
             <Pagination v-if="products.length > 0" :links="paginationLinks" @change-page="fetchProducts" />
             <p class="mt-4" v-else>No products found.</p>

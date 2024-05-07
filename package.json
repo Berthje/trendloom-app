@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "tailwind-scrollbar": "^3.1.0",
     "vue": "^3.4.21",
     "vue-i18n": "^9.13.1",
