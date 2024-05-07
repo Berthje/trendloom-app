@@ -12,7 +12,7 @@ export default {
     data() {
         return {
             service: new AdminCategoriesPageService(),
-            languages: ['en', 'nl', 'fr'],
+            languages: ['en', 'nl'],
             category: {},
             parent_categories: [],
             selected_parent: null,

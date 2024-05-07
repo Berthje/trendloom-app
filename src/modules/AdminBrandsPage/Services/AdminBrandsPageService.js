@@ -13,4 +13,11 @@ export default class AdminBrandsPageService extends BasePageService {
 
         return response;
     }
+
+    async addBrand(brand) {
+        const url = `${BASE_URL}/admin/brands`;
+        const response = await fetch(url, getFetchOptions("POST", brand));
+
+        return response;
+    }
 }
