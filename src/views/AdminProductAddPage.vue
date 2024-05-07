@@ -14,7 +14,7 @@ export default {
 <template>
     <main>
         <PageHeader title="Add product" titleSingular="product" cancelRoute="/admin/products" :showSearchField="false"
-            :showAmountField="false" :showCancelButton="true" />
+            :showAmountField="false" :showCancelButton="true" :showAddButton="false" />
         <section class="flex justify-between space-x-24 mt-7">
             <div class="flex-grow flex flex-col space-y-6">
                 <section>

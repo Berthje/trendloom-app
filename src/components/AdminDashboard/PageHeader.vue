@@ -20,6 +20,10 @@ export default {
         showCancelButton: {
             type: Boolean,
             default: false
+        },
+        showAddButton: {
+            type: Boolean,
+            default: true
         }
     },
     emits: ['search'],
@@ -66,7 +70,7 @@ export default {
                 class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-gray-600 font-medium transition-colors duration-200 border border-solid border-gray-400 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-gray-100">
                 Cancel
             </RouterLink>
-            <RouterLink :to="addRoute"
+            <RouterLink :to="addRoute" v-if="showAddButton"
                 class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white font-medium transition-colors duration-200 bg-orange-400 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-500">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5">
