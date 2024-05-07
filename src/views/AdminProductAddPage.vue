@@ -11,6 +11,6 @@ export default {
 
 <template>
     <main>
-        <PageHeader title="Brands" titleSingular="brand" addRoute="/admin/brands/add" :showSearchField="false" :showAmountField="false" />
+        <PageHeader title="Add product" titleSingular="product" cancelRoute="/admin/products" :showSearchField="false" :showAmountField="false" :showCancelButton="true" />
     </main>
 </template>
