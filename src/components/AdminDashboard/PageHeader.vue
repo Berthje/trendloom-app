@@ -8,6 +8,10 @@ export default {
         itemCount: Number,
         itemLabel: String,
         placeholderText: String,
+        showSearchField: {
+            type: Boolean,
+            default: true
+        }
     },
     emits: ['search'],
     data() {
@@ -35,7 +39,7 @@ export default {
                             itemLabel }}</span>
                 </div>
             </div>
-            <div class="relative flex items-center mt-4 md:mt-0" v-if="title === 'Products'">
+            <div class="relative flex items-center mt-4 md:mt-0" v-if="showSearchField === true">
                 <span class="absolute">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 mx-3 text-gray-400">

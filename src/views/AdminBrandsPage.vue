@@ -55,7 +55,7 @@ export default {
 <template>
     <main>
         <section>
-            <PageHeader title="Brands" titleSingular="brand" addRoute="/admin/brands/add" :itemCount="brands.length" itemLabel="brands" />
+            <PageHeader title="Brands" titleSingular="brand" addRoute="/admin/brands/add" :itemCount="brands.length" itemLabel="brands" showSearchField="false" />
             <OverviewTable v-if="brands.length > 0" :headers="headers" :rows="brands"
                 @delete-row="deleteBrand" />
             <Pagination v-if="brands.length > 0" :links="paginationLinks" @change-page="fetchBrands" />

@@ -55,7 +55,7 @@ export default {
 <template>
     <main>
         <section>
-            <PageHeader title="Categories" titleSingular="category" addRoute="/admin/categories/add" :itemCount="categories.length" itemLabel="categories" />
+            <PageHeader title="Categories" titleSingular="category" addRoute="/admin/categories/add" :itemCount="categories.length" itemLabel="categories" showSearchField="false" />
             <OverviewTable v-if="categories.length > 0" :headers="headers" :rows="categories"
                 @delete-row="deleteCategory" />
             <Pagination v-if="categories.length > 0" :links="paginationLinks" @change-page="fetchCategories" />
