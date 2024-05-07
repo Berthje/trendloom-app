@@ -14,12 +14,17 @@ export default {
             service: new AdminCategoriesPageService(),
             languages: ['en', 'nl', 'fr'],
             category: {},
+            parent_categories: [],
+            selected_parent: null,
         }
     },
-    created() {
+    async created() {
         this.languages.forEach(lang => {
             this.category[lang] = { category_name: '', category_description: '' };
         });
+
+        const response = await this.service.allCategories({"itemCount": "1000"});
+        this.parent_categories = response.data;
     },
     methods: {
         async addCategory() {
@@ -34,6 +39,7 @@ export default {
             const response = await this.service.addCategory({
                 name: this.category['en'].category_name,
                 description: this.category['en'].category_description,
+                parent_category_id: this.selected_parent,
                 languages: languages
             });
 
@@ -56,6 +62,15 @@ export default {
                     <InputField id="category_name" label="Name" placeholder="Type category name here..."
                         errorMessage="Category name must be filled in." status="default" type="text" class="w-1/3"
                         v-model="category[lang].category_name" />
+                    <div>
+                        <label for="parent_category_id" class="text-sm font-bold">Category parent</label>
+                        <select name="parent_category_id" id="parent_category_id"
+                            class="bg-gray-100 border-b-2 border-solid border-gray-300 h-[2.6rem] px-2"
+                            v-model="selected_parent">
+                            <option value="0">Select parent category</option>
+                            <option v-for="parent in parent_categories" :value="parent.id">{{ parent.name }}</option>
+                        </select>
+                    </div>
                     <InputField id="category_description" label="Description"
                         placeholder="Type category description here..."
                         errorMessage="Category description must be filled in." status="default" type="text"
