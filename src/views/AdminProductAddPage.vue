@@ -32,7 +32,7 @@ export default {
                         </div>
                         <div class="flex flex-col w-1/3">
                             <label for="selectedBrand" class="text-sm font-bold mb-1">Brand</label>
-                            <select name="selectedBrand" id="selectedBrand" class="py-3 px-2 bg-gray-100">
+                            <select name="selectedBrand" id="selectedBrand" class="py-3 px-2 border border-solid border-black rounded-md">
                                 <option value="nike">Nike</option>
                                 <option value="nike">Adidas</option>
                                 <option value="nike">Only</option>
@@ -42,15 +42,38 @@ export default {
                     </div>
                     <div class="flex flex-col w-full">
                         <label for="selectedBrand" class="text-sm font-bold mb-1">Description</label>
-                        <textarea class="border border-solid border-black rounded-md p-2" name="product_description" id="product_description" rows="6" placeholder="Type product description here..."></textarea>
+                        <textarea class="border border-solid border-black rounded-md p-2" name="product_description" id="product_description" rows="5" placeholder="Type product description here..."></textarea>
                     </div>
                 </section>
                 <section>
                     <h2 class="font-bold text-2xl">Media</h2>
+                    <div class="border border-dashed border-gray-400 rounded-md text-center p-10">
+                        <h3 class="mb-4">Drag and drop images here, or click to add images.</h3>
+                        <button class="bg-black text-white px-2 py-1">Add images</button>
+                    </div>
+                </section>
+                <section>
+                    <div class="flex items-center space-x-4 mb-2">
+                        <h2 class="font-bold text-2xl">Pricing</h2>
+                    </div>
+                    <div class="flex space-x-12 mb-4">
+                        <div class="w-full">
+                            <InputField id="product_price" label="Base Price" placeholder="€ Type base price here..."
+                                errorMessage="Product name must be filled in." status="default" type="number" />
+                        </div>
+                        <div class="flex flex-col w-1/3">
+                            <label for="selectedBrand" class="text-sm font-bold mb-1">Discount Coupon</label>
+                            <select name="selectedBrand" id="selectedBrand" class="py-3 px-2 border border-solid border-black rounded-md">
+                                <option value="" selected>No discount</option>
+                                <option value="nike">HALLOWEEN20</option>
+                                <option value="nike">MAYTHE4TH</option>
+                            </select>
+                        </div>
+                    </div>
                 </section>
             </div>
-            <div class="w-[20rem] bg-red-400 flex flex-col space-y-4">
-                <div>yug</div>
+            <div class="w-[20rem] flex flex-col space-y-4">
+                <div></div>
             </div>
         </section>
     </main>
