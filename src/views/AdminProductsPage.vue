@@ -60,7 +60,7 @@ export default {
 <template>
     <main>
         <section>
-            <PageHeader title="Products" titleSingular="product" :itemCount="products.length" itemLabel="products" />
+            <PageHeader title="Products" titleSingular="product" :itemCount="products.length" itemLabel="products" placeholderText="Search for products..." />
             <OverviewTable v-if="products.length > 0" :headers="headers" :rows="products" @delete-row="deleteProduct" />
             <Pagination v-if="products.length > 0" :links="paginationLinks" @change-page="fetchProducts" />
             <p class="mt-4" v-else>No products found.</p>
