@@ -11,6 +11,10 @@ export default {
         showSearchField: {
             type: Boolean,
             default: true
+        },
+        showAmountField: {
+            type: Boolean,
+            default: true
         }
     },
     emits: ['search'],
@@ -33,13 +37,13 @@ export default {
             <div>
                 <div class="flex items-center gap-x-3">
                     <h2 class="text-2xl font-medium text-gray-800">{{ title }}</h2>
-                    <span class="px-3 py-1 text-sm text-orange-600 font-medium bg-orange-100 rounded-full">{{ itemCount
+                    <span class="px-3 py-1 text-sm text-orange-600 font-medium bg-orange-100 rounded-full" v-if="showAmountField">{{ itemCount
                         }}
                         {{
                             itemLabel }}</span>
                 </div>
             </div>
-            <div class="relative flex items-center mt-4 md:mt-0" v-if="showSearchField === true">
+            <div class="relative flex items-center mt-4 md:mt-0" v-if="showSearchField">
                 <span class="absolute">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 mx-3 text-gray-400">

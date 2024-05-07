@@ -1,11 +1,16 @@
 <script>
+import PageHeader from '@/components/AdminDashboard/PageHeader.vue';
+
 export default {
     name: 'AdminProductAddPage',
+    components: {
+        PageHeader
+    },
 }
 </script>
 
 <template>
     <main>
-        <h1>Admin Product Add Page</h1>
+        <PageHeader title="Brands" titleSingular="brand" addRoute="/admin/brands/add" :showSearchField="false" :showAmountField="false" />
     </main>
 </template>
