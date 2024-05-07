@@ -13,4 +13,11 @@ export default class AdminCategoriesPageService extends BasePageService {
 
         return response;
     }
+
+    async addCategory(category) {
+        const url = `${BASE_URL}/admin/categories`;
+        const response = await fetch(url, getFetchOptions("POST", category));
+
+        return response;
+    }
 }
