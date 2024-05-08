@@ -51,13 +51,13 @@ export default {
 
             const data = {
                 id: this.$route.params.id,
-                name: this.brand['en'].brand_name,
-                description: this.brand['en'].brand_description,
-                logo_url: this.brand.brand_logo_url,
+                name: this.category['en'].category_name,
+                description: this.category['en'].category_description,
+                parent_category_id: this.selected_parent,
                 languages: languages
             };
 
-            const response = await this.service.updateBrand(data);
+            const response = await this.service.updateCategory(data);
 
             if (response.status === 200) {
                 this.$router.push('/admin/brands');

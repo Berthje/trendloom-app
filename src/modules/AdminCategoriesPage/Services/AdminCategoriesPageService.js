@@ -34,4 +34,11 @@ export default class AdminCategoriesPageService extends BasePageService {
 
         return category;
     }
+
+    async updateCategory(category) {
+        const url = `${BASE_URL}/admin/categories/${category.id}`;
+        const response = await fetch(url, getFetchOptions("PUT", category));
+
+        return response;
+    }
 }
