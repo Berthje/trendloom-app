@@ -3,8 +3,23 @@ import { getFetchOptions } from "@/modules/Core/helpers";
 import { BASE_URL } from "../../Core/config";
 
 export default class AdminBrandsPageService extends BasePageService {
-    allBrands(filterOptions) {
+    async allBrands(filterOptions) {
         return super.all("brands", filterOptions);
+    }
+
+    async getBrand(brandId) {
+        const languages = ['en', 'nl'];
+        const brand = {};
+
+        for (const lang of languages) {
+            const url = `${BASE_URL}/brands/${brandId}?lang=${lang}`;
+            const response = await fetch(url, getFetchOptions("GET"));
+            const data = await response.json();
+
+            brand[lang] = data;
+        }
+
+        return brand;
     }
 
     async deleteBrand(brandId) {

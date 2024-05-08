@@ -16,6 +16,23 @@ export default {
             brand: {}
         }
     },
+    created() {
+        this.fetchBrand();
+    },
+    methods: {
+        async fetchBrand() {
+            const id = this.$route.params.id;
+            const data = await this.service.getBrand(id);
+            this.brand = data;
+            console.log(this.brand);
+        },
+        async saveBrand(brand) {
+            const response = await this.service.saveBrand(brand);
+            if (response.status === 200) {
+                this.$router.push({ name: 'adminBrands' });
+            }
+        }
+    }
 }
 </script>
 
@@ -39,8 +56,7 @@ export default {
                 </div>
             </section>
             <button type="submit"
-                class="mt-6 flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white font-medium transition-colors duration-200 bg-orange-400 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-500">Add
-                brand</button>
+                class="mt-6 flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white font-medium transition-colors duration-200 bg-orange-400 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-500">Save changes</button>
         </form>
     </main>
 </template>
