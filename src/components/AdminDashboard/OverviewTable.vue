@@ -4,7 +4,7 @@ import OverviewTableHeader from './OverviewTableHeader.vue';
 export default {
     name: 'OverviewTable',
     components: {
-        OverviewTableHeader
+        OverviewTableHeader,
     },
     emits: ['delete-row', 'edit'],
     props: {
