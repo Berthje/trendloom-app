@@ -76,7 +76,7 @@ export default {
     async created() {
         this.profile = await this.authService.getProfile();
         this.orders = await this.service.getOrders(this.profile.data.id);
-        this.fetchCartItems();
+        await this.fetchCartItems();
     }
 }
 </script>
