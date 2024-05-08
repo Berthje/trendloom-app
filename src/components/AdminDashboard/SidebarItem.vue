@@ -56,7 +56,8 @@ export default {
             </div>
         </RouterLink>
         <div v-if="isOpen" class="">
-            <RouterLink :to="link + '/add'" class="block py-2 px-4 pl-6 hover:font-bold">Add {{ name.toLowerCase() }}</RouterLink>
+            <RouterLink :to="link + '/add'" class="block py-2 px-4 pl-6 hover:font-bold">Add {{ name.toLowerCase() }}
+            </RouterLink>
         </div>
     </div>
 </template>
