@@ -17,20 +17,40 @@ export default {
             const keys = headerKey.split('.');
             let value = keys.reduce((obj, key) => obj && obj[key], row);
 
-            if (Array.isArray(value) && keys[keys.length - 1] === 'media') {
-                const primaryImage = value.find(image => image.is_primary === 1);
-                value = primaryImage ? primaryImage.image_url : null;
-            }
-
-            if (typeof value === 'object' && value !== null && keys[keys.length - 1] === 'media') {
-                value = value.image_url;
-            }
-
-            if (Array.isArray(value) && keys[keys.length - 1] === 'stock') {
-                value = value.reduce((total, stockItem) => total + stockItem.quantity_in_stock, 0);
+            if (Array.isArray(value)) {
+                value = this.handleArrayValue(value, keys);
+            } else if (typeof value === 'object' && value !== null) {
+                value = this.handleObjectValue(value, keys);
             }
 
             return value;
+        },
+        handleArrayValue(value, keys) {
+            const lastKey = keys[keys.length - 1];
+
+            if (lastKey === 'media') {
+                return this.getPrimaryImageUrl(value);
+            } else if (lastKey === 'stock') {
+                return this.getTotalStock(value);
+            }
+
+            return value;
+        },
+        handleObjectValue(value, keys) {
+            const lastKey = keys[keys.length - 1];
+
+            if (lastKey === 'media') {
+                return value.image_url;
+            }
+
+            return value;
+        },
+        getPrimaryImageUrl(images) {
+            const primaryImage = images.find(image => image.is_primary === 1);
+            return primaryImage ? primaryImage.image_url : null;
+        },
+        getTotalStock(stockItems) {
+            return stockItems.reduce((total, stockItem) => total + stockItem.quantity_in_stock, 0);
         },
         deleteRow(rowId) {
             this.$emit('delete-row', rowId)
