@@ -1,6 +1,6 @@
 <script>
 import PageHeader from '@/components/AdminDashboard/PageHeader.vue';
-import InputField from '../components/InputField.vue';
+import InputField from '../../../components/InputField.vue';
 
 export default {
     name: 'AdminProductAddPage',

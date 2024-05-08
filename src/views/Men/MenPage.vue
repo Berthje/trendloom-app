@@ -1,12 +1,12 @@
 <script>
-import ShopHeader from '@/components/ShopHeader.vue';
+import ShopHeader from '@/components/Shop/ShopHeader.vue';
 import FilterBar from '@/components/FilterBar.vue';
-import ProductGrid from '@/components/ProductGrid.vue';
+import ProductGrid from '@/components/Product/ProductGrid.vue';
 import PagingFooter from '@/components/PagingFooter.vue';
-import WomenPageService from '@/modules/WomenPage/Services/WomenPageService';
+import MenPageService from '@/modules/MenPage/Services/MenPageService.js';
 
 export default {
-  name: 'WomenPage',
+  name: 'MenPage',
   components: {
     ShopHeader,
     FilterBar,
@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      service: new WomenPageService(),
+      service: new MenPageService(),
       products: [],
       filterOptions: {
         sorting: 'default',
@@ -44,10 +44,10 @@ export default {
 
 <template>
   <main>
-    <ShopHeader :title="$t('womens_shop')" :links="[{ name: 'Home', path: '/' }, { name: 'Women', path: 'women' }]" />
+    <ShopHeader :title="$t('mens_shop')" :links="[{ name: 'Home', path: '/' }, { name: 'Men', path: 'men' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
       <FilterBar v-model:filterOptions="filterOptions" />
-      <ProductGrid :products="products" @change-page="fetchProducts" />
+      <ProductGrid :products="products" />
       <PagingFooter :links="paginationLinks" @change-page="fetchProducts" />
     </div>
   </main>

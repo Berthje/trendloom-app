@@ -7,7 +7,7 @@
         <article class="relative text-center">
             <div class="aspect-[570/470] overflow-hidden group mb-4">
                 <img class="group-hover:scale-95 object-cover transition-all duration-300"
-                    src="../assets/category-women.avif" alt="women model" v-once/>
+                     src="../../assets/category-women.avif" alt="women model" v-once/>
             </div>
             <h3 class="uppercase font-extrabold text-[1.375rem] mb-2">{{$t('the_jeans_you_need')}}</h3>
             <p class="text-gray-600 text-[0.975rem] mb-4">{{$t('true_skinny_description')}}</p>
@@ -18,7 +18,7 @@
         <article class="relative text-center">
             <div class="aspect-[570/470] overflow-hidden group mb-4">
                 <img class="group-hover:scale-95 object-cover transition-all duration-300"
-                    src="../assets/category-men.avif" alt="men model" v-once/>
+                     src="../../assets/category-men.avif" alt="men model" v-once/>
             </div>
             <h3 class="uppercase font-extrabold text-[1.375rem] mb-2">{{$t('find_perfect_looks')}}</h3>
             <p class="text-gray-600 text-[0.975rem] mb-4">{{$t('classic_is_back')}}</p>

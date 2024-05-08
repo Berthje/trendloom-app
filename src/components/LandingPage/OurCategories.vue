@@ -1,5 +1,5 @@
 <script>
-import CategoryCard from './CategoryCard.vue';
+import CategoryCard from '../Category/CategoryCard.vue';
 
 export default {
     name: 'OurCategories',

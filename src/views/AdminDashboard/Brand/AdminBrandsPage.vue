@@ -2,7 +2,7 @@
 import PageHeader from '@/components/AdminDashboard/PageHeader.vue';
 import OverviewTable from '@/components/AdminDashboard/OverviewTable.vue';
 import Pagination from '@/components/AdminDashboard/Pagination.vue';
-import AdminBrandsPageService from '@/modules/AdminBrandsPage/Services/AdminBrandsPageService';
+import AdminBrandsPageService from '@/modules/AdminBrandsPage/Services/AdminBrandsPageService.js';
 
 export default {
     name: 'AdminBrandsPage',

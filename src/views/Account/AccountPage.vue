@@ -1,5 +1,5 @@
 <script>
-import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService';
+import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService.js';
 
 export default {
     name: 'AccountPage',

@@ -1,8 +1,8 @@
 <script>
-import ShopHeader from '@/components/ShopHeader.vue';
-import ProductGrid from '@/components/ProductGrid.vue';
+import ShopHeader from '@/components/Shop/ShopHeader.vue';
+import ProductGrid from '@/components/Product/ProductGrid.vue';
 import FilterBar from '@/components/FilterBar.vue';
-import BrandDetailPageService from '@/modules/BrandDetailPage/Services/BrandDetailPageService';
+import BrandDetailPageService from '@/modules/BrandDetailPage/Services/BrandDetailPageService.js';
 import { useRoute } from 'vue-router';
 
 export default {

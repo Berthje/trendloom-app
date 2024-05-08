@@ -1,9 +1,9 @@
 <script>
-import ShopHeader from '@/components/ShopHeader.vue';
+import ShopHeader from '@/components/Shop/ShopHeader.vue';
 import FilterBar from '@/components/FilterBar.vue';
-import ProductGrid from '@/components/ProductGrid.vue';
+import ProductGrid from '@/components/Product/ProductGrid.vue';
 import PagingFooter from '@/components/PagingFooter.vue';
-import KidsPageService from '@/modules/KidsPage/Services/KidsPageService';
+import KidsPageService from '@/modules/KidsPage/Services/KidsPageService.js';
 
 export default {
   name: 'KidsPage',

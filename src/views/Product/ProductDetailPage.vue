@@ -1,12 +1,12 @@
 <script>
 import { useRoute } from 'vue-router';
-import ShopHeader from '@/components/ShopHeader.vue';
+import ShopHeader from '@/components/Shop/ShopHeader.vue';
 import { RiArrowRightSLine, RiArrowLeftSLine } from "vue3-icons/ri";
 import { AiOutlineShopping } from "vue3-icons/ai";
 import { FaRegHeart } from "vue3-icons/fa";
-import QuantitySelector from '@/components/QuantitySelector.vue';
-import ProductDetailService from '@/modules/ProductDetailPage/Services/ProductDetailService';
-import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService';
+import QuantitySelector from '@/components/Product/QuantitySelector.vue';
+import ProductDetailService from '@/modules/ProductDetailPage/Services/ProductDetailService.js';
+import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService.js';
 
 export default {
     name: 'ProductDetailPage',

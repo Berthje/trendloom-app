@@ -2,7 +2,7 @@
 import PageHeader from '@/components/AdminDashboard/PageHeader.vue';
 import OverviewTable from '@/components/AdminDashboard/OverviewTable.vue';
 import Pagination from '@/components/AdminDashboard/Pagination.vue';
-import AdminProductsPageService from '@/modules/AdminProductsPage/Services/AdminProductsPageService';
+import AdminProductsPageService from '@/modules/AdminProductsPage/Services/AdminProductsPageService.js';
 import { debounce } from 'lodash';
 
 export default {

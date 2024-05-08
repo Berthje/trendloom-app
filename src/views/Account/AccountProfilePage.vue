@@ -1,6 +1,6 @@
 <script>
-import ProfileForm from '@/components/ProfileForm.vue';
-import AccountProfileService from '@/modules/AccountProfilePage/Services/AccountProfileService';
+import ProfileForm from '@/components/Profile/ProfileForm.vue';
+import AccountProfileService from '@/modules/AccountProfilePage/Services/AccountProfileService.js';
 
 export default {
   name: 'AccountProfilePage',

@@ -1,7 +1,7 @@
 <script>
-import ShopHeader from '@/components/ShopHeader.vue'
-import BrandCard from '@/components/BrandCard.vue'
-import BrandsOverviewPageService from '@/modules/BrandsOverviewPage/Services/BrandsOverviewPageService'
+import ShopHeader from '@/components/Shop/ShopHeader.vue'
+import BrandCard from '@/components/Brand/BrandCard.vue'
+import BrandsOverviewPageService from '@/modules/BrandsOverviewPage/Services/BrandsOverviewPageService.js'
 
 export default {
   name: 'BrandsOverviewPage',

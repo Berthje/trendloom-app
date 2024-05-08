@@ -9,7 +9,7 @@ import MobileMenu from "./MobileMenu.vue";
 import CartMenu from "../CartMenu/CartMenu.vue";
 import SearchModal from "./SearchModal.vue";
 import CartSummary from "./CartSummary.vue";
-import LanguageModal from "../LanguageModal.vue"
+import LanguageModal from "./LanguageModal.vue"
 
 export default {
   name: 'NavBar',

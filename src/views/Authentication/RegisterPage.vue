@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 import InputField from '@/components/InputField.vue';
 import SocialButton from '@/components/SocialButton.vue';
 import DividerWithText from '@/components/DividerWithText.vue';
-import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService';
+import AuthenticationService from '@/modules/Authentication/Services/AuthenticationService.js';
 
 export default {
     components: {
@@ -93,11 +93,11 @@ export default {
 <template>
     <main class="h-screen flex items-center">
         <div class="hidden md:block md:w-1/2">
-            <img src="../assets/account-register-image.avif" alt="Girl in clothing with birds"
-                class="w-full h-screen object-cover" v-once>
+            <img src="../../assets/account-register-image.avif" alt="Girl in clothing with birds"
+                 class="w-full h-screen object-cover" v-once>
         </div>
         <div class="p-8 w-full md:w-1/2 lg:p-16">
-            <RouterLink to="/"><img src="../assets/logo-black.svg"
+            <RouterLink to="/"><img src="../../assets/logo-black.svg"
                     class="mb-8 md:mb-12 w-full md:max-w-96 lg:max-w-[30rem]" alt="Trendloom logo" v-once></RouterLink>
             <h2 class="text-3xl font-extrabold mb-4">{{ $t('sign_up') }}</h2>
             <div class="flex flex-col space-y-4">

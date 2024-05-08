@@ -2,7 +2,7 @@
 import PageHeader from '@/components/AdminDashboard/PageHeader.vue';
 import OverviewTable from '@/components/AdminDashboard/OverviewTable.vue';
 import Pagination from '@/components/AdminDashboard/Pagination.vue';
-import AdminCategoriesPageService from '@/modules/AdminCategoriesPage/Services/AdminCategoriesPageService';
+import AdminCategoriesPageService from '@/modules/AdminCategoriesPage/Services/AdminCategoriesPageService.js';
 
 export default {
     name: 'AdminCategoriesPage',

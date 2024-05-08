@@ -1,5 +1,5 @@
 <script>
-import LanguageService from '@/modules/LanguageModal/Services/LanguageService';
+import LanguageService from '@/modules/LanguageModal/Services/LanguageService.js';
 import { AiOutlineClose } from 'vue3-icons/ai';
 
 export default {
