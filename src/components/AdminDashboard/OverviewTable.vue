@@ -1,6 +1,11 @@
 <script>
+import OverviewTableHeader from './OverviewTableHeader.vue';
+
 export default {
     name: 'OverviewTable',
+    components: {
+        OverviewTableHeader
+    },
     emits: ['delete-row', 'edit'],
     props: {
         headers: {
@@ -70,12 +75,7 @@ export default {
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th v-for="header in headers" :key="header.key" scope="col"
-                                    class="py-3.5 px-4 text-sm font-normal text-left text-gray-500">
-                                    <div class="flex items-center gap-x-3">
-                                        <span>{{ header.text }}</span>
-                                    </div>
-                                </th>
+                                <OverviewTableHeader v-for="header in headers" :key="header.key" :header="header" />
                                 <th scope="col" class="sr-only">Actions</th>
                             </tr>
                         </thead>
