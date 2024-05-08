@@ -7,8 +7,7 @@ export default class AdminBrandsPageService extends BasePageService {
         return super.all("brands", filterOptions);
     }
 
-    async getBrand(brandId) {
-        const languages = ['en', 'nl'];
+    async getBrand(brandId, languages) {
         const brand = {};
 
         for (const lang of languages) {
