@@ -59,18 +59,27 @@ export default {
             this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
         },
         async fetchCartItems() {
-            const openOrder = this.orders.find(order => order.status === 'not_completed');
+            const openOrder = this.getOpenOrder();
 
             if (openOrder) {
-                const orderItems = await this.service.getOrderItems(openOrder.id);
-                this.products = await Promise.all(
-                    orderItems.map(async item => {
-                        const product = await this.service.getProduct(item.product.id);
-                        return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
-                    })
-                );
+                const orderItems = await this.fetchOrderItems(openOrder.id);
+                this.products = await this.fetchProducts(orderItems);
                 this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
             }
+        },
+        getOpenOrder() {
+            return this.orders.find(order => order.status === 'not_completed');
+        },
+        async fetchOrderItems(orderId) {
+            return await this.service.getOrderItems(orderId);
+        },
+        async fetchProducts(orderItems) {
+            return await Promise.all(
+                orderItems.map(async item => {
+                    const product = await this.service.getProduct(item.product.id);
+                    return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
+                })
+            );
         },
     },
     async created() {
