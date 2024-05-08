@@ -41,7 +41,7 @@ export default {
             const languages = {};
 
             for (const lang in this.category) {
-                if (lang !== 'category_logo_url') {
+                if (this.languages.includes(lang)) {
                     languages[lang] = {
                         name: this.category[lang].category_name,
                         description: this.category[lang].category_description,
@@ -57,14 +57,10 @@ export default {
                 languages: languages
             };
 
-            const response = await this.service.updateCategory(data);
-
-            if (response.status === 200) {
-                this.$router.push('/admin/brands');
-            }
+            console.log(data)
         },
         async fetchAllCategories() {
-            const response = await this.service.allCategories({"itemCount": "1000"});
+            const response = await this.service.allCategories({ "itemCount": "1000" });
             this.parent_categories = response.data;
         },
     }

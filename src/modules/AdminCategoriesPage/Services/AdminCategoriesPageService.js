@@ -39,6 +39,8 @@ export default class AdminCategoriesPageService extends BasePageService {
         const url = `${BASE_URL}/admin/categories/${category.id}`;
         const response = await fetch(url, getFetchOptions("PUT", category));
 
+        console.log(category)
+
         return response;
     }
 }
