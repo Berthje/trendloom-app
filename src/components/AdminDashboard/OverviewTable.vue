@@ -1,6 +1,7 @@
 <script>
 export default {
     name: 'OverviewTable',
+    emits: ['delete-row', 'edit'],
     props: {
         headers: {
             type: Array,
@@ -33,6 +34,9 @@ export default {
         },
         deleteRow(rowId) {
             this.$emit('delete-row', rowId)
+        },
+        editRow(row) {
+            this.$emit('edit', row)
         }
     }
 }
@@ -83,7 +87,8 @@ export default {
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     <div class="flex items-center gap-x-5">
                                         <button
-                                            class="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                            class="text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none"
+                                            @click="editRow(row)">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                                 <path stroke-linecap="round" stroke-linejoin="round"

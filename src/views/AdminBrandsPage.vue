@@ -47,6 +47,9 @@ export default {
             if (response.status === 204) {
                 this.fetchBrands();
             }
+        },
+        editBrand(brand) {
+            this.$router.push({name: 'adminEditBrand', params: {id: brand.id}});
         }
     }
 }
@@ -55,9 +58,9 @@ export default {
 <template>
     <main>
         <section>
-            <PageHeader title="Brands" titleSingular="brand" addRoute="/admin/brands/add" :itemCount="brands.length" itemLabel="brands" :showSearchField="false" />
-            <OverviewTable v-if="brands.length > 0" :headers="headers" :rows="brands"
-                @delete-row="deleteBrand" />
+            <PageHeader title="Brands" titleSingular="brand" addRoute="/admin/brands/add" :itemCount="brands.length"
+                itemLabel="brands" :showSearchField="false" />
+            <OverviewTable v-if="brands.length > 0" :headers="headers" :rows="brands" @delete-row="deleteBrand" @edit="editBrand"/>
             <Pagination v-if="brands.length > 0" :links="paginationLinks" @change-page="fetchBrands" />
             <p class="mt-4" v-else>No brands found.</p>
         </section>
