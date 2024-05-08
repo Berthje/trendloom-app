@@ -67,7 +67,7 @@ export default {
                         <select name="parent_category_id" id="parent_category_id"
                             class="bg-gray-100 border-b-2 border-solid border-gray-300 h-[2.6rem] px-2"
                             v-model="selected_parent">
-                            <option value="0">Select parent category</option>
+                            <option value="">Select parent category</option>
                             <option v-for="parent in parent_categories" :value="parent.id">{{ parent.name }}</option>
                         </select>
                     </div>

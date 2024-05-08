@@ -49,7 +49,7 @@ export default {
             }
         },
         editCategory(category) {
-            this.$router.push({name: 'adminEditCategory', params: {id: category.id}});
+            this.$router.push({ name: 'adminEditCategory', params: { id: category.id } });
         }
     }
 }
@@ -61,7 +61,7 @@ export default {
             <PageHeader title="Categories" titleSingular="category" addRoute="/admin/categories/add"
                 :itemCount="categories.length" itemLabel="categories" :showSearchField="false" />
             <OverviewTable v-if="categories.length > 0" :headers="headers" :rows="categories"
-                @delete-row="deleteCategory" @edit="editBrand"/>
+                @delete-row="deleteCategory" @edit="editCategory" />
             <Pagination v-if="categories.length > 0" :links="paginationLinks" @change-page="fetchCategories" />
             <p class="mt-4" v-else>No categories found.</p>
         </section>

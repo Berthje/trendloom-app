@@ -49,7 +49,7 @@ export default {
             }
         },
         editBrand(brand) {
-            this.$router.push({name: 'adminEditBrand', params: {id: brand.id}});
+            this.$router.push({ name: 'adminEditBrand', params: { id: brand.id } });
         }
     }
 }
@@ -60,7 +60,8 @@ export default {
         <section>
             <PageHeader title="Brands" titleSingular="brand" addRoute="/admin/brands/add" :itemCount="brands.length"
                 itemLabel="brands" :showSearchField="false" />
-            <OverviewTable v-if="brands.length > 0" :headers="headers" :rows="brands" @delete-row="deleteBrand" @edit="editBrand"/>
+            <OverviewTable v-if="brands.length > 0" :headers="headers" :rows="brands" @delete-row="deleteBrand"
+                @edit="editBrand" />
             <Pagination v-if="brands.length > 0" :links="paginationLinks" @change-page="fetchBrands" />
             <p class="mt-4" v-else>No brands found.</p>
         </section>

@@ -20,4 +20,18 @@ export default class AdminCategoriesPageService extends BasePageService {
 
         return response;
     }
+
+    async getCategory(categoryId, languages) {
+        const category = {};
+
+        for (const lang of languages) {
+            const url = `${BASE_URL}/categories/${categoryId}?lang=${lang}`;
+            const response = await fetch(url, getFetchOptions("GET"));
+            const data = await response.json();
+
+            category[lang] = data;
+        }
+
+        return category;
+    }
 }
