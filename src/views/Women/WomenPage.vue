@@ -3,10 +3,10 @@ import ShopHeader from '@/components/Shop/ShopHeader.vue';
 import FilterBar from '@/components/FilterBar.vue';
 import ProductGrid from '@/components/Product/ProductGrid.vue';
 import PagingFooter from '@/components/PagingFooter.vue';
-import ShopPageService from '@/modules/ShopPage/Services/ShopPageService';
+import WomenPageService from '@/modules/WomenPage/Services/WomenPageService.js';
 
 export default {
-  name: 'ShopPage',
+  name: 'WomenPage',
   components: {
     ShopHeader,
     FilterBar,
@@ -15,33 +15,22 @@ export default {
   },
   data() {
     return {
-      service: new ShopPageService(),
+      service: new WomenPageService(),
       products: [],
       filterOptions: {
         sorting: 'default',
-        itemCount: '12',
-        search: ''
+        itemCount: '12'
       },
       paginationLinks: []
     }
   },
   watch: {
-    filterOptions: {
-      handler(newValue, oldValue) {
-        this.fetchProducts();
-      },
-      deep: true
+    filterOptions(newValue, oldValue) {
+      this.fetchProducts();
     }
   },
   created() {
     this.fetchProducts();
-  },
-  mounted() {
-    this.filterOptions.search = this.$route.query.search || '';
-  },
-  beforeRouteUpdate(to, from, next) {
-    this.filterOptions.search = to.query.search || '';
-    next();
   },
   methods: {
     async fetchProducts(url) {
@@ -55,11 +44,10 @@ export default {
 
 <template>
   <main>
-    <ShopHeader :title="$t('all_our_products')"
-      :links="[{ name: 'Home', path: '/' }, { name: 'Shop', path: 'shop' }]" />
+    <ShopHeader :title="$t('womens_shop')" :links="[{ name: 'Home', path: '/' }, { name: 'Women', path: 'women' }]" />
     <div class="px-4 py-3 w-full max-w-screen-xl mx-auto">
       <FilterBar v-model:filterOptions="filterOptions" />
-      <ProductGrid :products="products" />
+      <ProductGrid :products="products" @change-page="fetchProducts" />
       <PagingFooter :links="paginationLinks" @change-page="fetchProducts" />
     </div>
   </main>
