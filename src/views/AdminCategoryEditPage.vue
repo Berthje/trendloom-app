@@ -57,7 +57,11 @@ export default {
                 languages: languages
             };
 
-            console.log(data)
+            const response = await this.service.updateCategory(data)
+
+            if (response.status === 200) {
+                this.$router.push('/admin/categories');
+            }
         },
         async fetchAllCategories() {
             const response = await this.service.allCategories({ "itemCount": "1000" });
