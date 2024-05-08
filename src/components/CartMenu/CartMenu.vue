@@ -42,13 +42,7 @@ export default {
         },
         totalPrice() {
             return this.products.reduce((total, product) => total + product.price * product.quantity, 0);
-        },
-        isCartEmpty() {
-            return this.products.length === 0;
-        },
-        displayedProducts() {
-            return this.products.slice(0, this.MAX_PRODUCTS_SHOWN);
-        },
+        }
     },
     methods: {
         close() {
@@ -59,39 +53,30 @@ export default {
         },
         async removeProductFromCart(productObject) {
             const openOrder = this.orders.find(order => order.status === 'not_completed');
-            await this.service.deleteOrderItem(productObject, openOrder.id);
-            this.fetchCartItems();
+            this.products = this.products.filter(product => product.orderItemId !== productObject.orderItemId);
+            this.service.deleteOrderItem(productObject, openOrder.id);
 
             this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
         },
         async fetchCartItems() {
-            const openOrder = this.getOpenOrder();
+            const openOrder = this.orders.find(order => order.status === 'not_completed');
 
             if (openOrder) {
-                const orderItems = await this.fetchOrderItems(openOrder.id);
-                this.products = await this.fetchProducts(orderItems);
+                const orderItems = await this.service.getOrderItems(openOrder.id);
+                this.products = await Promise.all(
+                    orderItems.map(async item => {
+                        const product = await this.service.getProduct(item.product.id);
+                        return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
+                    })
+                );
                 this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
             }
-        },
-        getOpenOrder() {
-            return this.orders.find(order => order.status === 'not_completed');
-        },
-        async fetchOrderItems(orderId) {
-            return await this.service.getOrderItems(orderId);
-        },
-        async fetchProducts(orderItems) {
-            return await Promise.all(
-                orderItems.map(async item => {
-                    const product = await this.service.getProduct(item.product.id);
-                    return { ...product, orderItemId: item.id, quantity: item.quantity, selectedSize: item.size.size };
-                })
-            );
         },
     },
     async created() {
         this.profile = await this.authService.getProfile();
         this.orders = await this.service.getOrders(this.profile.data.id);
-        await this.fetchCartItems();
+        this.fetchCartItems();
     }
 }
 </script>
@@ -101,27 +86,28 @@ export default {
         <div v-show="show" class="fixed top-0 h-full w-full overflow-auto z-50">
             <nav class="fixed top-0 right-0 h-full w-[22rem] bg-white overflow-auto p-8 text-center flex flex-col">
                 <CartMenuHeader :amountOfProducts="itemCount" />
-                <div v-if="isCartEmpty">
+                <div v-if="products.length === 0">
                     <p class="text-sm mb-4">{{ $t('no_products_in_cart') }}</p>
-                    <RouterLink @click="close" to="/shop"
+                    <RouterLink @click="$emit('close')" to="/shop"
                         class="inline-block px-4 py-2 border border-solid border-black uppercase text-sm hover:bg-black hover:text-white transition-all duration-150">
                         {{ $t('return_to_shop') }}
                     </RouterLink>
                 </div>
                 <div v-else class="flex flex-grow">
                     <ul class="overflow-y-auto flex-grow">
-                        <ProductItem v-for="(product, index) in displayedProducts" :key="product.id" :product="product"
-                            @close="close" @remove="removeProductFromCart" />
+                        <ProductItem v-for="(product, index) in products.slice(0, MAX_PRODUCTS_SHOWN)" :key="product.id"
+                            :product="product" @close="close" @remove="removeProductFromCart" />
                     </ul>
                 </div>
                 <p v-if="additionalProducts > 0" class="text-left mb-32 font-bold">
-                    ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts }}
+                    ..{{ $t('there') }} {{ additionalProducts === 1 ? $t('is') : $t('are') }} {{ additionalProducts
+                    }}
                     {{ $t('more') }}
                     {{
                         additionalProducts > 1 ? $t('products') :
                             $t('product') }}
                 </p>
-                <CartMenuFooter v-if="!isCartEmpty" :subtotal="totalPrice" />
+                <CartMenuFooter v-if="products.length > 0" :subtotal="totalPrice" />
             </nav>
             <AiOutlineClose v-show="show"
                 class="h-8 w-8 bg-white rounded-full p-2 cursor-pointer z-50 absolute right-[23rem] top-3"
