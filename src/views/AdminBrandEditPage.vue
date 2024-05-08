@@ -33,10 +33,31 @@ export default {
 
             this.brand.brand_logo_url = data['en'].logo_url;
         },
-        async saveBrand(brand) {
-            const response = await this.service.saveBrand(brand);
+        async saveBrand() {
+            const languages = {};
+
+            for (const lang in this.brand) {
+                if (lang !== 'brand_logo_url') {
+                    languages[lang] = {
+                        name: this.brand[lang].brand_name,
+                        description: this.brand[lang].brand_description,
+                    };
+                }
+            }
+
+            const data = {
+                id: this.$route.params.id,
+                name: this.brand['en'].brand_name,
+                description: this.brand['en'].brand_description,
+                logo_url: this.brand.brand_logo_url,
+                languages: languages
+            };
+
+            console.log(data)
+            const response = await this.service.updateBrand(data);
+
             if (response.status === 200) {
-                this.$router.push({ name: 'adminBrands' });
+                this.$router.push('/admin/brands');
             }
         }
     }
@@ -47,7 +68,7 @@ export default {
     <main>
         <PageHeader title="Add brand" titleSingular="brand" cancelRoute="/admin/categories" :showSearchField="false"
             :showAmountField="false" :showCancelButton="true" :showAddButton="false" />
-        <form @submit.prevent="addBrand">
+        <form @submit.prevent="saveBrand">
             <section class="mt-7 mb-8" v-for="lang in languages" :key="lang">
                 <h2 class="font-bold text-2xl mb-2">General information ({{ lang.toUpperCase() }})</h2>
                 <div class="flex space-x-8">
