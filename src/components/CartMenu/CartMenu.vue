@@ -53,8 +53,8 @@ export default {
         },
         async removeProductFromCart(productObject) {
             const openOrder = this.orders.find(order => order.status === 'not_completed');
-            this.products = this.products.filter(product => product.orderItemId !== productObject.orderItemId);
-            this.service.deleteOrderItem(productObject, openOrder.id);
+            await this.service.deleteOrderItem(productObject, openOrder.id);
+            this.fetchCartItems();
 
             this.$emit('updateCart', { itemCount: this.products.length, totalPrice: this.totalPrice });
         },
