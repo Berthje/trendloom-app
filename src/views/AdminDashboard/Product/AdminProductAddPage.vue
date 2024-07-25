@@ -36,7 +36,7 @@ export default {
                                 <option value="nike">Nike</option>
                                 <option value="nike">Adidas</option>
                                 <option value="nike">Only</option>
-                                <option value="nike">Nike</option>
+                                <option value="nike">Jack & Jones</option>
                             </select>
                         </div>
                     </div>
