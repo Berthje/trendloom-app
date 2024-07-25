@@ -117,7 +117,8 @@ export default {
   </header>
   <DarkOverlay :show="menuOpen || searchOpen || cartOpen || languageModalOpen"
     @close="closeMenu; closeSearch; closeCart; closeLanguageModal" />
-  <MobileMenu :show="menuOpen" v-model="searchQuery" @submit="handleSubmit" :links="LINKS" @close="closeMenu" @openLanguageModal="openLanguageModal" />
+  <MobileMenu :show="menuOpen" v-model="searchQuery" @submit="handleSubmit" :links="LINKS" @close="closeMenu"
+    @openLanguageModal="openLanguageModal" />
   <SearchModal :show="searchOpen" v-model="searchQuery" @close="closeSearch" @submit="handleSubmit" />
   <CartMenu :show="cartOpen" @close="closeCart" @updateCart="updateCart" ref="cartMenu" />
   <LanguageModal :show="languageModalOpen" @close="closeLanguageModal" />
